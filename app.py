@@ -8,8 +8,14 @@ mongo = PyMongo(app)
 
 @app.route('/')
 @app.route('/get_home')
-def get_tasks():
-    return render_template('index.html', tasks=mongo.db.tasks.find())
+def get_home():
+    return render_template('index.html')
+    # return render_template('index.html', tasks=mongo.db.tasks.find())
+
+@app.route('/get_signIn')
+def get_sighIn():
+    return render_template('sign-in.html')
+    # return render_template('index.html', tasks=mongo.db.tasks.find())
 
 if __name__ == '__main__':
     app.run(host=os.environ.get('IP'),
