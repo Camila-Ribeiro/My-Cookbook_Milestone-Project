@@ -1,11 +1,15 @@
 import os
-from flask import Flask
+from flask import Flask, render_template, redirect, request, url_for
+from flask_pymongo import PyMongo
 
 app = Flask(__name__)
 
+mongo = PyMongo(app)
+
 @app.route('/')
-def index():
-    return "Hello World"
+@app.route('/get_home')
+def get_tasks():
+    return render_template('index.html', tasks=mongo.db.tasks.find())
 
 if __name__ == '__main__':
     app.run(host=os.environ.get('IP'),
