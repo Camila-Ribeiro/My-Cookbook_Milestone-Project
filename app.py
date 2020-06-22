@@ -13,9 +13,14 @@ def get_home():
     # return render_template('index.html', tasks=mongo.db.tasks.find())
 
 @app.route('/get_signIn')
-def get_sighIn():
+def get_signIn():
     return render_template('sign-in.html')
-    # return render_template('index.html', tasks=mongo.db.tasks.find())
+    # return render_template('sign-in.html', tasks=mongo.db.tasks.find())
+
+@app.route('/get_resgister')
+def get_resgister():
+    return render_template('register.html')
+    # return render_template('register.html', tasks=mongo.db.tasks.find())    
 
 if __name__ == '__main__':
     app.run(host=os.environ.get('IP'),
