@@ -6,6 +6,7 @@ from bson.objectid import ObjectId
 if os.path.exists('env.py'):
     import env
 
+# ENVIROMENT VARIABLES
 app = Flask(__name__)
 app.config['MONGO_DBNAME'] = os.environ.get('SECRET_KEY')
 app.config['MONGO_URI'] = os.environ.get('MONGO_URI')
@@ -14,10 +15,18 @@ app.secret_key = os.environ.get('SECRET_KEY')
 mongo = PyMongo(app)
 
 @app.route('/')
+# def root():
+#     return render_template('index.html')
+
 @app.route('/get_home')
 def get_home():
     return render_template('index.html')
     # return render_template('index.html', tasks=mongo.db.tasks.find())
+
+@app.route('/get_allRecipes')
+def get_allRecipes():
+    return render_template('all-recipes.html')
+    # return render_template('all-recipes.html', tasks=mongo.db.tasks.find()) 
 
 @app.route('/get_signIn')
 def get_signIn():
