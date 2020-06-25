@@ -24,6 +24,7 @@ def index():
     json_obj = r.json() 
     recipes = json_obj['recipes']
     return render_template('index.html', recipes=recipes)
+    return static_file(slick, root='/static/css/slick.css')
 
 # @app.route('/get_home')
 # def get_home():
