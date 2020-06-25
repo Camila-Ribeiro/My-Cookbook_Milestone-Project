@@ -22,10 +22,8 @@ api_key = "7b98ae9af6fe4cc6b9a33b00e08db54d"
 def index():
     r = requests.get('https://api.spoonacular.com/recipes/random?number=10&apiKey='+api_key+'')
     json_obj = r.json() 
-    recipes = json_obj['recipes']['title']
-    for x in json_obj:
-        print (x)
-    return render_template('index.html', random = recipes)
+    recipes = json_obj['recipes']
+    return render_template('index.html', recipes=recipes)
 
 # @app.route('/get_home')
 # def get_home():
