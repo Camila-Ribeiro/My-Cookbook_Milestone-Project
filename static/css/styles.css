@@ -1,0 +1,10 @@
+img.on-inview {
+    width: 100%;
+    height: 300px;
+    object-fit: cover;
+    padding: 10px;
+}
+
+.slick-prev:before, .slick-next:before {
+    color: #383b3f
+}
