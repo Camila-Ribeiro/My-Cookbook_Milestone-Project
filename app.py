@@ -24,12 +24,6 @@ def index():
     json_obj = r.json() 
     recipes = json_obj['recipes']
     return render_template('index.html', recipes=recipes)
-    return static_file(slick, root='/static/css/slick.css')
-
-# @app.route('/get_home')
-# def get_home():
-#     return render_template('index.html')
-    # return render_template('index.html', tasks=mongo.db.tasks.find())
 
 @app.route('/get_allRecipes')
 def get_allRecipes():
@@ -45,6 +39,11 @@ def get_signIn():
 def get_register():
     return render_template('register.html')
     # return render_template('register.html', tasks=mongo.db.tasks.find())    
+
+# @app.route('/get_diet', methods=['GET'])
+# def get_diet():
+#     return render_template('all-recipes.html')
+#     # return render_template('register.html', tasks=mongo.db.tasks.find()
 
 if __name__ == '__main__':
     app.run(host=os.environ.get('IP'),

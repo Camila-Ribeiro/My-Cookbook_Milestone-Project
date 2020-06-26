@@ -1,45 +1,41 @@
 {% include 'base.html' %} {% block content %}
 <div class="container">
-    <div class="dropdown">
-        <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-            Category
-        </button>
-        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-            <!-- <a class="dropdown-item" href="{{url_for('')}}">Action</a>
-            <a class="dropdown-item" href="{{url_for('')}}">Another action</a>
-            <a class="dropdown-item" href="{{url_for('')}}">Something else here</a> -->
-        </div>
-    </div>
-    <div class="dropdown">
-        <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-            Intolerances
-        </button>
-        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-            <!-- <a class="dropdown-item" href="{{url_for('')}}">Action</a>
-            <a class="dropdown-item" href="{{url_for('')}}">Another action</a>
-            <a class="dropdown-item" href="{{url_for('')}}">Something else here</a> -->
-        </div>
-    </div>
-    <div class="dropdown">
-        <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-            Meal Type
-        </button>
-        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-            <!-- <a class="dropdown-item" href="{{url_for('')}}">Action</a>
-            <a class="dropdown-item" href="{{url_for('')}}">Another action</a>
-            <a class="dropdown-item" href="{{url_for('')}}">Something else here</a> -->
-        </div>
-    </div>
-    <div class="dropdown">
-        <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-            I don't know
-        </button>
-        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-            <!-- <a class="dropdown-item" href="{{url_for('')}}">Action</a>
-            <a class="dropdown-item" href="{{url_for('')}}">Another action</a>
-            <a class="dropdown-item" href="{{url_for('')}}">Something else here</a> -->
-        </div>
-    </div>
-</div>
+    <div class="row">
+        <select name="categories" id="category">
+            <option value="ketogenic">Ketogenic</option>
+            <option value="vegetarian">Vegetarian</option>
+        </select>
+        <div class="dropdown">
+            <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                Intolerances
+            </button>
+            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
 
+            </div>
+        </div>
+        <div class="dropdown"> 
+            <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                Intolerances
+            </button>
+            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+
+            </div>
+        </div>
+        <div class="dropdown">
+            <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                Meal Type
+            </button>
+        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+
+        </div>
+    </div>
+    </div>
+
+    
+    <div id="results">
+    <h1 id="title-results"></h1>
+        <div class="results"></div>
+    </div>
+    
+</div>
 {% endblock %}
