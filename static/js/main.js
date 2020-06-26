@@ -30,7 +30,7 @@ $(document).ready(function(){
 
     var api_key = '7b98ae9af6fe4cc6b9a33b00e08db54d';
     var api_url = '';
-var imageUrl = "https://spoonacular.com/recipeImages/";
+    var imageUrl = "https://spoonacular.com/recipeImages/";
     $('#category').on('change', function() {
         var value = $(this).val();
         //console.log(value);
