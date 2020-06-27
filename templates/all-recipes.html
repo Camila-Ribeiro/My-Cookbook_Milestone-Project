@@ -2,26 +2,13 @@
 
 <div class="container-fluid recipes">
     <h1 class="mt-4 mb-4 center-text">Recipes</h1>
-    <div class="img-hero responsive">
+    <div class="img-hero">
         <section class="jumbotron">
             <div class="row">
                 <select name="categories" id="category">
                   <option value="ketogenic">Ketogenic</option>
                   <option value="vegetarian">Vegetarian</option>
                 </select>
-                <div class="dropdown">
-                  <button
-                    class="btn btn-secondary dropdown-toggle"
-                    type="button"
-                    id="dropdownMenuButton"
-                    data-toggle="dropdown"
-                    aria-haspopup="true"
-                    aria-expanded="false"
-                  >
-                    Intolerances
-                  </button>
-                  <div class="dropdown-menu" aria-labelledby="dropdownMenuButton"></div>
-                </div>
                 <div class="dropdown">
                   <button
                     class="btn btn-secondary dropdown-toggle"
@@ -65,8 +52,8 @@
         <div class="row">
             <div class="card-deck mb-5">
 
-            {# note: commented-out template 
-            {% for cuisine in cuisines %} #}
+           
+            {% for cuisine in cuisines %} 
         
             <div class="card" style="width: 18rem;">
                 <img src="#" class="card-img-top" alt="..." />
@@ -75,7 +62,7 @@
                     <p class="card-text">{{ cuisine }}</p>
                 </div>
             </div>
-            {# {% endfor %} #}
+             {% endfor %}
            
             <!-- <div class="card" style="width: 18rem;">
                 <img src="..." class="card-img-top" alt="..." />

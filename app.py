@@ -27,14 +27,13 @@ def index():
     recipes = json_obj['recipes']
     return render_template('index.html', recipes=recipes)
 
-@app.route('/get_cuisines/<cuisines>', methods=['GET'], )
-@app.route('/get_cuisines/<cuisines>')
-def get_cuisines(cuisines):
+@app.route('/get_cuisines', methods=['GET'])
+def get_cuisines():
     res = requests.get(
         'https://api.spoonacular.com/recipes/random?number=100&apiKey='+api_key+'')
     obj = res.json()
     recipes = obj['recipes']
-    # return render_template('all-recipes.html', recipes=recipes)
+    cuisines = obj['cuisines']
     return render_template('all-recipes.html', cuisines=cuisines)
 
 @app.route('/get_allRecipes')

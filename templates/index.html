@@ -1,19 +1,58 @@
-
-{% include 'base.html' %} 
-
-{% block content %}
+{% include 'base.html' %} {% block content %}
 
 <div class="container mt-3">
-
-        <div class="center" data-slick='{"slidesToShow": 3, "slidesToScroll": 3}'>
-            {% for recipe in recipes %}
-                <div><img src="{{ recipe.image }}" class="on-inview" alt="...">
-                <p>{{ recipe.title }}</p>
-                </div>
-            
-            {% endfor %}
+  <section class="mb-5">
+    <h1 class="mt-5 mb-3 text-center">Get Inspired</h1>
+    <h6 class="text-center">
+      "No one is born a great coot, one learns by doing"
+    </h6>
+    <h6 class="text-center"><small> - Julia Child - </small></h6>
+    <div class="center" data-slick='{"slidesToShow": 3, "slidesToScroll": 3}'>
+      {% for recipe in recipes %}
+      <div>
+        <img src="{{ recipe.image }}" class="on-inview" alt="..." />
+        <p>{{ recipe.title }}</p>
+      </div>
+      {% endfor %}
+    </div>
+  </section>
+</div>
+<div class="container-circles">
+    <section class="own-cookbook">
+  <h2 class="text-center pt-4">Make your own Cookbook</h2>
+  <hr />
+  <!-- https://codepen.io/cbracco/pen/qnduh -->
+    <div class="row">
+  <div class="col-4">
+    <div class="circle">
+        <div class="circle__inner">
+          <div class="circle__wrapper">
+            <div class="circle__content">Save & Organize Recipes</div>
+          </div>
         </div>
-    
+      </div>
+  </div>
+  <div class="col-4">
+    <div class="circle">
+        <div class="circle__inner">
+          <div class="circle__wrapper">
+            <div class="circle__content">Add your own Recipes</div>
+          </div>
+        </div>
+      </div>
+  </div>
+  <div class="col-4">
+    <div class="circle">
+        <div class="circle__inner">
+          <div class="circle__wrapper">
+            <div class="circle__content">Edit & Delete Recipes</div>
+          </div>
+        </div>
+      </div>
+  </div>
+</div>
+</section>
+
 </div>
 
 {% endblock %}
