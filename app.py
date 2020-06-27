@@ -17,8 +17,9 @@ mongo = PyMongo(app)
 
 api_key = "7b98ae9af6fe4cc6b9a33b00e08db54d"
 
-
-@app.route('/', methods=['GET'])
+# single decoretor '/'set the default function to  call '/index'
+@app.route('/')
+@app.route('/index', methods=['GET'])
 def index():
     r = requests.get(
         'https://api.spoonacular.com/recipes/random?number=10&apiKey='+api_key+'')
@@ -26,22 +27,21 @@ def index():
     recipes = json_obj['recipes']
     return render_template('index.html', recipes=recipes)
 
+@app.route('/get_cuisines/<cuisines>', methods=['GET'], )
+@app.route('/get_cuisines/<cuisines>')
+def get_cuisines(cuisines):
+    res = requests.get(
+        'https://api.spoonacular.com/recipes/random?number=100&apiKey='+api_key+'')
+    obj = res.json()
+    recipes = obj['recipes']
+    # return render_template('all-recipes.html', recipes=recipes)
+    return render_template('all-recipes.html', cuisines=cuisines)
 
 @app.route('/get_allRecipes')
 def get_allRecipes():
     return render_template('all-recipes.html')
     # return render_template('all-recipes.html', tasks=mongo.db.tasks.find())
 
-
-@app.route('/get_cuisines', methods=['GET'])
-@app.route('/get_cuisines/<cuisines>')
-def get_cuisines(cuisines):
-    res = requests.get(
-        'https://api.spoonacular.com/recipes/random?number=10&apiKey='+api_key+'')
-    obj = res.json()
-    recipes = obj['recipes']
-    # return render_template('all-recipes.html', recipes=recipes)
-    return render_template('all-recipes.html', cuisines=cuisines)
 
 @app.route('/get_signIn')
 def get_signIn():

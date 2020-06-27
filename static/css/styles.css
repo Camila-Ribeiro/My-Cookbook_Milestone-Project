@@ -1,3 +1,7 @@
+h1 {
+    font-size: 1.875em;
+}
+
 img.on-inview {
     width: 100%;
     height: 300px;
@@ -30,8 +34,17 @@ img.on-inview {
     width: 100%;
     height: auto;
   }
-
+.body-signIn-register {
+    background-color: gainsboro;
+}
 /* --------------------- overwrite bootstrap */
+.navbar-color {
+    background-color: #61a5a0;
+    
+}
+.navbar-light .navbar-brand {
+    color: #f8f9fa;
+}
 .jumbotron {
     position: relative;
     background-color: hsla(0, 0%, 0%, 0.39);
@@ -42,4 +55,9 @@ img.on-inview {
     padding: 30px 50px;
     
 }
+.btn-color {
+    background-color: #61a5a0; 
+    color: #f8f9fa;
+}
+
 
