@@ -20,37 +20,45 @@ api_key = "7b98ae9af6fe4cc6b9a33b00e08db54d"
 
 @app.route('/', methods=['GET'])
 def index():
-    r = requests.get('https://api.spoonacular.com/recipes/random?number=10&apiKey='+api_key+'')
-    json_obj = r.json() 
+    r = requests.get(
+        'https://api.spoonacular.com/recipes/random?number=10&apiKey='+api_key+'')
+    json_obj = r.json()
     recipes = json_obj['recipes']
     return render_template('index.html', recipes=recipes)
+
 
 @app.route('/get_allRecipes')
 def get_allRecipes():
     return render_template('all-recipes.html')
-    # return render_template('all-recipes.html', tasks=mongo.db.tasks.find()) 
+    # return render_template('all-recipes.html', tasks=mongo.db.tasks.find())
 
-# @app.route('/get_cuisines', methods=['GET'])
-# def get_cuisines():
-#     r = requests.get('https://api.spoonacular.com/recipes/random?number=100&apiKey='+api_key+'')
-#     json_obj = r.json() 
-#     recipes = json_obj['recipes']
-#     return render_template('all-recipes.html', cuisines=cuisines)
+
+@app.route('/get_cuisines', methods=['GET'])
+@app.route('/get_cuisines/<cuisines>')
+def get_cuisines(cuisines):
+    res = requests.get(
+        'https://api.spoonacular.com/recipes/random?number=10&apiKey='+api_key+'')
+    obj = res.json()
+    recipes = obj['recipes']
+    # return render_template('all-recipes.html', recipes=recipes)
+    return render_template('all-recipes.html', cuisines=cuisines)
 
 @app.route('/get_signIn')
 def get_signIn():
     return render_template('sign-in.html')
     # return render_template('sign-in.html', tasks=mongo.db.tasks.find())
 
+
 @app.route('/get_register')
 def get_register():
     return render_template('register.html')
-    # return render_template('register.html', tasks=mongo.db.tasks.find())    
+    # return render_template('register.html', tasks=mongo.db.tasks.find())
 
 # @app.route('/get_diet', methods=['GET'])
 # def get_diet():
 #     return render_template('all-recipes.html')
 #     # return render_template('register.html', tasks=mongo.db.tasks.find()
+
 
 if __name__ == '__main__':
     app.run(host=os.environ.get('IP'),

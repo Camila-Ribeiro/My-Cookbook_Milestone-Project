@@ -8,3 +8,38 @@ img.on-inview {
 .slick-prev:before, .slick-next:before {
     color: #383b3f
 }
+/* --------------------- all-recipes */
+.center-text {
+    text-align: center;
+}
+.recipes {
+    position: relative;
+}
+.img-hero {
+    position: absolute;
+    height: 400vh;
+    width: 100vw;
+    background-image: url(../img/cooking.jpg);
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+.cuisines {
+    margin-top: 430px;
+}
+.responsive {
+    width: 100%;
+    height: auto;
+  }
+
+/* --------------------- overwrite bootstrap */
+.jumbotron {
+    position: relative;
+    background-color: hsla(0, 0%, 0%, 0.39);
+    background-position: center;
+    float: right;
+    margin-top: 200px;
+    margin-right: 300px;
+    padding: 30px 50px;
+    
+}
+

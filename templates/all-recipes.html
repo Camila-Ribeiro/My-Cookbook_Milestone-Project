@@ -1,75 +1,101 @@
-{% include 'base.html' %} 
+{% include 'base.html' %} {% block content %}
 
-{% block content %}
-
-<div class="container">
-    <div class="row">
-        <select name="categories" id="category">
-            <option value="ketogenic">Ketogenic</option>
-            <option value="vegetarian">Vegetarian</option>
-        </select>
-        <div class="dropdown">
-            <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                Intolerances
-            </button>
-            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-
+<div class="container-fluid recipes">
+    <h1 class="mt-4 mb-4 center-text">Recipes</h1>
+    <div class="img-hero responsive">
+        <section class="jumbotron">
+            <div class="row">
+                <select name="categories" id="category">
+                  <option value="ketogenic">Ketogenic</option>
+                  <option value="vegetarian">Vegetarian</option>
+                </select>
+                <div class="dropdown">
+                  <button
+                    class="btn btn-secondary dropdown-toggle"
+                    type="button"
+                    id="dropdownMenuButton"
+                    data-toggle="dropdown"
+                    aria-haspopup="true"
+                    aria-expanded="false"
+                  >
+                    Intolerances
+                  </button>
+                  <div class="dropdown-menu" aria-labelledby="dropdownMenuButton"></div>
+                </div>
+                <div class="dropdown">
+                  <button
+                    class="btn btn-secondary dropdown-toggle"
+                    type="button"
+                    id="dropdownMenuButton"
+                    data-toggle="dropdown"
+                    aria-haspopup="true"
+                    aria-expanded="false"
+                  >
+                    Intolerances
+                  </button>
+                  <div class="dropdown-menu" aria-labelledby="dropdownMenuButton"></div>
+                </div>
+                <div class="dropdown">
+                  <button
+                    class="btn btn-secondary dropdown-toggle"
+                    type="button"
+                    id="dropdownMenuButton"
+                    data-toggle="dropdown"
+                    aria-haspopup="true"
+                    aria-expanded="false"
+                  >
+                    Meal Type
+                  </button>
+                  <div class="dropdown-menu" aria-labelledby="dropdownMenuButton"></div>
+                </div>
+              </div>
+            <div id="results">
+                <h1 id="title-results"></h1>
+                <div class="results"></div>
             </div>
-        </div>
-        <div class="dropdown"> 
-            <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                Intolerances
-            </button>
-            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-
-            </div>
-        </div>
-        <div class="dropdown">
-            <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                Meal Type
-            </button>
-        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-
-        </div>
-    </div>
-    </div>
-    <div id="results">
-    <h1 id="title-results"></h1>
-        <div class="results"></div>
-    </div>
-
-    <!-- Cuisines cards -->
-<h1>Cuisines</h1>
-    <div class="row">
-    
-        <div class="card" style="width: 18rem;">
-            <img src="..." class="card-img-top" alt="...">
-            <div class="card-body">
-            <p class="card-text">cuisine</p>
-            <p class="card-text">mexican</p>
-            </div>
-        </div>
-        <div class="card" style="width: 18rem;">
-            <img src="..." class="card-img-top" alt="...">
-            <div class="card-body">
-            <p class="card-text">cuisine</p>
-            <p class="card-text">mexican</p>
-            </div>
-        </div>
-        <div class="card" style="width: 18rem;">
-            <img src="..." class="card-img-top" alt="...">
-            <div class="card-body">
-            <p class="card-text">cuisine</p>
-            <p class="card-text">mexican</p>
-            </div>
-        </div>
-        <div class="card" style="width: 18rem;">
-            <img src="..." class="card-img-top" alt="...">
-            <div class="card-body">
-            <p class="card-text">cuisine</p>
-            <p class="card-text">mexican</p>
-            </div>
-        </div>
+        </section>
     </div>
 </div>
+  
+
+    <!-- Cuisines cards -->
+<div class="container cuisines">
+    <section>
+        <h1 class="mb-5 center-text">Cuisines</h1>
+        <div class="row">
+            <div class="card-deck mb-5">
+            {% for cuisine in cuisines %}
+            <div class="card" style="width: 18rem;">
+                <img src="..." class="card-img-top" alt="..." />
+                <div class="card-body">
+                    <p class="card-text">cuisine</p>
+                    <p class="card-text">{{ cuisine }}</p>
+                </div>
+            </div>
+            {% endfor %}
+            <!-- <div class="card" style="width: 18rem;">
+                <img src="..." class="card-img-top" alt="..." />
+                <div class="card-body">
+                    <p class="card-text">cuisine</p>
+                    <p class="card-text">mexican</p>
+                </div>
+            </div>
+            <div class="card" style="width: 18rem;">
+                <img src="..." class="card-img-top" alt="..." />
+                <div class="card-body">
+                    <p class="card-text">Cuisine</p>
+                    <p class="card-text">mexican</p>
+                </div>
+            </div>
+            <div class="card" style="width: 18rem;">
+                <img src="..." class="card-img-top" alt="..." />
+                <div class="card-body">
+                    <p class="card-text">Cuisine</p>
+                    <p class="card-text">mexican</p>
+                </div>
+            </div> -->
+        </div>
+    </section>
+</div>
+    
 {% endblock %}
