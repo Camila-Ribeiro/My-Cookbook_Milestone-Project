@@ -1,4 +1,4 @@
-{% include 'base.html' %} {% block content %}
+{% include 'base.html' %} {% include 'includes/_nav.html' %} {% block content %}
 
 <div class="container-fluid recipes">
     <h1 class="mt-4 mb-4 center-text">Recipes</h1>
@@ -36,11 +36,11 @@
                   <div class="dropdown-menu" aria-labelledby="dropdownMenuButton"></div>
                 </div>
               </div>
-            <div id="results">
-                <h1 id="title-results"></h1>
-                <div class="results"></div>
-            </div>
         </section>
+        <div id="results">
+            <h1 id="title-results"></h1>
+            <div class="results"></div>
+        </div>
     </div>
 </div>
   
