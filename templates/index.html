@@ -11,48 +11,52 @@
       {% for recipe in recipes %}
       <div>
         <img src="{{ recipe.image }}" class="on-inview" alt="..." />
-        <p>{{ recipe.title }}</p>
+        <p class="title-padding">{{ recipe.title }}</p>
       </div>
       {% endfor %}
     </div>
   </section>
 </div>
 <div class="container-circles">
-    <section class="own-cookbook">
-  <h2 class="text-center pt-4">Make your own Cookbook</h2>
-  <hr />
-  <!-- https://codepen.io/cbracco/pen/qnduh -->
-    <div class="row">
-  <div class="col-4">
-    <div class="circle">
-        <div class="circle__inner">
-          <div class="circle__wrapper">
-            <div class="circle__content">Save & Organize Recipes</div>
+  <section class="own-cookbook">
+    <h2 class="text-center pt-4">Make your own Cookbook</h2>
+    <hr />
+    <!-- https://codepen.io/cbracco/pen/qnduh -->
+    <div class="container">
+      <div class="row">
+        <div class="col-4">
+          <div class="circle">
+            <div class="circle__inner">
+              <div class="circle__wrapper">
+                <div class="circle__content">Add <br />your Recipes</div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-4">
+          <div class="circle">
+            <div class="circle__inner">
+              <div class="circle__wrapper">
+                <div class="circle__content">
+                  Edit <br />
+                  & Delete Recipes
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-4">
+          <div class="circle">
+            <div class="circle__inner">
+              <div class="circle__wrapper">
+                <div class="circle__content">Save <br />& Organize Recipes</div>
+              </div>
+            </div>
           </div>
         </div>
       </div>
-  </div>
-  <div class="col-4">
-    <div class="circle">
-        <div class="circle__inner">
-          <div class="circle__wrapper">
-            <div class="circle__content">Add your own Recipes</div>
-          </div>
-        </div>
-      </div>
-  </div>
-  <div class="col-4">
-    <div class="circle">
-        <div class="circle__inner">
-          <div class="circle__wrapper">
-            <div class="circle__content">Edit & Delete Recipes</div>
-          </div>
-        </div>
-      </div>
-  </div>
-</div>
-</section>
-
+    </div>
+  </section>
 </div>
 
 {% endblock %}
