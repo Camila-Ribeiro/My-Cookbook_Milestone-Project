@@ -1,10 +1,15 @@
+@import url('https://fonts.googleapis.com/css2?family=Lobster+Two&family=Montserrat&family=Open+Sans&display=swap');
+
 h1,h2 {
   font-size: 2em;
-  font-family: 'Lobster Two', sans-serif;
+  font-family: 'Lobster Two', cursive;
   letter-spacing: 2px;
 }
 h6 {
     font-family: 'Montserrat', sans-serif;
+}
+p {
+    font-family: 'Open Sans', sans-serif;
 }
 /* Gradient transparent - color - transparent  - https://css-tricks.com/examples/hrs/*/
 hr {
