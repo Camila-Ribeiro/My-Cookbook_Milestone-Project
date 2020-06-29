@@ -36,11 +36,17 @@ def get_cuisines():
     cuisines = obj['cuisines']
     return render_template('all-recipes.html', cuisines=cuisines)
 
-@app.route('/get_allRecipes')
+@app.route('/get_allRecipes', methods=['GET'])
 def get_allRecipes():
-    return render_template('all-recipes.html')
-    # return render_template('all-recipes.html', tasks=mongo.db.tasks.find())
+    res = requests.get(
+        'https://api.spoonacular.com/recipes/random?number=100&apiKey='+api_key+'')
+    obj = res.json()
+    types = obj['recipes']
+    return render_template('all-recipes.html', types=types)
 
+@app.route('/add_recipes', methods=['GET'])
+def add_recipes():
+    return render_template('add-recipes.html')
 
 @app.route('/get_signIn')
 def get_signIn():

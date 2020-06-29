@@ -50,18 +50,12 @@
     <section>
         <h1 class="mb-5 center-text">Cuisines</h1>
         <div class="row">
-            <div class="card-deck mb-5">
+     
 
            
-            {% for cuisine in cuisines %} 
+            {% for type in types %} 
         
-            <div class="card" style="width: 18rem;">
-                <img src="#" class="card-img-top" alt="..." />
-                <div class="card-body">
-                    <p class="card-text">cuisine</p>
-                    <p class="card-text">{{ cuisine }}</p>
-                </div>
-            </div>
+            <p>{{ type.cuisines }}</p>
              {% endfor %}
            
             <!-- <div class="card" style="width: 18rem;">
@@ -85,7 +79,7 @@
                     <p class="card-text">mexican</p>
                 </div>
             </div> -->
-        </div>
+       
     </section>
 </div>
     

@@ -32,7 +32,7 @@ img.on-inview {
 .slick-next:before {
   color: #383b3f;
 }
-/* --------------------- index */
+/* --------------------------------------------------------------- index */
 .own-cookbook {
     background-color:rgba(97, 165, 160, 0.7);
 }
@@ -42,7 +42,8 @@ img.on-inview {
 .title-padding {
     padding-left: 10px;
 }
-/* --------------------- all-recipes */
+
+/* ----------------------------------------------------------- all-recipes */
 .center-text {
   text-align: center;
 }
@@ -68,8 +69,8 @@ img.on-inview {
 .body-signIn-register {
   background-color: gainsboro;
 }
-/* ------------------------------------------- Sigh-In */
 
+/* ------------------------------------------------------- Sigh-In */
 .form-container {
     max-width: 350px;
     margin: 0 auto;
@@ -91,8 +92,10 @@ img.on-inview {
 .close-button {
     height: 120px;
 }
-
-  
+/* --------------------- overwrite bootstrap */
+.recipe-form{
+  width: 700px;
+}
 /* --------------------- overwrite bootstrap */
 .container-fluid {
     margin-left: 0px;
