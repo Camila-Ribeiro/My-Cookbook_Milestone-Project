@@ -18,6 +18,8 @@ mongo = PyMongo(app)
 api_key = "7b98ae9af6fe4cc6b9a33b00e08db54d"
 
 # single decoretor '/'set the default function to  call '/index'
+
+
 @app.route('/')
 @app.route('/index', methods=['GET'])
 def index():
@@ -26,6 +28,7 @@ def index():
     json_obj = r.json()
     recipes = json_obj['recipes']
     return render_template('index.html', recipes=recipes)
+
 
 @app.route('/get_cuisines', methods=['GET'])
 def get_cuisines():
@@ -36,6 +39,7 @@ def get_cuisines():
     cuisines = obj['cuisines']
     return render_template('all-recipes.html', cuisines=cuisines)
 
+
 @app.route('/get_allRecipes', methods=['GET'])
 def get_allRecipes():
     res = requests.get(
@@ -44,14 +48,25 @@ def get_allRecipes():
     types = obj['recipes']
     return render_template('all-recipes.html', types=types)
 
-@app.route('/add_recipes', methods=['GET'])
-def add_recipes():
-    return render_template('add-recipes.html')
 
 @app.route('/get_signIn')
 def get_signIn():
     return render_template('sign-in.html')
     # return render_template('sign-in.html', tasks=mongo.db.tasks.find())
+
+
+@app.route('/add_recipes', methods=['GET'])
+def add_recipes():
+    return render_template('add-recipes.html')
+
+# @app.route('/my_recipes', methods=['GET'])
+# def my_recipes():
+#     return render_template('my-recipes.html')
+
+
+@app.route('/recipe_details', methods=['GET'])
+def recipe_details():
+    return render_template('recipe-details.html')
 
 
 @app.route('/get_register')

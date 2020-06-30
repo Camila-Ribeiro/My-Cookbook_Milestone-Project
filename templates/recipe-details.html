@@ -1,0 +1,32 @@
+{% include 'base.html' %} {% include 'includes/_nav-signIn.html' %} {% block
+content %}
+
+<body>
+  <div class="container mt-5">
+    <section>
+      <h1 class="text-center mb-5">Recipe.Title</h1>
+      <img
+        src="../static/img/cooking.jpg"
+        class="img-fluid"
+        alt="Responsive image"
+      />
+    </section>
+    <section class="recipe-info">
+      <div class="row">
+        <div class="col">
+          <p>Ready in 45 min</p>
+        </div>
+        <div class="col">
+          <p>Servings =6</p>
+        </div>
+        <div class="col">
+          <p>Dish Type = dinner</p>
+        </div>
+      </div>
+    </section>
+    <section class="ingredients"></section>
+    <section class="tools"></section>
+  </div>
+</body>
+
+{% endblock%}
