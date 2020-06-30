@@ -1,0 +1,49 @@
+{% include 'base.html' %} {% include 'includes/_nav-signIn.html' %} {% block
+content %}
+
+<body>
+  <div class="container mt-5 mb-5">
+    <h1 class="text-center mb-5">Your Recipes</h1>
+    <img src="../static/img/Profile.jpg" alt="..." class="img-thumbnail" />
+    <section class="profile">
+      <h2>Name: Camila</h2>
+      <p>Recipes: 4</p>
+    </section>
+    <section class="my-recipes mt-5">
+      <div class="card-deck">
+        <div class="card">
+          <img
+            src="../static/img/No_image_available.svg.png"
+            class="card-img-top"
+            alt="..."
+          />
+          <div class="card-body">
+            <h5 class="card-title">Card title</h5>
+          </div>
+        </div>
+        <div class="card">
+          <img
+            src="../static/img/No_image_available.svg.png"
+            class="card-img-top"
+            alt="..."
+          />
+          <div class="card-body">
+            <h5 class="card-title">Card title</h5>
+          </div>
+        </div>
+        <div class="card">
+          <img
+            src="../static/img/No_image_available.svg.png"
+            class="card-img-top"
+            alt="..."
+          />
+          <div class="card-body">
+            <h5 class="card-title">Card title</h5>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    {% endblock%}
+  </div>
+</body>

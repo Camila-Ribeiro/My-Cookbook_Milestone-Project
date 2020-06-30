@@ -60,9 +60,9 @@ def add_recipes():
     return render_template('add-recipes.html')
 
 
-# @app.route('/my_recipes', methods=['GET'])
-# def my_recipes():
-#     return render_template('my-recipes.html')
+@app.route('/my_recipes', methods=['GET'])
+def my_recipes():
+    return render_template('my-recipes.html')
 
 
 @app.route('/recipe_details', methods=['GET'])
