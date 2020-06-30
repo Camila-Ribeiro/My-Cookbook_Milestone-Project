@@ -1,59 +1,105 @@
 {% include 'base.html' %} {% include 'includes/_nav.html' %} {% block content %}
 
 <body>
-    <div class="container">
-        <section class="mt-5">
-            <h1 class="text-center mb-3">Add Recipe</h1>
-            <form class="recipe-form w-100">
-                <div class="form-group">
-                    <label for="recipeName1">Recipe Name</label>
-                    <input type="text" class="form-control" id="recipeName1" placeholder="" aria-describedby="recipeName">
-                </div>
-                <div class="form-group">
-                    <label for="descriptionName1">Description Name</label>
-                    <input type="text" class="form-control" id="descriptionName1" placeholder="" aria-describedby="descriptionName">
-                </div>
-                <div class="form-group">
-                    <label for="recipeImage1">Recipe Image</label>
-                    <input type="image" class="form-control" id="recipeImage1" placeholder="" aria-describedby="recipeImage">
-                </div>
-                <div class="row">
-                    <div class="col">
-                        <label for="appt">Preparation Time:</label>
-                        <input type="time" id="appt" name="appt" aria-describedby="prepTime">
-                    </div>
-                    <div class="col">
-                        <label for="appt">Cooking Time:</label>
-                        <input type="time" id="appt" name="appt" aria-describedby="cookingTime">
+    <div class="container mt-5">
+        <h1 class="text-center mb-5">Add Recipe</h1>
+        <form class="recipe-form w-100">
+            <div class="row">
+                <div class="col">
+                    <div class="form-group">
+                        <label for="cuisines1">Cuisines</label>
+                        <select name="cuisines1" id="cuisines1">
+                            <option disabled="" selected=""> Select cuisine(s) </option>
+                            <option value="volvo">Volvo</option>
+                            <option value="saab">Saab</option>
+                        </select>
                     </div>
                 </div>
-                <div class="row">
-                    <div class="col">
-                        <label for="ingredients1">Ingredients</label>
-                        <input type="text" class="form-control" id="ingredients1" placeholder="" aria-describedby="ingredients">
-                        <input type="text" class="form-control" id="ingredients1" placeholder="" aria-describedby="ingredients">
-                        <input type="text" class="form-control" id="ingredients1" placeholder="" aria-describedby="ingredients">
-                        <input type="text" class="form-control" id="ingredients1" placeholder="" aria-describedby="ingredients">
-                        <input type="text" class="form-control" id="ingredients1" placeholder="" aria-describedby="ingredients">
-                        <input type="text" class="form-control" id="ingredients1" placeholder="" aria-describedby="ingredients">
-                        <input type="text" class="form-control" id="ingredients1" placeholder="" aria-describedby="ingredients">
-                        <button type="submit" class="btn btn-color">Add Ingredient</button>
-                    </div>
-                    <div class="col">
-                        <label for="ingredients1">Instructions</label>
-                        <input type="text" class="form-control" id="instructions" placeholder="" aria-describedby="instructions">
-                        <input type="text" class="form-control" id="instructions" placeholder="" aria-describedby="instructions">
-                        <input type="text" class="form-control" id="instructions" placeholder="" aria-describedby="instructions">
-                        <input type="text" class="form-control" id="instructions" placeholder="" aria-describedby="instructions">
-                        <input type="text" class="form-control" id="instructions" placeholder="" aria-describedby="instructions">
-                        <input type="text" class="form-control" id="instructions" placeholder="" aria-describedby="instructions">
-                        <input type="text" class="form-control" id="instructions" placeholder="" aria-describedby="instructions">
-                        <button type="submit" class="btn btn-color">Add Instruction</button>
+                <div class="col">
+                    <div class="form-group">
+                        <label for="cuisines1">Allergen</label>
+                        <select name="cuisines1" id="cuisines1">
+                            <option disabled="" selected=""> Select allergen(s) </option>
+                            <option value="volvo">Volvo</option>
+                            <option value="saab">Saab</option>
+                        </select>
                     </div>
                 </div>
-            </form>                                                              
-        </section>
+                <div class="col">
+                    <div class="form-group">
+                        <label for="cuisines1">Meal Type</label>
+                        <select name="cuisines1" id="cuisines1">
+                            <option disabled="" selected=""> Select meal type(s) </option>
+                            <option value="volvo">Volvo</option>
+                            <option value="saab">Saab</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="form-group">
+                        <label for="cuisines1">Diet Label</label>
+                        <select name="cuisines1" id="cuisines1">
+                            <option disabled="" selected=""> Select diet(s) </option>
+                            <option value="volvo">Volvo</option>
+                            <option value="saab">Saab</option>
+                        </select>
+                    </div>
+                </div>
+               
+            </div>
+            <div class="form-group">
+                <label for="recipeName1">Recipe Name</label>
+                <input type="text" class="form-control" id="recipeName1" placeholder="" aria-describedby="recipeName">
+            </div>
+            <div class="form-group">
+                <label for="descriptionName1">Description Name</label>
+                <input type="text" class="form-control" id="descriptionName1" placeholder="" aria-describedby="descriptionName">
+            </div>
+            <div class="form-group">
+                <label for="recipeImage1">Recipe Image</label>
+                <input type="image" class="form-control" id="recipeImage1" placeholder="" aria-describedby="recipeImage">
+            </div>
+            <div class="row">
+                <div class="col">
+                    <label for="appt">Preparation Time:</label>
+                    <input type="time" id="appt" name="appt" aria-describedby="prepTime">
+                </div>
+                <div class="col">
+                    <label for="appt">Cooking Time:</label>
+                    <input type="time" id="appt" name="appt" aria-describedby="cookingTime">
+                </div>
+                <div class="col">
+                    <label for="quantity">Serves:</label>
+                    <input type="number" id="quantity" name="quantity" min="1" max="25">
+                </div>
+            </div>
+            <div class="row">
+                <div class="col">
+                    <label for="ingredients1">Ingredients</label>
+                    <input type="text" class="form-control" id="ingredients1" placeholder="" aria-describedby="ingredients">
+                    <input type="text" class="form-control" id="ingredients1" placeholder="" aria-describedby="ingredients">
+                    <input type="text" class="form-control" id="ingredients1" placeholder="" aria-describedby="ingredients">
+                    <input type="text" class="form-control" id="ingredients1" placeholder="" aria-describedby="ingredients">
+                    <input type="text" class="form-control" id="ingredients1" placeholder="" aria-describedby="ingredients">
+                    <input type="text" class="form-control" id="ingredients1" placeholder="" aria-describedby="ingredients">
+                    <input type="text" class="form-control" id="ingredients1" placeholder="" aria-describedby="ingredients">
+                    <button type="submit" class="btn btn-color">Add Ingredient</button>
+                </div>
+                <div class="col">
+                    <label for="ingredients1">Instructions</label>
+                    <input type="text" class="form-control" id="instructions" placeholder="" aria-describedby="instructions">
+                    <input type="text" class="form-control" id="instructions" placeholder="" aria-describedby="instructions">
+                    <input type="text" class="form-control" id="instructions" placeholder="" aria-describedby="instructions">
+                    <input type="text" class="form-control" id="instructions" placeholder="" aria-describedby="instructions">
+                    <input type="text" class="form-control" id="instructions" placeholder="" aria-describedby="instructions">
+                    <input type="text" class="form-control" id="instructions" placeholder="" aria-describedby="instructions">
+                    <input type="text" class="form-control" id="instructions" placeholder="" aria-describedby="instructions">
+                    <button type="submit" class="btn btn-color">Add Instruction</button>
+                </div>
+            </div>
+        </form>
     </div>
+</div>
 </body>
 
 {% endblock %}
