@@ -1,26 +1,36 @@
-@import url('https://fonts.googleapis.com/css2?family=Lobster+Two&family=Montserrat&family=Open+Sans&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Lobster+Two&family=Montserrat&family=Open+Sans&display=swap");
 
-h1{
-    font-size: 2em;
+h1 {
+  font-size: 2em;
 }
 
-h1,h2 {
-  font-family: 'Lobster Two', cursive;
+h1,
+h2,
+h3 {
+  font-family: "Lobster Two", cursive;
   letter-spacing: 1px;
 }
 
-
 h6 {
-    font-family: 'Montserrat', sans-serif;
+  font-family: "Montserrat", sans-serif;
 }
 p {
-    font-family: 'Open Sans', sans-serif;
+  font-family: "Open Sans", sans-serif;
+}
+.btn-color {
+  background-color: #61a5a0;
+  color: #f8f9fa;
 }
 /* Gradient transparent - color - transparent  - https://css-tricks.com/examples/hrs/*/
 hr {
-    border: 0;
-    height: 1px;
-    background-image: linear-gradient(to right, rgba(0, 0, 0, 0), #f8f9fa, rgba(0, 0, 0, 0));
+  border: 0;
+  height: 1px;
+  background-image: linear-gradient(
+    to right,
+    rgba(0, 0, 0, 0),
+    #f8f9fa,
+    rgba(0, 0, 0, 0)
+  );
 }
 img.on-inview {
   width: 100%;
@@ -34,13 +44,13 @@ img.on-inview {
 }
 /* --------------------------------------------------------------- index */
 .own-cookbook {
-    background-color:rgba(97, 165, 160, 0.7);
+  background-color: rgba(97, 165, 160, 0.7);
 }
 .own-cookbook h2 {
-    color: #f8f9fa;
+  color: #f8f9fa;
 }
 .title-padding {
-    padding-left: 10px;
+  padding-left: 10px;
 }
 
 /* ----------------------------------------------------------- all-recipes */
@@ -69,37 +79,57 @@ img.on-inview {
 .body-signIn-register {
   background-color: gainsboro;
 }
-
+/* ------------------------------------------------------- Recipe-Details */
+.img-recipe {
+  height: 300px;
+  width: 100%;
+  object-fit: cover;
+}
+.recipe-info {
+  width: 100%;
+  display: block;
+  background: #60a59f;
+  height: 40px;
+  color: white;
+  padding: 10px 20px;
+  text-align: center;
+}
+.recipe-info i {
+  font-size: 1.625rem;
+}
+.diets i {
+  font-size: 2.5rem;
+}
 /* ------------------------------------------------------- Sigh-In */
 .form-container {
-    max-width: 350px;
-    margin: 0 auto;
+  max-width: 350px;
+  margin: 0 auto;
 }
-.form-container button{
-   width: 100%;
+.form-container button {
+  width: 100%;
 }
 .close-icon-container {
-    padding: 40px;
-    float: right;
+  padding: 40px;
+  float: right;
 }
 .close-icon-container .close-icon {
-    display: inline-block;
-    height: 40px;
-    width: 40px;
-    cursor: pointer;
-    stroke: #fff;
+  display: inline-block;
+  height: 40px;
+  width: 40px;
+  cursor: pointer;
+  stroke: #fff;
 }
 .close-button {
-    height: 120px;
+  height: 120px;
 }
 /* --------------------- overwrite bootstrap */
-.recipe-form{
+.recipe-form {
   width: 700px;
 }
 /* --------------------- overwrite bootstrap */
 .container-fluid {
-    margin-left: 0px;
-    padding-left: 0px;
+  margin-left: 0px;
+  padding-left: 0px;
 }
 .navbar-color {
   background-color: #61a5a0;
@@ -114,10 +144,6 @@ img.on-inview {
   display: block;
   margin: 0 auto;
   width: 500px;
-}
-.btn-color {
-  background-color: #61a5a0;
-  color: #f8f9fa;
 }
 
 /* -- https://codepen.io/cbracco/pen/qnduh -- */
@@ -145,8 +171,8 @@ img.on-inview {
   content: "";
   margin: 0 auto;
   -webkit-box-shadow: 0 1px 5px rgba(8, 8, 8, 0.25);
-    -moz-box-shadow: 0 1px 5px rgba(8, 8, 8, 0.25);
-    box-shadow: 0 1px 5px rgba(8, 8, 8, 0.25);
+  -moz-box-shadow: 0 1px 5px rgba(8, 8, 8, 0.25);
+  box-shadow: 0 1px 5px rgba(8, 8, 8, 0.25);
 }
 
 .circle__inner {
@@ -168,8 +194,7 @@ img.on-inview {
   display: table-cell;
   padding: 1em;
   vertical-align: middle;
-  font-family: 'Montserrat', sans-serif;
-
+  font-family: "Montserrat", sans-serif;
 }
 
 @media (min-width: 480px) {
@@ -183,4 +208,3 @@ img.on-inview {
     font-size: 1em;
   }
 }
-

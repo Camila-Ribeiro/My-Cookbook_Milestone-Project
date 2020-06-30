@@ -3,41 +3,52 @@ content %}
 
 <body>
   <div class="container mt-5">
-    <section>
-      <h1 class="text-center mb-5">Recipe.Title</h1>
-      <img
-        src="../static/img/cooking.jpg"
-        class="img-fluid"
-        alt="Responsive image"
-      />
-    </section>
+    <h1 class="text-center mb-5">Recipe.Title</h1>
+    <img
+      src="../static/img/cooking.jpg"
+      class="img-recipe"
+      alt="Responsive image"
+    />
     <section class="recipe-info">
       <div class="row">
         <div class="col">
-          <p><i class="icofont-like"></i>54 likes</p>
+          <p><i class="icofont-like"></i> 54 likes</p>
         </div>
         <div class="col">
-          <p><i class="icofont-clock-time"></i>Ready in 45 min</p>
+          <p><i class="icofont-clock-time"></i> Ready in 45 min</p>
         </div>
         <div class="col">
-          <p><i class="icofont-people"></i>Servings</p>
+          <p><i class="icofont-people"></i> 6 Servings</p>
         </div>
         <div class="col">
-          <p><i class="icofont-lunch"></i>Dish Type</p>
+          <p><i class="icofont-lunch"></i> Lunch</p>
         </div>
       </div>
     </section>
-    <section class="ingredients">
-      <h3 class="mb-4">Ingredients</h3>
+    <section class="diets text-center mt-4">
       <div class="row">
         <div class="col">
+          <p><i class="icofont-chicken"></i> Primal</p>
+        </div>
+        <div class="col">
+          <p><i class="icofont-fruits"></i> Vegetarian</p>
+        </div>
+        <div class="col">
+          <p><i class="icofont-wheat"></i> Gluten-free</p>
+        </div>
+      </div>
+    </section>
+    <section class="ingredients mt-5">
+      <h3>Ingredients</h3>
+      <div class="row">
+        <!-- <div class="col">
           <label for="quantity">Serves:</label>
           <input type="number" id="quantity" name="quantity" min="1" max="25" />
-        </div>
+        </div> -->
         <div class="col">
           <p>
             <button
-              class="btn btn-primary"
+              class="btn btn-color"
               type="button"
               data-toggle="collapse"
               data-target="#collapseExample"
@@ -47,7 +58,7 @@ content %}
               grid
             </button>
             <button
-              class="btn btn-primary"
+              class="btn btn-color"
               type="button"
               data-toggle="collapse"
               data-target="#collapseExample"
@@ -58,18 +69,32 @@ content %}
             </button>
           </p>
           <div class="collapse" id="collapseExample">
-            <div class="card card-body">
-              Anim pariatur cliche reprehenderit, enim eiusmod high life
-              accusamus terry richardson ad squid. Nihil anim keffiyeh
-              helvetica, craft beer labore wes anderson cred nesciunt sapiente
-              ea proident.
+            <div class="card-group">
+              <div class="card">
+                <img src="..." class="card-img-top" alt="..." />
+                <div class="card-body">
+                  <h5 class="card-title">Card title</h5>
+                </div>
+              </div>
+              <div class="card">
+                <img src="..." class="card-img-top" alt="..." />
+                <div class="card-body">
+                  <h5 class="card-title">Card title</h5>
+                </div>
+              </div>
+              <div class="card">
+                <img src="..." class="card-img-top" alt="..." />
+                <div class="card-body">
+                  <h5 class="card-title">Card title</h5>
+                </div>
+              </div>
             </div>
           </div>
         </div>
         <div class="col">
           <p>
             <button
-              class="btn btn-primary"
+              class="btn btn-color"
               type="button"
               data-toggle="collapse"
               data-target="#collapseExample"
@@ -79,7 +104,7 @@ content %}
               metric
             </button>
             <button
-              class="btn btn-primary"
+              class="btn btn-color"
               type="button"
               data-toggle="collapse"
               data-target="#collapseExample"
@@ -90,22 +115,23 @@ content %}
             </button>
           </p>
           <div class="collapse" id="collapseExample">
-            <div class="card card-body">
-              Anim pariatur cliche reprehenderit, enim eiusmod high life
-              accusamus terry richardson ad squid. Nihil anim keffiyeh
-              helvetica, craft beer labore wes anderson cred nesciunt sapiente
-              ea proident.
+            <div>
+              <ol>
+                <li>Coffee</li>
+                <li>Tea</li>
+                <li>Milk</li>
+              </ol>
             </div>
           </div>
         </div>
       </div>
     </section>
-    <section class="equipment">
-      <h3 class="mb-4">Equipment</h3>
+    <section class="equipment mt-5">
+      <h3>Equipment</h3>
       <div class="col">
         <p>
           <button
-            class="btn btn-primary"
+            class="btn btn-color"
             type="button"
             data-toggle="collapse"
             data-target="#collapseExample"
@@ -115,7 +141,7 @@ content %}
             grid
           </button>
           <button
-            class="btn btn-primary"
+            class="btn btn-color"
             type="button"
             data-toggle="collapse"
             data-target="#collapseExample"
@@ -134,8 +160,8 @@ content %}
         </div>
       </div>
     </section>
-    <section class="instructions">
-      <h3 class="mb-4">Instruction</h3>
+    <section class="instructions mt-5">
+      <h3>Instruction</h3>
       <ol>
         <li>Coffee</li>
         <li>Tea</li>
