@@ -135,7 +135,6 @@ img.on-inview {
 .recipe-form {
   width: 700px;
 }
-/* --------------------- overwrite bootstrap */
 .container-fluid {
   margin-left: 0px;
   padding-left: 0px;
@@ -153,6 +152,9 @@ img.on-inview {
   display: block;
   margin: 0 auto;
   width: 500px;
+}
+i:before {
+  vertical-align: middle;
 }
 
 /* -- https://codepen.io/cbracco/pen/qnduh -- */

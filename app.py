@@ -49,6 +49,15 @@ def get_allRecipes():
     return render_template('all-recipes.html', types=types)
 
 
+@app.route('/recipe_details', methods=['GET'])
+def recipe_details():
+    res = requests.get(
+        'https://api.spoonacular.com/recipes/random?number=10&apiKey='+api_key+'')
+    obj = res.json()
+    details = obj['recipes']
+    return render_template('recipe-details.html', details=details)
+
+
 @app.route('/get_signIn')
 def get_signIn():
     return render_template('sign-in.html')
@@ -63,11 +72,6 @@ def add_recipes():
 @app.route('/my_recipes', methods=['GET'])
 def my_recipes():
     return render_template('my-recipes.html')
-
-
-@app.route('/recipe_details', methods=['GET'])
-def recipe_details():
-    return render_template('recipe-details.html')
 
 
 @app.route('/get_register')

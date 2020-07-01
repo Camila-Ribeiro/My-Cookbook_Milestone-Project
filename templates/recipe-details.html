@@ -3,32 +3,33 @@ content %}
 
 <body>
   <div class="container mt-5">
-    <h1 class="text-center mb-5">Recipe.Title</h1>
-    <img
-      src="../static/img/cooking.jpg"
-      class="img-recipe"
-      alt="Responsive image"
-    />
+    {% for detail in details %}
+    <h1 class="text-center mb-5">{{ detail.title }}</h1>
+    <img src="{{detail.image}}" class="img-recipe" alt="Responsive image" />
     <section class="recipe-info">
       <div class="row">
         <div class="col">
-          <p><i class="icofont-like"></i> 54 likes</p>
+          <p><i class="icofont-like"></i> {{ detail.aggregateLikes}} likes</p>
         </div>
         <div class="col">
-          <p><i class="icofont-clock-time"></i> Ready in 45 min</p>
+          <p>
+            <i class="icofont-clock-time"></i> Ready in {{ detail.readyInMinutes
+            }} min
+          </p>
         </div>
         <div class="col">
-          <p><i class="icofont-people"></i> 6 Servings</p>
+          <p><i class="icofont-people"></i> {{ detail.servings}} Servings</p>
         </div>
         <div class="col">
-          <p><i class="icofont-lunch"></i> Lunch</p>
+          <p><i class="icofont-lunch"></i> {{ detail.dishTypes[0]}}</p>
         </div>
       </div>
     </section>
+
     <section class="diets text-center mt-4">
       <div class="row">
         <div class="col">
-          <p><i class="icofont-chicken"></i> Primal</p>
+          <p><i class="icofont-chicken"></i> {{ detail.diets }}</p>
         </div>
         <div class="col">
           <p><i class="icofont-fruits"></i> Vegetarian</p>
@@ -38,6 +39,7 @@ content %}
         </div>
       </div>
     </section>
+    {% endfor %}
     <section class="ingredients mt-5">
       <h3>Ingredients</h3>
       <div class="row">
