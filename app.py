@@ -49,19 +49,22 @@ def get_allRecipes():
     return render_template('all-recipes.html', types=types)
 
 
-@app.route('/recipe_details', methods=['GET'])
-def recipe_details():
+@app.route('/recipe_details/<recipe_id>', methods=['GET'])
+def recipe_details(recipe_id):
     res = requests.get(
-        'https://api.spoonacular.com/recipes/random?number=10&apiKey='+api_key+'')
+        'https://api.spoonacular.com/recipes/'+recipe_id+'/information?includeNutrition=false?apiKey='+api_key+'')
     obj = res.json()
-    details = obj['recipes']
+    details = obj
     return render_template('recipe-details.html', details=details)
 
-
-@app.route('/get_signIn')
-def get_signIn():
-    return render_template('sign-in.html')
-    # return render_template('sign-in.html', tasks=mongo.db.tasks.find())
+# VIEW RECIPES DETAILS BY recipe_id
+# @app.route('/recipe_details/<recipe_id>', methods=['GET'])
+# def recipe_details(recipe_id):
+#     res = requests.get(
+#         'https://api.spoonacular.com/recipes/'+recipe_id+'/information?includeNutrition=false?apiKey='+api_key+'')
+#     obj = res.json()
+#     getId = obj
+#     return render_template('recipe-details.html', getId=getId)
 
 
 @app.route('/add_recipes', methods=['GET'])
@@ -72,6 +75,12 @@ def add_recipes():
 @app.route('/my_recipes', methods=['GET'])
 def my_recipes():
     return render_template('my-recipes.html')
+
+
+@app.route('/get_signIn')
+def get_signIn():
+    return render_template('sign-in.html')
+    # return render_template('sign-in.html', tasks=mongo.db.tasks.find())
 
 
 @app.route('/get_register')
