@@ -48,23 +48,16 @@ def get_allRecipes():
     types = obj['recipes']
     return render_template('all-recipes.html', types=types)
 
+# VIEW RECIPES DETAILS BY recipe_id
+
 
 @app.route('/recipe_details/<recipe_id>', methods=['GET'])
 def recipe_details(recipe_id):
-    res = requests.get(
-        'https://api.spoonacular.com/recipes/'+recipe_id+'/information?includeNutrition=false?apiKey='+api_key+'')
-    obj = res.json()
+    request = requests.get(
+        'https://api.spoonacular.com/recipes/'+recipe_id+'/information?apiKey='+api_key+'')
+    obj = request.json()
     details = obj
     return render_template('recipe-details.html', details=details)
-
-# VIEW RECIPES DETAILS BY recipe_id
-# @app.route('/recipe_details/<recipe_id>', methods=['GET'])
-# def recipe_details(recipe_id):
-#     res = requests.get(
-#         'https://api.spoonacular.com/recipes/'+recipe_id+'/information?includeNutrition=false?apiKey='+api_key+'')
-#     obj = res.json()
-#     getId = obj
-#     return render_template('recipe-details.html', getId=getId)
 
 
 @app.route('/add_recipes', methods=['GET'])
