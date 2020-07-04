@@ -45,50 +45,53 @@
 </div>
   
 
-    <!-- Cuisines cards -->
+<!-- Cuisines cards -->
 <div class="container cuisines">
-    <section>
-        <h1 class="mb-5 center-text">Cuisines</h1>
-        <div class="row">
-     
-          
-           {# 
-            {% for type in types %} 
+  <section>
+      <h1 class="mb-5 center-text">Cuisines</h1>
+      <div class="row">
+    
         
-            <p>{{ type.cuisines == 'mexican' }}</p>
-             {% endfor %} 
-             #}
-             <div class="card-deck">
-            <div class="card" style="width: 18rem;">
-                <img src="../static/img/No_image_available.svg.png" class="card-img-top" alt="..." />
-                <div class="card-body">
-                    <p class="card-text">cuisine</p>
-                    <p class="card-text">mexican</p>
-                </div>
-            </div>
-            <div class="card" style="width: 18rem;">
-                <img src="../static/img/No_image_available.svg.png" class="card-img-top" alt="..." />
-                <div class="card-body">
-                    <p class="card-text">Cuisine</p>
-                    <p class="card-text">mexican</p>
-                </div>
-            </div>
-            <div class="card" style="width: 18rem;">
-                <img src="../static/img/No_image_available.svg.png" class="card-img-top" alt="..." />
-                <div class="card-body">
-                    <p class="card-text">Cuisine</p>
-                    <p class="card-text">mexican</p>
-                </div>
-            </div>
-            <div class="card" style="width: 18rem;">
+          {# 
+          {% for type in types %} 
+      
+          <p>{{ type.cuisines == 'mexican' }}</p>
+            {% endfor %} 
+            #}
+            <div class="card-deck">
+          <div class="card" style="width: 18rem;">
+              <img src="../static/img/No_image_available.svg.png" class="card-img-top" alt="..." />
+              <div class="card-body">
+                  <p class="card-text">cuisine</p>
+                  <p class="card-text">mexican</p>
+              </div>
+          </div>
+          <div class="card" style="width: 18rem;">
               <img src="../static/img/No_image_available.svg.png" class="card-img-top" alt="..." />
               <div class="card-body">
                   <p class="card-text">Cuisine</p>
                   <p class="card-text">mexican</p>
               </div>
           </div>
+          <div class="card" style="width: 18rem;">
+              <img src="../static/img/No_image_available.svg.png" class="card-img-top" alt="..." />
+              <div class="card-body">
+                  <p class="card-text">Cuisine</p>
+                  <p class="card-text">mexican</p>
+              </div>
+          </div>
+          <div class="card" style="width: 18rem;">
+            <img src="../static/img/No_image_available.svg.png" class="card-img-top" alt="..." />
+            <div class="card-body">
+                <p class="card-text">Cuisine</p>
+                <p class="card-text">mexican</p>
+            </div>
         </div>
-    </section>
+      </div>
+  </section>
 </div>
+
+<!-- FOOTER -->
+{% include 'includes/_footer.html' %}
     
 {% endblock %}

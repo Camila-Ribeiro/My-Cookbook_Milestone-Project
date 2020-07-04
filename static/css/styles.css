@@ -50,8 +50,11 @@ img.on-inview {
 
 /* --------------------------------------------------------------- footer */
 .footer {
-  background-color: #60a59f;
+  background-color: #56928d;
   color: #fff;
+  height: 30px;
+  padding-top: 5px;
+  margin: 0px;
 }
 
 /* --------------------------------------------------------------- index */
