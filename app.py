@@ -1,8 +1,13 @@
 import os
 import requests
-from flask import Flask, render_template, redirect, request, url_for
+from flask import Flask, render_template, redirect, request, url_for, session
 from flask_pymongo import PyMongo
 from bson.objectid import ObjectId
+import bcrypt
+from flask_wtf import FlaskForm
+from wtforms import Form, StringField, PasswordField
+from wtforms.validators import DataRequired
+
 
 if os.path.exists('env.py'):
     import env
@@ -18,8 +23,6 @@ mongo = PyMongo(app)
 api_key = "7b98ae9af6fe4cc6b9a33b00e08db54d"
 
 # single decoretor '/'set the default function to  call '/index'
-
-
 @app.route('/')
 @app.route('/index', methods=['GET'])
 def index():
@@ -49,8 +52,6 @@ def get_allRecipes():
     return render_template('all-recipes.html', types=types)
 
 # VIEW RECIPES DETAILS BY recipe_id
-
-
 @app.route('/recipe_details/<recipe_id>', methods=['GET'])
 def recipe_details(recipe_id):
     request = requests.get(
@@ -69,17 +70,26 @@ def add_recipes():
 def my_recipes():
     return render_template('my-recipes.html')
 
-@app.route('/get_signIn')
-def get_signIn():
+@app.route('/signIn', methods=['GET', 'POST'])
+def signIn():
     return render_template('sign-in.html')
 
-#     # return render_template('sign-in.html', tasks=mongo.db.tasks.find())
+# return render_template('sign-in.html', tasks=mongo.db.tasks.find())
 
+@app.route('/register', methods=['GET', 'POST'])
+def register():
+    if request.method == 'POST':
+        users = mongo.db.users
+        existing_user = mongo.db.users.find_one({'username': request.form['username']})
+        
+        if existing_user is None:
+            hashpass = bcrypt.hashpw(request.form['password'].encode('utf-8'), bcrypt.gensalt())
+            users.insert({'username': request.form['username'], 'password' : hashpass })
+            session['username'] = request.form['username']
+            return redirect(url_for('signIn'))
 
-@app.route('/get_register')
-def get_register():
+        return 'That username already exists!'
     return render_template('register.html')
-    # return render_template('register.html', tasks=mongo.db.tasks.find())
 
 # @app.route('/get_diet', methods=['GET'])
 # def get_diet():
@@ -89,5 +99,5 @@ def get_register():
 
 if __name__ == '__main__':
     app.run(host=os.environ.get('IP'),
-            port=int(os.environ.get('PORT', 5000)),
+            port=int(os.environ.get('PORT', 27017)),
             debug=True)
