@@ -13,13 +13,15 @@
 			<div class="col">
 				<p><i class="icofont-people"></i> {{ details.servings }} Servings</p>
       </div>
-      {# {% if dishTypes == dish_type and > 1 %}
-        {% for dishTypes in details.dishTypes %}
-        <div class="col">
-          <p><i class="icofont-lunch"></i> {{ details.dishTypes }} </p>
+    
+      {% if details.dishTypes %}
+        {% for dish in details.dishTypes%}
+        <div class="col"></div>
+          <p><i class="icofont-lunch"></i> {{ dish if dish is not none }} </p>
         </div>
         {% endfor %}
-      {% endif %} #}
+      {% endif %}
+       
 		</div>
 	</section>
 	<section class="diets text-center mt-4">
@@ -34,7 +36,7 @@
 		</div>
   </section>
   <section class="ingredients mt-5">
-		<h3>Ingredients</h3>
+		<h3 class="mb-4">Ingredients</h3>
 		<div class="container">
         
           <div class="row">
@@ -53,7 +55,7 @@
 
 	</section>
 	<section class="equipment mt-5">
-    <h3>Equipment</h3>
+    <h3 class="mb-4">Equipment</h3>
     <div class="container">
           <div class="row">
 
@@ -71,26 +73,49 @@
           </div>
         </div>
 	</section>
-	<section class="instructions mt-5">
-		<h3>Instruction</h3>
-    {% for instructions in details.analyzedInstructions %}
-      {% for step in instructions.steps %}
-        <p>{{ step.number }}. {{ step.step }}</p>
+	<section class="mt-5">
+      <h3 class="mb-4">Instruction</h3>
+      {% for instructions in details.analyzedInstructions %}
+        {% for step in instructions.steps %}
+          <p>{{ step.number }}. {{ step.step }}</p>
+        {% endfor %}
       {% endfor %}
-    {% endfor %}
   </section>
   
   <section class="mt-5">
+    {% if details.winePairing.pairedWines %}
+      <h3>Wine Pairing</h3>
+    {% endif %} 
+
+    <div class="mt-4">
+      {% for wines in details.winePairing.pairedWines %}
+        {% if wines is not none %} 
+          <p><i class="icofont-glass"></i> {{wines}}</p>
+        {% endif %} 
+      {% endfor %}
+    </div>
     
-    <h3>Wine Pairing</h3>
-              
-    {% for wine in details.winePairing %}
-      {% for pairing in wine.winePairing %}
-      <p>{{ pairing.pairedWines }}</p> 
-      {% endfor %} 
-      {% endfor %} 
-    
-    <p>lol</p>
+    <div class="mt-3">
+      {% if details.winePairing.pairedWines %}
+        <p >{{details.winePairing.pairingText}}</p>
+      {% endif %} 
+    </div>
+
+    <div class="container mt-5">
+      
+      {% for products in details.winePairing.productMatches %}
+        {% if products is not none %} 
+        <div class="border">
+        <h4 class="text-center mt-2">{{products.title}}</h4>
+          <img class="wine-img" src="{{products.imageUrl}}" alt="">
+          
+          <h5>Description:</h5>
+          <p> {{products.description}} <a href="{{products.link}}">See product here</a></p> 
+        </div> 
+        {% endif %} 
+      {% endfor %}
+      
+    </div>
 	</section>
 </div>
 

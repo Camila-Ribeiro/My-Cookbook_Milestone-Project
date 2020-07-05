@@ -127,6 +127,11 @@ img.on-inview {
   font-size: 2.5rem;
 }
 
+.wine-img {
+  margin: 0 auto;
+  display: block; 
+}
+
 /* ------------------------------------------------------- my-Recipes */
 .my-recipes img {
   width: 100%;

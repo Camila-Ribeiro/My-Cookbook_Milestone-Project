@@ -69,11 +69,11 @@ def add_recipes():
 def my_recipes():
     return render_template('my-recipes.html')
 
-
 @app.route('/get_signIn')
 def get_signIn():
     return render_template('sign-in.html')
-    # return render_template('sign-in.html', tasks=mongo.db.tasks.find())
+
+#     # return render_template('sign-in.html', tasks=mongo.db.tasks.find())
 
 
 @app.route('/get_register')
