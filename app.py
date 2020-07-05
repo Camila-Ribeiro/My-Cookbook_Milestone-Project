@@ -20,7 +20,7 @@ app.secret_key = os.environ.get('SECRET_KEY')
 
 mongo = PyMongo(app)
 
-api_key = "7b98ae9af6fe4cc6b9a33b00e08db54d"
+api_key = os.environ['api_key']
 
 # single decoretor '/'set the default function to  call '/index'
 @app.route('/')
