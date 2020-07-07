@@ -26,18 +26,23 @@ api_key = os.environ['api_key']
 @app.route('/')
 @app.route('/index', methods=['GET'])
 def index():
-    r = requests.get(
-        'https://api.spoonacular.com/recipes/random?number=10&apiKey='+api_key+'')
-    json_obj = r.json()
-    recipes = json_obj['recipes']
-    return render_template('index.html', recipes=recipes)
+    if 'username' in session:
+        return 'You are logged in as'+ session['username']
+
+        r = requests.get(
+            'https://api.spoonacular.com/recipes/random?number=10&apiKey='+api_key+'')
+        json_obj = r.json()
+        recipes = json_obj['recipes']
+        return render_template('index.html', recipes=recipes)
+
+    return render_template('index.html')
 
 
 @app.route('/get_cuisines', methods=['GET'])
 def get_cuisines():
-    res = requests.get(
+    r = requests.get(
         'https://api.spoonacular.com/recipes/random?number=100&apiKey='+api_key+'')
-    obj = res.json()
+    obj = r.json()
     recipes = obj['recipes']
     cuisines = obj['cuisines']
     return render_template('all-recipes.html', cuisines=cuisines)
@@ -45,18 +50,18 @@ def get_cuisines():
 
 @app.route('/get_allRecipes', methods=['GET'])
 def get_allRecipes():
-    res = requests.get(
+    r = requests.get(
         'https://api.spoonacular.com/recipes/random?number=100&apiKey='+api_key+'')
-    obj = res.json()
+    obj = r.json()
     types = obj['recipes']
     return render_template('all-recipes.html', types=types)
 
 # VIEW RECIPES DETAILS BY recipe_id
 @app.route('/recipe_details/<recipe_id>', methods=['GET'])
 def recipe_details(recipe_id):
-    request = requests.get(
+    r = requests.get(
         'https://api.spoonacular.com/recipes/'+recipe_id+'/information?apiKey='+api_key+'')
-    obj = request.json()
+    obj = r.json()
     details = obj
     return render_template('recipe-details.html', details=details)
 
@@ -73,7 +78,6 @@ def my_recipes():
 @app.route('/signIn', methods=['GET', 'POST'])
 def signIn():
     return render_template('sign-in.html')
-
 # return render_template('sign-in.html', tasks=mongo.db.tasks.find())
 
 @app.route('/register', methods=['GET', 'POST'])
