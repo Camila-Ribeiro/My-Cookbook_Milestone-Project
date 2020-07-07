@@ -37,6 +37,10 @@ def index():
 
     return render_template('index.html')
 
+@app.route('/login', methods=['GET', 'POST'])
+def signIn():
+    return render_template('sign-in.html')
+# return render_template('sign-in.html', tasks=mongo.db.tasks.find())
 
 @app.route('/get_cuisines', methods=['GET'])
 def get_cuisines():
@@ -75,10 +79,7 @@ def add_recipes():
 def my_recipes():
     return render_template('my-recipes.html')
 
-@app.route('/signIn', methods=['GET', 'POST'])
-def signIn():
-    return render_template('sign-in.html')
-# return render_template('sign-in.html', tasks=mongo.db.tasks.find())
+
 
 @app.route('/register', methods=['GET', 'POST'])
 def register():
