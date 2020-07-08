@@ -6,12 +6,18 @@
                 <span class="navbar-toggler-icon"></span>
             </button>
             
+            <div class="container">
+                {% if 'username' in session %}
+                <span class="ft-user">User: {{ session['username'].title() }}</span>
+                {% else%}
+                {% endif %}
+            </div>
             <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
                 <div class="navbar-nav ml-auto">
                 <a class="nav-item nav-link" href="{{url_for('get_allRecipes')}}">All Recipes <span class="sr-only">(current)</span></a>
                 <a class="nav-item nav-link" href="{{url_for('my_recipes')}}">My Recipes</a>    
                 <a class="nav-item nav-link" href="{{url_for('add_recipes')}}">Add Recipes</a>
-                <a class="nav-item nav-link" href="{{url_for('index')}}"">Sigh Out</a>
+                <a class="nav-item nav-link" href="{{url_for('index')}}"">Log Out</a>
                 </div>
             </div>
         </nav>

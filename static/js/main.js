@@ -1,37 +1,34 @@
 $(document).ready(function(){
     $('.center').slick({
-    centerMode: true,
-    // centerPadding: '100px',
-    slidesToShow: 3,
-    responsive: [
-        {
-        breakpoint: 768,
-        settings: {
-            arrows: false,
-            centerMode: true,
-            centerPadding: '40px',
-            slidesToShow: 3
-        }
-        },
-        {
-        breakpoint: 480,
-        settings: {
-            arrows: false,
-            centerMode: true,
-            centerPadding: '40px',
-            slidesToShow: 1
-        }
-        }
-    ]
+        centerMode: true,
+        // centerPadding: '100px',
+        slidesToShow: 3,
+        responsive: [
+            {
+            breakpoint: 768,
+            settings: {
+                arrows: false,
+                centerMode: true,
+                centerPadding: '40px',
+                slidesToShow: 3
+            }
+            },
+            {
+            breakpoint: 480,
+            settings: {
+                arrows: false,
+                centerMode: true,
+                centerPadding: '40px',
+                slidesToShow: 1
+            }
+            }
+        ]
     });
-
-
-
 
     var api_key = '7b98ae9af6fe4cc6b9a33b00e08db54d';
     var api_url = '';
     var imageUrl = "https://spoonacular.com/recipeImages/";
-    $('#category').on('change', function() {
+    $('.select_list').on('change', function() {
         var value = $(this).val();
         //console.log(value);
 
@@ -59,13 +56,52 @@ $(document).ready(function(){
                             '</div></a>'
                         );
                 });
-               
-        }
-    })
+            }
+        })
     });
 
+    // ADD INPUT INGREDIENTS
+    $(".btn_add_ingredients").click(function(){
+        add_Ingredient();
+        return false;
+    });
 
+    function add_Ingredient() {
+        var add_div = `<div class= "added-input-ingredients">
+                        <input type="text" class="form-control mt-2" id="add_ingredients" name="recipe_ingredient" placeholder="" aria-describedby="ingredients" />
+                            <span>
+                                <i class="icofont-close-circled d-inline"></i>
+                            </span>
+                        </div>`;
+        $(add_div).insertBefore('.add-more-ingredients');
+    }
 
+    // REMOVE INGREDIENTS AND DELETE INPUT
+    $('.ingredients').on('click', 'span', function () {
+        var remove_ingredientes = $(this).closest('div.added-input-ingredients');
+        $(remove_ingredientes).remove();
+    });
 
+     // ADD INPUT INSTRUCTIONS
+     $(".btn_add_intructions").click(function(){
+        add_Instruction();
+        return false;
+    });
 
+    function add_Instruction() {
+        var add_div = `<div class= "added-input-instructions">
+                        <input type="text" class="form-control mt-2" id="add_instructions" name="recipe_instruction" placeholder="" aria-describedby="instructions" />
+                            <span>
+                                <i class="icofont-close-circled d-inline"></i>
+                            </span>
+                        </div>`;
+        $(add_div).insertBefore('.add-more-instructions');
+    }
+
+    // REMOVE INSTRUCTIONS AND DELETE INPUT
+    $('.instructions').on('click', 'span', function () {
+        console.log('click')
+        var remove_instructions = $(this).closest('div.added-input-instructions');
+        $(remove_instructions).remove();
+    });
 });

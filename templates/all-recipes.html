@@ -1,46 +1,41 @@
 {% include 'base.html' %} {% include 'includes/_nav.html' %} {% block content %}
 
 <div class="container-fluid recipes">
-    <h1 class="mt-4 mb-4 center-text">Recipes</h1>
     <div class="img-hero">
         <section class="jumbotron">
+          <h2 class="text-center">Select filter </h2>
             <div class="row">
-                <select class="mr-5" name="categories" id="category">
-                  <option value="ketogenic">Ketogenic</option>
-                  <option value="vegetarian">Vegetarian</option>
+              
+                <select class="mr-3 w-auto custom-select select_list" name="diet_list" >
+                  <option selected> Diets</option>
+                  {% for select in option_diets %}
+                      <option value="{{ select.diet_type }}">{{ select.diet_type }}</option>
+                  {% endfor %}
                 </select>
-                <div class="dropdown mr-5">
-                  <button
-                    class="btn btn-secondary dropdown-toggle"
-                    type="button"
-                    id="dropdownMenuButton"
-                    data-toggle="dropdown"
-                    aria-haspopup="true"
-                    aria-expanded="false"
-                  >
-                    Intolerances
-                  </button>
-                  <div class="dropdown-menu" aria-labelledby="dropdownMenuButton"></div>
-                </div>
-                <div class="dropdown">
-                  <button
-                    class="btn btn-secondary dropdown-toggle"
-                    type="button"
-                    id="dropdownMenuButton"
-                    data-toggle="dropdown"
-                    aria-haspopup="true"
-                    aria-expanded="false"
-                  >
-                    Meal Type
-                  </button>
-                  <div class="dropdown-menu" aria-labelledby="dropdownMenuButton"></div>
-                </div>
+
+                <select class="mr-3 w-auto custom-select select_list" id="allergen_type" name="allergen_list" aria-label="Select Allergen(s)">
+                  <option selected> Allergens </option>
+                  {% for select in option_allergens %}
+                      <option value="{{ select.allergen_type}}">{{ select.allergen_type }}</option>
+                  {% endfor %}
+              </select>
+
+                <select class="mr-3 w-auto custom-select select_list" id="meal_type" name="meal_type_list" aria-label="Select Meal Type(s)">
+                  <option selected> Meals</option>
+                  {% for select in option_meals %}
+                      <option value="{{ select.meal_type}}">{{ select.meal_type }}</option>
+                  {% endfor %}
+                </select>
+
+                <select class="w-auto custom-select select_list" id="cuisines_type" name="cuisines_list" aria-label="Select Cuisine(s)">
+                  <option selected> Cuisines </option>
+                  {% for select in option_cuisines %}
+                      <option value="{{ select.cuisine_type}}">{{ select.cuisine_type }}</option>
+                  {% endfor %}
+              </select>
+                
               </div>
         </section>
-        <div id="results">
-            <h1 id="title-results"></h1>
-            <div class="results"></div>
-        </div>
     </div>
 </div>
   
@@ -48,48 +43,40 @@
 <!-- Cuisines cards -->
 <div class="container cuisines">
   <section>
-      <h1 class="mb-5 center-text">Cuisines</h1>
-      <div class="row">
-    
-        
-          {# 
-          {% for type in types %} 
-      
-          <p>{{ type.cuisines == 'mexican' }}</p>
-            {% endfor %} 
-            #}
-            <div class="card-deck">
-          <div class="card" style="width: 18rem;">
-              <img src="../static/img/No_image_available.svg.png" class="card-img-top" alt="..." />
-              <div class="card-body">
-                  <p class="card-text">cuisine</p>
-                  <p class="card-text">mexican</p>
+    <div id="results">
+    <h1 id="title-results" class="mt-4 mb-4 center-text">All Recipes</h1>
+     
+        <div class="container-fluid"> 
+          <div class="row">
+            
+            <div class="card-deck results">
+              {% for random in random_recipes %}
+              <div class="col-md-3">
+                <div class="card">
+                  <img src="{{ random.image }}" class="on-inview " alt="..." />
+                  <div class="card-body">
+                    <a
+                    href="{{url_for('recipe_details', recipe_id=random.id)}}" class="title-padding">{{ random.title }}</a>
+                  </div>
+                </div>
               </div>
-          </div>
-          <div class="card" style="width: 18rem;">
-              <img src="../static/img/No_image_available.svg.png" class="card-img-top" alt="..." />
-              <div class="card-body">
-                  <p class="card-text">Cuisine</p>
-                  <p class="card-text">mexican</p>
-              </div>
-          </div>
-          <div class="card" style="width: 18rem;">
-              <img src="../static/img/No_image_available.svg.png" class="card-img-top" alt="..." />
-              <div class="card-body">
-                  <p class="card-text">Cuisine</p>
-                  <p class="card-text">mexican</p>
-              </div>
-          </div>
-          <div class="card" style="width: 18rem;">
-            <img src="../static/img/No_image_available.svg.png" class="card-img-top" alt="..." />
-            <div class="card-body">
-                <p class="card-text">Cuisine</p>
-                <p class="card-text">mexican</p>
+              {% endfor %}
             </div>
-        </div>
       </div>
+ 
+      </div>
+    </div>
+
+      {% if 'username' in session %}
+        <h1 class="mt-4 mb-4 center-text">Recipes by {{ session['username'].title() }}</h1>
+      {% else %}
+              <div></div>
+      {% endif %}
+
   </section>
 </div>
+
+
 
 <!-- FOOTER -->
 {% include 'includes/_footer.html' %}

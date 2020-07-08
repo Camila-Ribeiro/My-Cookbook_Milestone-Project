@@ -48,6 +48,12 @@ img.on-inview {
   color: #383b3f;
 }
 
+/* --------------------------------------------------------------- header */
+.user-logged {
+  background-color: rgba(97, 165, 160, 0.7);
+  color: #FFF;
+}
+
 /* --------------------------------------------------------------- footer */
 .footer {
   background-color: #56928d;
@@ -99,7 +105,7 @@ img.on-inview {
   height: auto;
 } */
 
-.body-signIn-register {
+.body-login-register {
   background-color: gainsboro;
 }
 
@@ -187,12 +193,13 @@ img.on-inview {
 }
 
 .jumbotron {
+  color: #FFF;
   position: relative;
   background-color: hsla(0, 0%, 0%, 0.39);
   background-position: center;
   display: block;
   margin: 0 auto;
-  width: 500px;
+  width: 560px;
 }
 
 i:before {

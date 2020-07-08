@@ -1,65 +1,73 @@
-{% include 'base.html' %} {% include 'includes/_nav-signIn.html' %} {% block content %}
+{% include 'base.html' %} {% include 'includes/_nav.html' %} {% block content %}
 
 
-<div class="container mt-5 mb-5">
+<div class="container mt-5 mb-5 mx-auto d-block">
     <h1 class="text-center mb-5">Add Recipes</h1>
-    <form class="recipe-form w-100">
+    <form action="" method="POST" class="recipe-form w-100">
         <div class="row">
+            <!-- ADD CUISINES LIST SELECTION-->
             <div class="col">
                 <div class="form-group">
-                    <label for="cuisines1">Cuisines</label>
-                    <select name="cuisines1" id="cuisines1">
-                        <option disabled="" selected=""> Select cuisine(s) </option>
-                        <option value="volvo">Volvo</option>
-                        <option value="saab">Saab</option>
+                    <p>Cuisines</p>
+                    <select class="d-block custom-select" id="cuisines_type" name="cuisines_list" aria-label="Select Cuisine(s)">
+                        <option selected> Select Cuisine(s) </option>
+                        {% for select in option_cuisines %}
+                            <option value="{{ select.cuisine_type}}">{{ select.cuisine_type }}</option>
+                        {% endfor %}
                     </select>
                 </div>
             </div>
+            <!-- ADD ALLERGEN LIST SELECTION-->
             <div class="col">
                 <div class="form-group">
-                    <label for="cuisines1">Allergen</label>
-                    <select name="cuisines1" id="cuisines1">
-                        <option disabled="" selected=""> Select allergen(s) </option>
-                        <option value="volvo">Volvo</option>
-                        <option value="saab">Saab</option>
+                    <p>Allergen</p>
+                    <select class="d-block custom-select" id="allergen_type" name="allergen_list" aria-label="Select Allergen(s)">
+                        <option selected> Select Allergen(s) </option>
+                        {% for select in option_allergens %}
+                            <option value="{{ select.allergen_type}}">{{ select.allergen_type }}</option>
+                        {% endfor %}
                     </select>
                 </div>
             </div>
+            <!-- ADD MEAL TYPE LIST SELECTION-->
             <div class="col">
                 <div class="form-group">
-                    <label for="cuisines1">Meal Type</label>
-                    <select name="cuisines1" id="cuisines1">
-                        <option disabled="" selected=""> Select meal type(s) </option>
-                        <option value="volvo">Volvo</option>
-                        <option value="saab">Saab</option>
+                    <p>Meal Type</p>
+                    <select class="d-block custom-select" id="meal_type" name="meal_type_list" aria-label="Select Meal Type(s)">
+                        <option selected> Select meal type(s) </option>
+                        {% for select in option_meals %}
+                            <option value="{{ select.meal_type}}">{{ select.meal_type }}</option>
+                        {% endfor %}
                     </select>
                 </div>
             </div>
+            <!-- ADD DIETS LIST SELECTION-->
             <div class="col">
                 <div class="form-group">
-                    <label for="cuisines1">Diet Label</label>
-                    <select name="cuisines1" id="cuisines1">
-                        <option disabled="" selected=""> Select diet(s) </option>
-                        <option value="volvo">Volvo</option>
-                        <option value="saab">Saab</option>
+                    <p>Diet Label</p>
+                    <select class="d-block custom-select" id="diet_type" name="diet_type_list" aria-label="Select diet(s)">
+                        <option selected> Select diet(s)</option>
+                        {% for select in option_diets %}
+                            <option value="{{ select.diet_type }}">{{ select.diet_type }}</option>
+                        {% endfor %}
                     </select>
                 </div>
             </div>
             
         </div>
-        <div class="form-group">
+        <div class="form-group mt-5">
             <label for="recipeName1">Recipe Name</label>
             <input type="text" class="form-control" id="recipeName1" placeholder="" aria-describedby="recipeName">
         </div>
-        <div class="form-group">
-            <label for="descriptionName1">Description Name</label>
+        <div class="form-group mt-3">
+            <label for="descriptionName1">Description</label>
             <input type="text" class="form-control" id="descriptionName1" placeholder="" aria-describedby="descriptionName">
         </div>
-        <div class="form-group">
+        <div class="form-group mt-3">
             <label for="recipeImage1">Recipe Image</label>
             <input type="image" class="form-control" id="recipeImage1" placeholder="" aria-describedby="recipeImage">
         </div>
-        <div class="row">
+        <div class="row mt-4">
             <div class="col">
                 <label for="appt">Preparation Time:</label>
                 <input type="time" id="appt" name="appt" aria-describedby="prepTime">
@@ -73,28 +81,22 @@
                 <input type="number" id="quantity" name="quantity" min="1" max="25">
             </div>
         </div>
-        <div class="row">
-            <div class="col">
-                <label for="ingredients1">Ingredients</label>
-                <input type="text" class="form-control" id="ingredients1" placeholder="" aria-describedby="ingredients">
-                <input type="text" class="form-control" id="ingredients1" placeholder="" aria-describedby="ingredients">
-                <input type="text" class="form-control" id="ingredients1" placeholder="" aria-describedby="ingredients">
-                <input type="text" class="form-control" id="ingredients1" placeholder="" aria-describedby="ingredients">
-                <input type="text" class="form-control" id="ingredients1" placeholder="" aria-describedby="ingredients">
-                <input type="text" class="form-control" id="ingredients1" placeholder="" aria-describedby="ingredients">
-                <input type="text" class="form-control" id="ingredients1" placeholder="" aria-describedby="ingredients">
-                <button type="submit" class="btn btn-color">Add Ingredient</button>
+        <div class="row mt-3">
+            <div class="col ingredients" id="ingredients">
+                <label for="add_ingredients">Ingredients</label>
+                <input type="text" class="form-control mt-2" id="add_ingredients1" name="recipe_ingredient" placeholder="" aria-describedby="ingredients" required=required />
+                <input type="text" class="form-control mt-2" id="add_ingredients2" name="recipe_ingredient" placeholder="" aria-describedby="ingredients" />
+                <div class="add-more-ingredients">
+                    <button class="btn_add_ingredients btn btn-color mt-3"> <span> <i class="icofont-plus-circle"></i> Add ingredient </span> </button>
+                </div>
             </div>
-            <div class="col">
-                <label for="ingredients1">Instructions</label>
-                <input type="text" class="form-control" id="instructions" placeholder="" aria-describedby="instructions">
-                <input type="text" class="form-control" id="instructions" placeholder="" aria-describedby="instructions">
-                <input type="text" class="form-control" id="instructions" placeholder="" aria-describedby="instructions">
-                <input type="text" class="form-control" id="instructions" placeholder="" aria-describedby="instructions">
-                <input type="text" class="form-control" id="instructions" placeholder="" aria-describedby="instructions">
-                <input type="text" class="form-control" id="instructions" placeholder="" aria-describedby="instructions">
-                <input type="text" class="form-control" id="instructions" placeholder="" aria-describedby="instructions">
-                <button type="submit" class="btn btn-color">Add Instruction</button>
+            <div class="col instructions" id="instructions">
+                <label for="add_instruction" >Instructions</label>
+                <input type="text" class="form-control mt-2" id="add_instructions1" placeholder="" aria-describedby="instructions">
+                <input type="text" class="form-control mt-2" id="add_instructions2" placeholder="" aria-describedby="instructions">
+                <div class="add-more-instructions">
+                    <button class="btn_add_intructions btn btn-color mt-3"> <span> <i class="icofont-plus-circle"></i> Add instruction </span> </button>
+                </div>
             </div>
         </div>
     </form>

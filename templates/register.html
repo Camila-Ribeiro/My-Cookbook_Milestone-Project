@@ -2,7 +2,7 @@
 
 {% block content %}
 
-<body class="body-signIn-register">
+<body class="body-login-register">
     <div class="container">
         <div class="container close-button w-100">
             <!-- https://codepen.io/andreivictor/pen/aJEpEx -->
@@ -23,18 +23,18 @@
                 <div class="form-group">
                     <input type="text" class="form-control" id="username" name="username" placeholder="Username">
                 </div>
-                <div class="form-group">
+                <!-- <div class="form-group">
                     <input type="email" class="form-control" id="email" name="email" placeholder="E-mail address" aria-describedby="email">
                     <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
-                </div>
+                </div> -->
                 <div class="form-group">
                     <input type="password" class="form-control" id="password" name="password"  placeholder="Enter Password">
                 </div>
-                <div class="form-group">
+                <!-- <div class="form-group">
                     <input type="password" class="form-control" id="confirm" name="confirm" placeholder="Confirm Password">
-                    </div>
+                </div> -->
                 <div class="form-group">
-                    <p>Already registered? <a href="{{url_for('login')}}">Click Here to Sign In.</a> </p>
+                    <p>Already registered? <a href="{{url_for('login')}}">Click Here to Login.</a> </p>
                 </div>
                 <button type="submit" class="btn btn-color" value="submit">Register Account</button>
             </form>                                                              
