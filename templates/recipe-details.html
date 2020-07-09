@@ -15,13 +15,11 @@
       </div>
     
       {% if details.dishTypes %}
-        
         <div class="col">
           {% for dish in details.dishTypes%}
           <p><i class="icofont-lunch"></i> {{ dish if dish is not none }} </p>
           {% endfor %}
         </div>
-        
       {% endif %}
 		</div>
   </section>
@@ -34,10 +32,7 @@
        
          
             <!-- <div class="col">
-            
-              
               <p><i class="icofont-chicken"></i> </p>
-           
             </div> -->
             
             {% 'gluten free' in diets %}
@@ -47,48 +42,49 @@
             <div class="col">
               <p><i class="icofont-apple"></i> {{ diets if diets is not none }} </p>
             </div> 
-          
+
         {% endfor %}
       {% endif %}
+
 		</div>
   </section>
 
   <!-- INGREDIENTES SECTION-->
-    <section class="ingredient">
-      <h3 class="mb-4">Ingredients</h3>
-      <hr>
+  <section class="ingredient">
+    <h3 class="mb-4">Ingredients</h3>
+    <hr>
       <div class="container">
-            <div class="row">
-              {% for d in details.extendedIngredients %}
-                <div class="col-sm-6 col-md-2">
-                  <p class="text-center">{{d.amount|int}} {{d.unit}}</p>
-                  <img class="mx-auto d-block" src="https://spoonacular.com/cdn/ingredients_100x100/{{d.image}}" alt="">
-                  <p class="small text-center">{{d.originalName}}</p>
-                </div>
-              {% endfor %}
-          </div>
+        <div class="row">
+          {% for d in details.extendedIngredients %}
+            <div class="col-sm-6 col-md-2">
+              <p class="text-center">{{d.amount|int}} {{d.unit}}</p>
+              <img class="mx-auto d-block" src="https://spoonacular.com/cdn/ingredients_100x100/{{d.image}}" alt="">
+              <p class="small text-center">{{d.originalName}}</p>
+            </div>
+          {% endfor %}
         </div>
-    </section>
+      </div>
+  </section>
 
   
   <!-- EQUIPMENT SECTION-->
 	<section class="equipment">
     <h3 class="mb-4">Equipment</h3>
     <hr>
-    <div class="container">
-          <div class="row">
-            {% for instructions in details.analyzedInstructions %}
-              {% for step in instructions.steps %}
-                {% for equipment in step.equipment %}
-                  <div class="col-sm-6 col-md-2">
-                    <p class="text-center">{{equipment.name}}</p>
-                    <img class="mx-auto d-block" src="https://spoonacular.com/cdn/equipment_100x100/{{equipment.image}}" alt="">
-                  </div>
-                {% endfor %}
+      <div class="container">
+        <div class="row">
+          {% for instructions in details.analyzedInstructions %}
+            {% for step in instructions.steps %}
+              {% for equipment in step.equipment %}
+                <div class="col-sm-6 col-md-2">
+                  <p class="text-center">{{equipment.name}}</p>
+                  <img class="mx-auto d-block" src="https://spoonacular.com/cdn/equipment_100x100/{{equipment.image}}" alt="">
+                </div>
               {% endfor %}
             {% endfor %}
-          </div>
+          {% endfor %}
         </div>
+    </div>
   </section>
   
   <!-- INSTRUCTION SECTION-->
@@ -105,6 +101,7 @@
   <!-- WINE PAIRING SECTION-->
   <section class="wine-pairing">
     <div class="row">
+
       <div class="col-md-6 d-block">
         {% if details.winePairing.pairedWines %}
           <h3>Wine Pairing</h3>
@@ -122,28 +119,28 @@
             <p >{{details.winePairing.pairingText}}</p>
           {% endif %} 
         </div>
-      </div>
+      </div>  
 
       <div class="col-md-6">
-      {% for products in details.winePairing.productMatches %}
-        {% if products is not none %} 
-        <div class="border mt-5 px-3 py-3">
-          <div class="row">
-            <div class="col-3">
-              <img class="img-responsive" src="{{products.imageUrl}}" alt="">
-            </div>
-            <div class="col-9 mt-3">
-              <h5 class="mb-3">{{products.title}}</h5>
-              <p class="mb-1">Description:</p>
-              <p class="small"> {{products.description}} <a href="{{products.link}}">See product here</a></p>
-            </div>
-          </div>          
-        </div> 
-        {% endif %} 
-      {% endfor %}
-    </div>
-    
-  </div> 
+        {% for products in details.winePairing.productMatches %}
+          {% if products is not none %} 
+          <div class="border mt-5 px-3 py-3">
+            <div class="row">
+              <div class="col-3">
+                <img class="img-responsive" src="{{products.imageUrl}}" alt="">
+              </div>
+              <div class="col-9 mt-3">
+                <h5 class="mb-3">{{products.title}}</h5>
+                <p class="mb-1">Description:</p>
+                <p class="small"> {{products.description}} <a href="{{products.link}}">See product here</a></p>
+              </div>
+            </div>          
+          </div> 
+          {% endif %} 
+        {% endfor %}
+      </div>
+
+    </div> 
 	</section>
 </div>
 
