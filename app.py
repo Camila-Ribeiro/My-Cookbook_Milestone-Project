@@ -119,12 +119,22 @@ def add_recipes():
         option_meals = get_meals()
         
         # add recipes form
-
         if request.method == 'POST':
             add_recipes = mongo.db.add_recipes
+            add_recipes.insert_one({'user_recipe': request.form['user_recipe'],
+                'cuisines_list': request.form['cuisines_list'],
+                'allergen_list': request.form['allergen_list'],
+                'meal_type_list': request.form['meal_type_list'],
+                'diet_type_list': request.form['diet_type_list'],
+                'recipe_name': request.form['recipe_name'],
+                'prep_time': request.form['prep_time'],
+                'serves': request.form['serves'],
+                'add_ingredients': request.form.getlist('add_ingredients'),
+                'add_instructions': request.form.getlist('add_instructions'),
+                # 'img_url': request.form['img_url']
+                })
 
-            add_recipes.insert_one(request.form.to_dict())
-            # session['username'] = request.form['username']
+            # add_recipes.insert_one(request.form.to_dict())
             return redirect(url_for('add_recipes'))
         return render_template('add-recipes.html', 
             option_diets=option_diets, 
@@ -133,7 +143,9 @@ def add_recipes():
             option_allergens=option_allergens)
     else:
         return redirect(url_for('index'))  
-    
+
+   # session['username'] = request.form['username']
+     
 # MY RECIPES
 @app.route('/my_recipes', methods=['GET'])
 def my_recipes():

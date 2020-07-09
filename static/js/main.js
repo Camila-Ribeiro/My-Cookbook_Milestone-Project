@@ -68,7 +68,7 @@ $(document).ready(function(){
 
     function add_Ingredient() {
         var add_div = `<div class= "added-input-ingredients">
-                        <input type="text" class="form-control mt-2" id="add_ingredients" name="recipe_ingredient" placeholder="" aria-describedby="ingredients" />
+                        <input type="text" class="form-control mt-2" name="add_ingredients" placeholder="add ingredient" aria-describedby="ingredients" />
                             <span>
                                 <i class="icofont-close-circled d-inline"></i>
                             </span>
@@ -90,7 +90,7 @@ $(document).ready(function(){
 
     function add_Instruction() {
         var add_div = `<div class= "added-input-instructions">
-                        <input type="text" class="form-control mt-2" id="add_instructions" name="recipe_instruction" placeholder="" aria-describedby="instructions" />
+                        <input type="text" class="form-control mt-2" name="add_instructions" placeholder="add instruction" aria-describedby="add_instructions" />
                             <span>
                                 <i class="icofont-close-circled d-inline"></i>
                             </span>
@@ -100,7 +100,6 @@ $(document).ready(function(){
 
     // REMOVE INSTRUCTIONS AND DELETE INPUT
     $('.instructions').on('click', 'span', function () {
-        console.log('click')
         var remove_instructions = $(this).closest('div.added-input-instructions');
         $(remove_instructions).remove();
     });
