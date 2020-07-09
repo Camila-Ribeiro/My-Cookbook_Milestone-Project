@@ -28,7 +28,7 @@ $(document).ready(function(){
     var api_key = '7b98ae9af6fe4cc6b9a33b00e08db54d';
     var api_url = '';
     var imageUrl = "https://spoonacular.com/recipeImages/";
-    $('.select_list').on('change', function() {
+    $('.select-list').on('change', function() {
         var value = $(this).val();
         //console.log(value);
 
@@ -61,7 +61,7 @@ $(document).ready(function(){
     });
 
     // ADD INPUT INGREDIENTS
-    $(".btn_add_ingredients").click(function(){
+    $(".add_ingredients").click(function(){
         add_Ingredient();
         return false;
     });
@@ -83,7 +83,7 @@ $(document).ready(function(){
     });
 
      // ADD INPUT INSTRUCTIONS
-     $(".btn_add_intructions").click(function(){
+     $(".add_instruction").click(function(){
         add_Instruction();
         return false;
     });

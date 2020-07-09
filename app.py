@@ -100,14 +100,14 @@ def all_recipes():
 # GET RECIPES DETAILS from API
 @app.route('/recipe_details/<recipe_id>', methods=['GET'])
 def recipe_details(recipe_id):
-    r = requests.get(
-        'https://api.spoonacular.com/recipes/'+recipe_id+'/information?apiKey='+api_key+'')
+    r = requests.get('https://api.spoonacular.com/recipes/'+recipe_id+'/information?apiKey='+api_key+'')
+    APIused = r.headers.set('X-API-Quota-Used', "default-src 'self'")
     obj = r.json()
     details = obj
-    return render_template('recipe-details.html', details=details)
+    return render_template('recipe-details.html', details=details, APIused=APIused)
 
 # ADD RECIPES
-@app.route('/add_recipes', methods=['GET'])
+@app.route('/add_recipes', methods=['GET', 'POST'])
 def add_recipes():
     if 'username' in session:
         current_user = mongo.db.user.find_one({'username': session['username']})
@@ -118,10 +118,14 @@ def add_recipes():
         option_diets = get_diets()
         option_meals = get_meals()
         
-        # if request.method == 'POST':
-            #  addCuisine = mongo.db.cuisines select database
-            # cuisinesSelect = request.form['cuisines1']
-            # users.insert({'username': request.form['username'], 'password' : hashpass })
+        # add recipes form
+
+        if request.method == 'POST':
+            add_recipes = mongo.db.add_recipes
+
+            add_recipes.insert_one(request.form.to_dict())
+            # session['username'] = request.form['username']
+            return redirect(url_for('add_recipes'))
         return render_template('add-recipes.html', 
             option_diets=option_diets, 
             option_meals=option_meals,
@@ -134,8 +138,9 @@ def add_recipes():
 @app.route('/my_recipes', methods=['GET'])
 def my_recipes():
     if 'username' in session:
-        current_user = mongo.db.user.find_one({'username': session['username']})
-        return render_template('my-recipes.html')
+        current_user = mongo.db.user.find_one({'username': session[
+            'username'].title()})
+        return render_template('my-recipes.html', current_user=current_user)
     else:
         return redirect(url_for('index'))  
 
@@ -156,6 +161,7 @@ def get_diets():
 def get_meals():
     option_meals = mongo.db.meals.find().sort("meal_type", 1)
     return option_meals
+
 
 if __name__ == '__main__':
     app.run(host=os.environ.get('IP'),

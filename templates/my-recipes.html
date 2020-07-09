@@ -1,50 +1,68 @@
 {% include 'base.html' %} {% include 'includes/_nav.html' %} {% block content %}
 
-
 <div class="container mt-5 mb-5">
   <h1 class="text-center mb-5">Your Recipes</h1>
-  <section class="profile">
-    <img src="../static/img/Profile.jpg" alt="..." class="img-thumbnail" />
-    <h2>Name: Camila</h2>
-    <p>Recipes: 4</p>
-  </section>
-  <section class="my-recipes mt-5">
-    <div class="card-deck">
-      <div class="card">
-        <img
-          src="../static/img/No_image_available.svg.png"
-          class="card-img-top"
-          alt="..."
-        />
-        <div class="card-body">
-          <h5 class="card-title">Card title</h5>
-        </div>
-      </div>
-      <div class="card">
-        <img
-          src="../static/img/No_image_available.svg.png"
-          class="card-img-top"
-          alt="..."
-        />
-        <div class="card-body">
-          <h5 class="card-title">Card title</h5>
-        </div>
-      </div>
-      <div class="card">
-        <img
-          src="../static/img/No_image_available.svg.png"
-          class="card-img-top"
-          alt="..."
-        />
-        <div class="card-body">
-          <h5 class="card-title">Card title</h5>
-        </div>
+<section class="mt-5">
+<div class="container">
+  <div class="row">
+    <div class="col-md-4">
+      <div class="card profile-card-1">
+          <img src="https://images.pexels.com/photos/946351/pexels-photo-946351.jpeg?w=500&h=650&auto=compress&cs=tinysrgb" alt="profile-sample1" class="background"/>
+          <img src="https://randomuser.me/api/portraits/women/20.jpg" alt="profile-image" class="profile"/>
+              <div class="card-content">
+              <h2>{{ session['username'].title() }}<small>Recipes:2</small></h3>
+              <div class="icon-block"><a href="#"><i class="fa fa-facebook"></i></a><a href="#"> <i class="fa fa-twitter"></i></a><a href="#"> <i class="fa fa-google-plus"></i></a></div>
+              </div>
       </div>
     </div>
-  </section>
-
-  {% endblock%}
+    <div class="col-md-8">
+      <div class="container-fluid"> 
+        <div class="row">
+          <div class="card-deck results">
+              <div class="card">
+                <img src="../static/img/No_image_available.svg.png" class="on-inview " alt="..." />
+                <div class="card-body">
+                  <a
+                  href="{{url_for('my_recipes', )}}" class="title-padding">Peteca Rosa</a>
+                </div>
+              </div>
+          </div>
+    </div>
+      <!-- <section class="my-recipes mt-5">
+        
+        <div class="card-deck">
+          <div class="card">
+            <img
+              src="../static/img/No_image_available.svg.png"
+              class="card-img-top"
+              alt="..."
+            />
+            <div class="card-body">
+              <h5 class="card-title">Card title</h5>
+            </div>
+          </div>
+          <div class="card">
+            <img
+              src="../static/img/No_image_available.svg.png"
+              class="card-img-top"
+              alt="..."
+            />
+            <div class="card-body">
+              <h5 class="card-title">Card title</h5>
+            </div>
+          </div>
+        </div>
+      </section> -->
+    </div>
+  </div>
 </div>
+</section>
+
+
+  
+</div>
+  {% endblock%}
+
 
   <!-- FOOTER -->
 {% include 'includes/_footer.html' %}
