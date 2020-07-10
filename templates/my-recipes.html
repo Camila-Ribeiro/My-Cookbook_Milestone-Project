@@ -18,44 +18,25 @@
     <div class="col-md-8">
       <div class="container-fluid"> 
         <div class="row">
-          <div class="card-deck results">
-              <div class="card">
-                <img src="../static/img/No_image_available.svg.png" class="on-inview " alt="..." />
-                <div class="card-body">
-                  <a
-                  href="{{url_for('my_recipes', )}}" class="title-padding">Peteca Rosa</a>
+          {% for r in user_added_recipes %}
+          <div class="col-md-4">
+            <div class="card-deck results">
+                <div class="card text-center">
+                  <img src="../static/img/No_image_available.svg.png" class="img-responsive w-100" alt="{{r.recipe_name}}" />
+                  <div class="card-body">
+                    <a href="#" class="title-padding">{{r.recipe_name}}</a>
+                    <p class="small mt-2">{{r.cuisines_list}}</p>
+                  </div>
+                 
                 </div>
-              </div>
-          </div>
-    </div>
-      <!-- <section class="my-recipes mt-5">
-        
-        <div class="card-deck">
-          <div class="card">
-            <img
-              src="../static/img/No_image_available.svg.png"
-              class="card-img-top"
-              alt="..."
-            />
-            <div class="card-body">
-              <h5 class="card-title">Card title</h5>
             </div>
           </div>
-          <div class="card">
-            <img
-              src="../static/img/No_image_available.svg.png"
-              class="card-img-top"
-              alt="..."
-            />
-            <div class="card-body">
-              <h5 class="card-title">Card title</h5>
-            </div>
-          </div>
+          {% endfor %}
         </div>
-      </section> -->
+      </div>
     </div>
+   
   </div>
-</div>
 </section>
 
 

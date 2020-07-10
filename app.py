@@ -84,17 +84,19 @@ def all_recipes():
     option_cuisines = get_cuisines()
     option_diets = get_diets()
     option_meals = get_meals()
-
-    r = requests.get(
-        'https://api.spoonacular.com/recipes/random?number=8&apiKey='+api_key+'')
-    obj = r.json()
-    random_recipes = obj['recipes']
+    user_added_recipes = get_user_recipes()
+    
+    # r = requests.get(
+    #     'https://api.spoonacular.com/recipes/random?number=8&apiKey='+api_key+'')
+    # obj = r.json()
+    # random_recipes = obj['recipes']
     return render_template('all-recipes.html', 
-        random_recipes=random_recipes, 
+        # random_recipes=random_recipes, 
         option_allergens=option_allergens,
         option_cuisines=option_cuisines,
         option_diets=option_diets,
-        option_meals=option_meals
+        option_meals=option_meals,
+        user_added_recipes=user_added_recipes
         )
 
 # GET RECIPES DETAILS from API
@@ -150,9 +152,11 @@ def add_recipes():
 @app.route('/my_recipes', methods=['GET'])
 def my_recipes():
     if 'username' in session:
+        user_added_recipes = get_user_recipes()
         current_user = mongo.db.user.find_one({'username': session[
             'username'].title()})
-        return render_template('my-recipes.html', current_user=current_user)
+
+        return render_template('my-recipes.html', current_user=current_user, user_added_recipes=user_added_recipes)
     else:
         return redirect(url_for('index'))  
 
@@ -173,6 +177,10 @@ def get_diets():
 def get_meals():
     option_meals = mongo.db.meals.find().sort("meal_type", 1)
     return option_meals
+
+def get_user_recipes():
+    user_added_recipes = mongo.db.add_recipes.find()
+    return user_added_recipes
 
 
 if __name__ == '__main__':

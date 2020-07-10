@@ -44,35 +44,52 @@
 <div class="container cuisines">
   <section>
     <div id="results">
-    <h1 id="title-results" class="mt-4 mb-4 center-text">All Recipes</h1>
-     
-        <div class="container-fluid"> 
-          <div class="row">
-            
-            <div class="card-deck results">
-              {% for random in random_recipes %}
-              <div class="col-md-3">
-                <div class="card">
-                  <img src="{{ random.image }}" class="on-inview " alt="..." />
-                  <div class="card-body">
-                    <a
-                    href="{{url_for('recipe_details', recipe_id=random.id)}}" class="title-padding">{{ random.title }}</a>
-                  </div>
+      <h1 id="title-results" class="mt-4 mb-4 center-text">All Recipes</h1>
+
+      <div class="container-fluid"> 
+        <div class="row">    
+          <div class="card-deck results">
+            {% for random in random_recipes %}
+            <div class="col-md-3">
+              <div class="card">
+                <img src="{{ random.image }}" class="on-inview " alt="..." />
+                <div class="card-body">
+                  <a
+                  href="{{url_for('recipe_details', recipe_id=random.id)}}" class="title-padding">{{ random.title }}</a>
                 </div>
               </div>
+            </div>
+            {% endfor %}
+          </div>
+        </div>
+        {% if 'username' in session %}
+          <h1 class="mt-4 mb-4 center-text">Recipes by {{ session['username'].title() }}</h1>
+          <div class="container">
+            <div class="row">
+              {% for r in user_added_recipes %}
+              
+                  <div class="col-md-3">
+                    <div class="card-deck results">
+                      <div class="card text-center">
+                        <img src="../static/img/No_image_available.svg.png" class="img-responsive w-100" alt="{{r.recipe_name}}" />
+                        <div class="card-body">
+                          <a href="#" class="title-padding">{{r.recipe_name}}</a>
+                          <p class="small mt-2">{{r.cuisines_list}}</p>
+                        </div>
+                      </div>
+                  </div>
+                  </div>
               {% endfor %}
             </div>
-      </div>
- 
+          </div>
+
       </div>
     </div>
-
-      {% if 'username' in session %}
-        <h1 class="mt-4 mb-4 center-text">Recipes by {{ session['username'].title() }}</h1>
       {% else %}
               <div></div>
       {% endif %}
 
+     
   </section>
 </div>
 
