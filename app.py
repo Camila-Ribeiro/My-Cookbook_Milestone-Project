@@ -153,10 +153,14 @@ def add_recipes():
 def my_recipes():
     if 'username' in session:
         user_added_recipes = get_user_recipes()
+        user_recipes_count = get_user_recipes().count()
         current_user = mongo.db.user.find_one({'username': session[
             'username'].title()})
 
-        return render_template('my-recipes.html', current_user=current_user, user_added_recipes=user_added_recipes)
+        return render_template('my-recipes.html', 
+            current_user=current_user, 
+            user_added_recipes=user_added_recipes,
+            user_recipes_count=user_recipes_count)
     else:
         return redirect(url_for('index'))  
 
