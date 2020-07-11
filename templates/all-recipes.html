@@ -94,7 +94,7 @@
                       <div class="card text-center">
                         <img src="../static/img/No_image_available.svg.png" class="img-responsive w-100" alt="{{r.recipe_name}}" />
                         <div class="card-body">
-                          <a href="#" class="title-padding">{{r.recipe_name}}</a>
+                          <a href="{{url_for('user_recipe_details', recipe_id=r._id)}}" class="title-padding">{{r.recipe_name}}</a>
                           <p class="small mt-2">{{r.cuisines_list}}</p>
                         </div>
                       </div>

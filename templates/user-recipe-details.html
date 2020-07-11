@@ -2,7 +2,8 @@
 
 <div class="container mt-5 mb-5">
  {{user_recipe}}
-  <h1 class="text-center mb-5">{{ user_recipe.recipe_name}}</h1><img alt="Responsive image" class="img-recipe" src="#">
+
+  <h1 class="text-center mb-5">{{ user_recipe.recipe_name}}</h1><img alt="Responsive image" class="img-recipe" src="/static/img/No_image_available.svg.png">
 
 
 	<section class="recipe-info">
@@ -13,14 +14,21 @@
 			<div class="col">
 				<p><i class="icofont-people"></i> {{ user_recipe.serves }} Servings</p>
       </div>
-		</div>
+      <div class="col">
+        <p><i class="icofont-lunch"></i> {{ user_recipe.meal_type_list}} </p>
+      </div>
+    </div>
   </section>
-  
+
+  <!-- DIET TYPE SECTION-->
 	<section class="diets text-center mt-4">
 		<div class="row mt-5">
 
-      
-
+           
+        
+            <div class="col">
+              <p><i class="icofont-apple"></i> {{ user_recipe.diet_type_list }} </p>
+            </div> 
 		</div>
   </section>
 
@@ -32,8 +40,8 @@
         <div class="row">
           
             <div class="col-sm-6 col-md-2">
-              <p class="text-center">{{user_recipe.add_ingredients}} </p>
-              <!-- <img class="mx-auto d-block" src="https://spoonacular.com/cdn/ingredients_100x100/{{}}" alt=""> -->
+            
+              <p>{{user_recipe.add_ingredients}} </p>
               
             </div>
           
@@ -46,10 +54,11 @@
   <section class="instruction">
       <h3 class="mb-4">Instruction</h3>
       <hr>
- 
+      <p>{{user_recipe.add_instructions}} </p>
   </section>
 
-  
+  <button type="button" class="btn btn-color">Edit</button>
+  <button type="button" class="btn btn-color">Delete</button>
 </div>
 
 <!-- FOOTER -->
