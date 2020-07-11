@@ -1,5 +1,6 @@
 {% include 'base.html' %} {% include 'includes/_nav.html' %} {% block content %} 
 
+<!-- GET INSPIRED SECTION-->
 <div class="container mt-3">
   <section class="mb-5">
     <h1 class="mt-5 mb-3 text-center">Get Inspired</h1>
@@ -21,12 +22,17 @@
     </div>
   </section>
 </div>
+ 
+
+{% if 'username' in session %}
+
+<!-- FOR USERS LOGGED IN -->
 <div class="container-circles">
   <section class="own-cookbook">
     <h2 class="text-center pt-4">Make your own Cookbook</h2>
     <hr />
-
-    {% if 'username' in session %}
+    
+    
     <!-- https://codepen.io/cbracco/pen/qnduh -->
     <div class="container">
       <div class="row">
@@ -59,9 +65,62 @@
         </div>
       </div>
     </div>
-    {% endif %}
+    
   </section>
 </div>
+
+{% else %}
+
+<!-- FOR USERS NOT LOGGED IN -->
+<div class="container-circles">
+  <section class="own-cookbook">
+    <h2 class="text-center pt-4">How this website works</h2>
+    <hr />
+    
+    
+    <!-- https://codepen.io/cbracco/pen/qnduh -->
+    <div class="container">
+      <div class="row">
+        <div class="col-4">
+          <div class="circle">
+            <div class="circle__inner">
+              <div class="circle__wrapper">
+                <div class="circle__content">
+                  <p>1</p>
+                  <a class="color_text" href="{{url_for('add_recipes')}}">Add<br />your Recipes</a> </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-4">
+          <div class="circle">
+            <div class="circle__inner">
+              <div class="circle__wrapper">
+                <div class="circle__content">
+                  <p>2</p>
+                  <a class="color_text" href="#">Edit<br/>& Delete Recipes</a> </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-4">
+          <div class="circle">
+            <div class="circle__inner">
+              <div class="circle__wrapper">
+                <div class="circle__content">
+                  <p>3</p>
+                  <a class="color_text" href="#">Share<br/>your Recipes</a> </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    
+  </section>
+</div>
+
+{% endif %}
 
 <!-- FOOTER -->
 {% include 'includes/_footer.html' %}
