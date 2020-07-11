@@ -25,6 +25,8 @@
   <section class="own-cookbook">
     <h2 class="text-center pt-4">Make your own Cookbook</h2>
     <hr />
+
+    {% if 'username' in session %}
     <!-- https://codepen.io/cbracco/pen/qnduh -->
     <div class="container">
       <div class="row">
@@ -32,7 +34,7 @@
           <div class="circle">
             <div class="circle__inner">
               <div class="circle__wrapper">
-                <div class="circle__content">Add <br />your Recipes</div>
+                <div class="circle__content"><a class="color_text" href="{{url_for('add_recipes')}}">Add<br />your Recipes</a> </div>
               </div>
             </div>
           </div>
@@ -41,10 +43,7 @@
           <div class="circle">
             <div class="circle__inner">
               <div class="circle__wrapper">
-                <div class="circle__content">
-                  Edit <br />
-                  & Delete Recipes
-                </div>
+                <div class="circle__content"><a class="color_text" href="#">Edit<br />& Delete Recipes</a> </div>
               </div>
             </div>
           </div>
@@ -53,13 +52,14 @@
           <div class="circle">
             <div class="circle__inner">
               <div class="circle__wrapper">
-                <div class="circle__content">Share <br />your Recipes</div>
+                <div class="circle__content"><a class="color_text" href="#">Share<br />your Recipes</a> </div>
               </div>
             </div>
           </div>
         </div>
       </div>
     </div>
+    {% endif %}
   </section>
 </div>
 

@@ -1,11 +1,9 @@
 {% include 'base.html' %} {% include 'includes/_nav.html' %} {% block content %}
 
 <div class="container mt-5 mb-5">
- {{user_recipe}}
-
   <h1 class="text-center mb-5">{{ user_recipe.recipe_name}}</h1><img alt="Responsive image" class="img-recipe" src="/static/img/No_image_available.svg.png">
 
-
+  <!-- RECIPE INFO SECTION-->
 	<section class="recipe-info">
 		<div class="row">
 			<div class="col">
@@ -22,14 +20,9 @@
 
   <!-- DIET TYPE SECTION-->
 	<section class="diets text-center mt-4">
-		<div class="row mt-5">
-
-           
-        
-            <div class="col">
-              <p><i class="icofont-apple"></i> {{ user_recipe.diet_type_list }} </p>
-            </div> 
-		</div>
+    <div class="col bg-diet">
+      <p> {{ user_recipe.diet_type_list }} </p>
+    </div> 
   </section>
 
   <!-- INGREDIENTES SECTION-->
@@ -38,13 +31,13 @@
     <hr>
       <div class="container">
         <div class="row">
-          
-            <div class="col-sm-6 col-md-2">
-            
-              <p>{{user_recipe.add_ingredients}} </p>
-              
-            </div>
-          
+          <div class="col-sm-6 col-md-2">
+            <ul>
+              {% for list in user_recipe.add_ingredients %}
+                <li>{{list}}</li>
+              {% endfor %}
+            </ul>
+          </div>
         </div>
       </div>
   </section>
@@ -52,13 +45,25 @@
   
   <!-- INSTRUCTION SECTION-->
   <section class="instruction">
-      <h3 class="mb-4">Instruction</h3>
-      <hr>
-      <p>{{user_recipe.add_instructions}} </p>
+    <h3 class="mb-4">Instruction</h3>
+    <hr>
+    <div class="container">
+      <div class="row">
+        <div class="col-sm-6 col-md-2">
+          <ol>
+            {% for list in user_recipe.add_instructions %}
+              <li>{{list}}</li>
+            {% endfor %}
+          </ol>
+        </div>
+      </div>
+    </div>
   </section>
-
-  <button type="button" class="btn btn-color">Edit</button>
-  <button type="button" class="btn btn-color">Delete</button>
+  
+  <div class="mt-5">
+    <button type="button" class="btn btn-color mr-3">Edit</button>
+    <a href="#"><i class="icofont-bin lead color-bin"></i></a>
+  </div>
 </div>
 
 <!-- FOOTER -->

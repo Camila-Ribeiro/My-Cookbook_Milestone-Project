@@ -53,6 +53,9 @@ img.on-inview {
   color: #383b3f;
 }
 
+.color_text {
+  color: #383b3f;
+}
 /* --------------------------------------------------------------- header */
 .user-logged {
   background-color: rgba(97, 165, 160, 0.7);
@@ -181,7 +184,14 @@ img.on-inview {
     rgba(0, 0, 0, 0)
   );
 }
+/* ------------------------------------------------------- User-Recipe-Details */
+.bg-diet {
+  background-color: #e5c260;
+}
 
+.color-bin {
+  color: #60a59f;
+}
 /* ------------------------------------------------------- my-Recipes */
 /* .my-recipes img {
   width: 100%;
