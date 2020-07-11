@@ -2,39 +2,20 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <meta
-      name="viewport"
-      content="width=device-width, initial-scale=1, shrink-to-fit=no"
-    />
-
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
     <!-- Bootstrap CSS -->
-    <link
-      rel="stylesheet"
-      href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"
-    />
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"/>
 
     <!-- Icofont -->
-    <link rel="stylesheet" href="{{url_for('static',
-    filename='css/icofont/icofont.min.css')}}"" />
+    <link rel="stylesheet" href="{{url_for('static',filename='css/icofont/icofont.min.css')}}" />
 
     <!-- Slick CSS -->
-    <link
-      rel="stylesheet"
-      href="{{url_for('static', filename='css/slick.css')}}"
-      type="text/css"
-    />
-    <link
-      rel="stylesheet"
-      href="{{url_for('static', filename='css/slick-theme.css')}}"
-      type="text/css"
-    />
+    <link rel="stylesheet" href="{{url_for('static', filename='css/slick.css')}}" type="text/css" />
+    <link rel="stylesheet" href="{{url_for('static', filename='css/slick-theme.css')}}" type="text/css" />
 
     <!-- my own CSS -->
-    <link
-      rel="stylesheet"
-      href="{{url_for('static', filename='css/styles.css')}}"
-      type="text/css"
-    />
+    <link rel="stylesheet" href="{{url_for('static', filename='css/styles.css')}}" type="text/css" />
+    {{ JSGlue.include() }}
   </head>
   <body>
     <!-- Optional JavaScript -->

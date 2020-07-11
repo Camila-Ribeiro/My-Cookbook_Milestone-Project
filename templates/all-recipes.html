@@ -3,38 +3,55 @@
 <div class="container-fluid recipes">
     <div class="img-hero">
         <section class="jumbotron">
-          <h2 class="text-center">Select filter </h2>
+          <div>
+            <h2 class="text-center mb-4">Select filter </h2>
+          </div>  
             <div class="row">
-              
+
+              <!-- FILTER MEAL TYPE LIST SELECTION-->
+              <div class="col">
+                <p>Diet Label</p>
                 <select class="mr-3 w-auto custom-select select_list" name="diet_list" >
-                  <option selected> Diets</option>
+                  <option selected> Please select</option>
                   {% for select in option_diets %}
                       <option value="{{ select.diet_type }}">{{ select.diet_type }}</option>
                   {% endfor %}
                 </select>
+              </div>
 
+              <!-- FILTER ALLERGEN LIST SELECTION-->
+              <div class="col">
+                <p>Allergen</p>
                 <select class="mr-3 w-auto custom-select select_list" id="allergen_type" name="allergen_list" aria-label="Select Allergen(s)">
-                  <option selected> Allergens </option>
+                  <option selected> Please select </option>
                   {% for select in option_allergens %}
                       <option value="{{ select.allergen_type}}">{{ select.allergen_type }}</option>
                   {% endfor %}
-              </select>
+                </select>
+              </div>
 
-                <select class="mr-3 w-auto custom-select select_list" id="meal_type" name="meal_type_list" aria-label="Select Meal Type(s)">
-                  <option selected> Meals</option>
+              <!-- FILTER MEAL TYPE LIST SELECTION-->
+              <div class="col">
+                <p>Meal Type</p>
+                <select class="mr-3 w-auto custom-select select_list d-block" id="meal_type" name="meal_type_list" aria-label="Select Meal Type(s)">
+                  <option selected> Please select </option>
                   {% for select in option_meals %}
                       <option value="{{ select.meal_type}}">{{ select.meal_type }}</option>
                   {% endfor %}
                 </select>
+              </div>
 
+              <!-- FILTER CUISINES LIST SELECTION-->
+              <div class="col">
+                <p>Cuisines</p>
                 <select class="w-auto custom-select select_list" id="cuisines_type" name="cuisines_list" aria-label="Select Cuisine(s)">
-                  <option selected> Cuisines </option>
+                  <option selected> Please select </option>
                   {% for select in option_cuisines %}
                       <option value="{{ select.cuisine_type}}">{{ select.cuisine_type }}</option>
                   {% endfor %}
-              </select>
-                
+                </select>
               </div>
+            </div>
         </section>
     </div>
 </div>
@@ -48,18 +65,23 @@
 
       <div class="container-fluid"> 
         <div class="row">    
-          <div class="card-deck results">
-            {% for random in random_recipes %}
-            <div class="col-md-3">
-              <div class="card">
-                <img src="{{ random.image }}" class="on-inview " alt="..." />
-                <div class="card-body">
-                  <a
-                  href="{{url_for('recipe_details', recipe_id=random.id)}}" class="title-padding">{{ random.title }}</a>
+          <div class="card-deck">
+            <div class="results"></div>
+              {%if random_recipes%}
+              <div class="container">
+                <h1 id="title-results" class="mt-4 mb-4 center-text">Inspiration Recipes</h1>
+              </div>
+              {%endif%}
+              {% for random in random_recipes %}
+              <div class="col-md-3">
+                <div class="card">
+                  <img src="{{ random.image }}" class="on-inview " alt="{{ random.title }}" />
+                  <div class="card-body">
+                    <a href="{{url_for('recipe_details', recipe_id=random.id)}}" class="title-padding">{{ random.title }}</a>
+                  </div>
                 </div>
               </div>
-            </div>
-            {% endfor %}
+              {% endfor %}
           </div>
         </div>
         {% if 'username' in session %}
@@ -68,7 +90,7 @@
             <div class="row">
               {% for r in user_added_recipes %}
                   <div class="col-md-3">
-                    <div class="card-deck results">
+                    <div class="card-deck">
                       <div class="card text-center">
                         <img src="../static/img/No_image_available.svg.png" class="img-responsive w-100" alt="{{r.recipe_name}}" />
                         <div class="card-body">

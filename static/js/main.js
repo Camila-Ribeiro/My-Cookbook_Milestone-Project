@@ -15,12 +15,12 @@ $(document).ready(function(){
             },
             {
             breakpoint: 480,
-            settings: {
-                arrows: false,
-                centerMode: true,
-                centerPadding: '40px',
-                slidesToShow: 1
-            }
+                settings: {
+                    arrows: false,
+                    centerMode: true,
+                    centerPadding: '40px',
+                    slidesToShow: 1
+                }
             }
         ]
     });
@@ -28,34 +28,33 @@ $(document).ready(function(){
     var api_key = '7b98ae9af6fe4cc6b9a33b00e08db54d';
     var api_url = '';
     var imageUrl = "https://spoonacular.com/recipeImages/";
-    $('.select-list').on('change', function() {
+    $('.select_list').on('change', function() {
         var value = $(this).val();
-        //console.log(value);
 
         $.ajax({
+            method: "GET",
             url: 'https://api.spoonacular.com/recipes/search?diet='+value+'&apiKey='+api_key+'',
             contentType: "application/json",
             dataType: 'json',
-            success: function(obj){
-                //console.log(obj.baseUri);
+            success: function(obj){;
                 $("#title-results").html(value);
-                //console.log(obj.results[0]);
                 $.each( obj.results, function( index, cat ){
-                    //console.log(cat, index)
-                    $("#results .results").empty();
-                    
-                     $( "#results .results" ).after(
-                        '<a href="' + cat.sourceUrl + '"> \n ' +
-                        '<div class="link-preview"> \n ' +
-                            '<div class="preview-image" style="background-image:url('+imageUrl+cat.image+');display: block; width: 100%; height: 200px; position: relative; background-repeat: no-repeat; background-size: contain;"></div> \n ' +
-                            '<div style="width:70%;" class="link-info"> \n ' +
-                            '<h4>' + cat.title +'</h4> \n ' +
-                            '<p>' + cat.servings +'</p> \n ' +
-                            '</div><br> \n ' +
-                            '<a href="' + cat.sourceUrl + '" class="url-info"><i class="far fa-link"></i>' + cat.sourceUrl + '</a> \n ' +
-                            '</div></a>'
-                        );
+                   // $("#results .results").empty();
+                   let apiUrl = cat.id;
+                //    let urlLink = "$.post(Flask.url_for('recipe_details', recipe_id='"+apiUrl+"'))";
+                    $( "#results .results" ).after(
+                        "<div class='col-md-3'> \n " +
+                            "<div class='card'> \n " +
+                                "<img src="+imageUrl+cat.image+" class='on-inview' alt="+cat.title+" /> \n " +
+                                "<div class='card-body'> \n " +
+                                    "<a href='"+ 
+                                    Flask.url_for("recipe_details", "recipe_id="+apiUrl) +" class='title-padding'>"+cat.title+"</a>  \n " +
+                                "</div> \n " +
+                            "</div> \n " +
+                        "</div>" 
+                    );
                 });
+                $("html,body").animate({scrollTop:$("#title-results").offset().top}, 500);
             }
         })
     });
@@ -103,4 +102,7 @@ $(document).ready(function(){
         var remove_instructions = $(this).closest('div.added-input-instructions');
         $(remove_instructions).remove();
     });
-});
+
+
+
+});//.doc.ready

@@ -105,6 +105,15 @@ img.on-inview {
   margin-bottom: 50px;
 }
 
+.results{
+  display:none;
+  /* display: inherit;
+  -ms-flex-flow: inherit;
+  flex-flow: inherit;
+  margin-right: inherit;
+  margin-left: inherit; */
+}
+
 /* .responsive {
   width: 100%;
   height: auto;
@@ -308,7 +317,7 @@ img.on-inview {
   background-position: center;
   display: block;
   margin: 0 auto;
-  width: 560px;
+  width: 80%;
 }
 
 i:before {

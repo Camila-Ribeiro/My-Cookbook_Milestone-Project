@@ -10,7 +10,7 @@
           <img src="https://images.pexels.com/photos/946351/pexels-photo-946351.jpeg?w=500&h=650&auto=compress&cs=tinysrgb" alt="profile-sample1" class="background"/>
           <img src="https://randomuser.me/api/portraits/women/20.jpg" alt="profile-image" class="profile"/>
               <div class="card-content">
-              <h2>{{ session['username'].title() }}<small>Recipes: {{user_recipes_count}}  </small></h3>
+              <h2>{{ session['username'].title() }}<small>Recipes: {{ user_recipes_count }}  </small></h3>
               <div class="icon-block"><a href="#"><i class="fa fa-facebook"></i></a><a href="#"> <i class="fa fa-twitter"></i></a><a href="#"> <i class="fa fa-google-plus"></i></a></div>
               </div>
       </div>
@@ -21,11 +21,11 @@
           {% for r in user_added_recipes %}
           <div class="col-md-4">
             
-            <div class="card-deck results">
+            <div class="card-deck ">
                 <div class="card text-center">
                   <img src="../static/img/No_image_available.svg.png" class="img-responsive w-100" alt="{{r.recipe_name}}" />
                   <div class="card-body">
-                    <a href="#" class="title-padding">{{r.recipe_name}}</a>
+                    <a href="{{url_for('user_recipe_details', recipe_id=r._id)}}" class="title-padding">{{r.recipe_name}}</a>
                     <p class="small mt-2">{{r.cuisines_list}}</p>
                   </div>
                  

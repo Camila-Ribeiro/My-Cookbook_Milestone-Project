@@ -1,6 +1,7 @@
 import os
 import requests
 from flask import Flask, render_template, redirect, request, url_for, session
+from flask_jsglue import JSGlue
 from flask_pymongo import PyMongo
 from bson.objectid import ObjectId
 import bcrypt
@@ -19,24 +20,28 @@ app.config['MONGO_URI'] = os.environ.get('MONGO_URI')
 app.secret_key = os.environ.get('SECRET_KEY')
 
 mongo = PyMongo(app)
-
+jsglue = JSGlue(app)
 api_key = os.environ['api_key']
 
 # single decoretor '/'set the default function to  call '/index'
 @app.route('/')
 @app.route('/index', methods=['GET','POST'])
 def index():
-    r = requests.get(
-        'https://api.spoonacular.com/recipes/random?number=10&apiKey='+api_key+'')
-    json_obj = r.json()
-    recipes = json_obj['recipes']
+    # r = requests.get(
+    #     'https://api.spoonacular.com/recipes/random?number=10&apiKey='+api_key+'')
+    # json_obj = r.json()
+    # recipes = json_obj['recipes']
 
     if 'username' in session:
         current_user = mongo.db.user.find_one({'username': session[
             'username'].title()})
-        return render_template('index.html', recipes=recipes, current_user=current_user)
+        return render_template('index.html', 
+        # recipes=recipes, 
+        current_user=current_user)
     else:
-        return render_template('index.html', recipes=recipes)
+        return render_template('index.html', 
+        # recipes=recipes
+        )
 
 # LOGIN https://www.youtube.com/watch?v=vVx1737auSE&t=621s
 @app.route('/login', methods=['GET','POST'])
@@ -99,16 +104,25 @@ def all_recipes():
         user_added_recipes=user_added_recipes
         )
 
+
 # GET RECIPES DETAILS from API
 @app.route('/recipe_details/<recipe_id>', methods=['GET'])
 def recipe_details(recipe_id):
     r = requests.get('https://api.spoonacular.com/recipes/'+recipe_id+'/information?apiKey='+api_key+'')
-    APIused = r.headers.set('X-API-Quota-Used', "default-src 'self'")
+    # APIused = r.headers.set('X-API-Quota-Used', "default-src 'self'")
     obj = r.json()
     details = obj
-    return render_template('recipe-details.html', details=details, APIused=APIused)
+    return render_template('recipe-details.html', details=details)
 
-# ADD RECIPES
+
+# GET USER RECIPES DETAILS from MONGODB
+@app.route('/user_recipe_details/<recipe_id>', methods=['GET'])
+def user_recipe_details(recipe_id):
+    getId = recipe_id
+    user_recipe = mongo.db.add_recipes.find_one({'_id':ObjectId(getId)})
+    return render_template('user-recipe-details.html', user_recipe=user_recipe)
+
+# ADD RECIPES TO MONGODB
 @app.route('/add_recipes', methods=['GET', 'POST'])
 def add_recipes():
     if 'username' in session:
@@ -154,13 +168,15 @@ def my_recipes():
     if 'username' in session:
         user_added_recipes = get_user_recipes()
         user_recipes_count = get_user_recipes().count()
+        
         current_user = mongo.db.user.find_one({'username': session[
             'username'].title()})
 
         return render_template('my-recipes.html', 
             current_user=current_user, 
             user_added_recipes=user_added_recipes,
-            user_recipes_count=user_recipes_count)
+            user_recipes_count=user_recipes_count,
+            )
     else:
         return redirect(url_for('index'))  
 
