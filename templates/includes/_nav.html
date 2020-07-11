@@ -1,8 +1,9 @@
+
     <!-- Navigation -->
     <header>
         {% if 'username' in session %}
             <div class="container-fluid text-right small user-logged">
-                <a href="{{url_for('my_recipes')}}" class="d-inline">
+                <a href="{{url_for('my_recipes')}}" class="d-inline user-logged-logout ">
                     <span class="icofont-user "></span> {{ session['username'].title() }} /
                 </a>
                 <a class="nav-item nav-linkd-inline" href="{{url_for('logout')}}">Log Out</a>
@@ -18,10 +19,10 @@
                 
             <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
                 <div class="navbar-nav ml-auto">
-                    <a class="nav-item nav-link" href="{{url_for('all_recipes')}}">All Recipes <span class="sr-only">(current)</span></a>
+                    <a id="all_recipes" class="nav-item nav-link" href="{{url_for('all_recipes')}}">All Recipes<span class="sr-only">(current)</span></a>
                     {% if 'username' in session %}
-                        <a class="nav-item nav-link" href="{{url_for('my_recipes')}}">My Recipes</a>    
-                        <a class="nav-item nav-link" href="{{url_for('add_recipes')}}">Add Recipes</a> 
+                        <a id="my_recipes" class="nav-item nav-link" href="{{url_for('my_recipes')}}">My Recipes</a>    
+                        <a id="add_recipes" class="nav-item nav-link" href="{{url_for('add_recipes')}}">Add Recipes</a> 
                     {% else %}
                         <a class="nav-item nav-link" href="{{url_for('login')}}">Login</a>
                         <a class="nav-item nav-link" href="{{url_for('register')}}">Register</a>

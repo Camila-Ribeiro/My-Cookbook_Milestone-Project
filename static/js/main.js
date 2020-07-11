@@ -1,4 +1,8 @@
 $(document).ready(function(){
+    var scriptElement = $('#baseScript')[0];
+    var path = scriptElement.getAttribute('data-path');
+    console.log(path)
+    $('a[href="'+path+'"]').addClass("active");
     $('.center').slick({
         centerMode: true,
         // centerPadding: '100px',
