@@ -11,8 +11,8 @@
               <!-- FILTER MEAL TYPE LIST SELECTION-->
               <div class="col">
                 <p>Diet Label</p>
-                <select class="mr-3 w-auto custom-select select_list" name="diet_list" >
-                  <option selected> Please select</option>
+                <select class="mr-3 w-100 selectpicker select_list show-tick" name="diet_list" title="Please select">
+                  <option class="bs-title-option d-none" value="" ></option>
                   {% for select in option_diets %}
                       <option value="{{ select.diet_type }}">{{ select.diet_type }}</option>
                   {% endfor %}
@@ -22,8 +22,8 @@
               <!-- FILTER ALLERGEN LIST SELECTION-->
               <div class="col">
                 <p>Allergen</p>
-                <select class="mr-3 w-auto custom-select select_list" id="allergen_type" name="allergen_list" aria-label="Select Allergen(s)">
-                  <option selected> Please select </option>
+                <select class="mr-3 w-100 selectpicker select_list show-tick" id="allergen_type" name="allergen_list" aria-label="Select Allergen(s)" title="Please select">
+                  <option class="bs-title-option d-none" value=""></option>
                   {% for select in option_allergens %}
                       <option value="{{ select.allergen_type}}">{{ select.allergen_type }}</option>
                   {% endfor %}
@@ -33,8 +33,8 @@
               <!-- FILTER MEAL TYPE LIST SELECTION-->
               <div class="col">
                 <p>Meal Type</p>
-                <select class="mr-3 w-auto custom-select select_list d-block" id="meal_type" name="meal_type_list" aria-label="Select Meal Type(s)">
-                  <option selected> Please select </option>
+                <select class="mr-3 w-100 selectpicker select_list d-block show-tick" id="meal_type" name="meal_type_list" aria-label="Select Meal Type(s)" title="Please select">
+                  <option class="bs-title-option d-none" value=""></option>
                   {% for select in option_meals %}
                       <option value="{{ select.meal_type}}">{{ select.meal_type }}</option>
                   {% endfor %}
@@ -44,8 +44,8 @@
               <!-- FILTER CUISINES LIST SELECTION-->
               <div class="col">
                 <p>Cuisines</p>
-                <select class="w-auto custom-select select_list" id="cuisines_type" name="cuisines_list" aria-label="Select Cuisine(s)">
-                  <option selected> Please select </option>
+                <select class="w-100 selectpicker select_list show-tick" id="cuisines_type" name="cuisines_list" aria-label="Select Cuisine(s)" title="Please select">
+                  <option class="bs-title-option d-none" value=""></option>
                   {% for select in option_cuisines %}
                       <option value="{{ select.cuisine_type}}">{{ select.cuisine_type }}</option>
                   {% endfor %}
@@ -97,10 +97,10 @@
             <div class="row">
               {% for r in user_added_recipes %}
                   <div class="col-md-3">
-                    <div class="card-deck card-custom">
+                    <div class="card-deck card-custom mb-5">
                       <div class="card text-center">
                         
-                        {% if r.recipe_image is defined %}
+                        {% if r.recipe_image is defined and r.recipe_image  | length > 0 %}
                           <img src="{{r.recipe_image}}" class="img-responsive w-100" alt="{{r.recipe_image}}" />
                         {% else %}
                           <img src="../static/img/No_image_available.png" class="img-responsive w-100" alt="Image Not Available" />

@@ -8,8 +8,8 @@
             <div class="col">
                 <div class="form-group">
                     <p>Cuisines</p>
-                    <select class="d-block custom-select" id="cuisines_type" name="cuisines_list" aria-label="Select Cuisine(s)" required>
-                        <option selected> Please select </option>
+                    <select class="d-block selectpicker" id="cuisines_type" name="cuisines_list" aria-label="Select Cuisine(s)" title="Please Select" required>
+                        <option class="bs-title-option d-none" value=""></option>
                         {% for select in option_cuisines %}
                             <option value="{{ select.cuisine_type}}">{{ select.cuisine_type }}</option>
                         {% endfor %}
@@ -20,8 +20,8 @@
             <div class="col">
                 <div class="form-group">
                     <p>Allergen</p>
-                    <select class="d-block custom-select" id="allergen_type" name="allergen_list" aria-label="Select Allergen(s)" required>
-                        <option selected> Please select </option>
+                    <select class="d-block selectpicker" id="allergen_type" name="allergen_list" aria-label="Select Allergen(s)" multiple data-selected-text-format="count" data-max-options="4" title="Please Select" required>
+                        <option class="bs-title-option d-none" value=""></option>
                         {% for select in option_allergens %}
                             <option value="{{ select.allergen_type}}">{{ select.allergen_type }}</option>
                         {% endfor %}
@@ -32,8 +32,8 @@
             <div class="col">
                 <div class="form-group">
                     <p>Meal Type</p>
-                    <select class="d-block custom-select" id="meal_type" name="meal_type_list" aria-label="Select Meal Type(s)" required>
-                        <option selected> Please select </option>
+                    <select class="d-block selectpicker" id="meal_type" name="meal_type_list" aria-label="Select Meal Type(s)" multiple data-selected-text-format="count" data-max-options="4" title="Please Select" required>
+                        <option class="bs-title-option d-none" value=""></option>
                         {% for select in option_meals %}
                             <option value="{{ select.meal_type}}">{{ select.meal_type }}</option>
                         {% endfor %}
@@ -44,8 +44,8 @@
             <div class="col">
                 <div class="form-group">
                     <p>Diet Label</p>
-                    <select class="d-block custom-select" id="diet_type" name="diet_type_list" aria-label="Select diet(s)" required>
-                        <option selected> Please select</option>
+                    <select class="d-block selectpicker" id="diet_type" name="diet_type_list" aria-label="Select diet(s)" multiple data-selected-text-format="count" data-max-options="4" title="Please Select" required>
+                        <option class="bs-title-option d-none" value=""></option>
                         {% for select in option_diets %}
                             <option value="{{ select.diet_type }}">{{ select.diet_type }}</option>
                         {% endfor %}

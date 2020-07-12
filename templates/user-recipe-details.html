@@ -10,14 +10,11 @@
       <!-- RECIPE INFO SECTION-->
       <section class="recipe-info">
         <div class="row">
-          <div class="col">
+          <div class="col-md-6">
             <p><i class="icofont-clock-time"></i> Ready in {{ user_recipe.prep_time }} min</p>
           </div>
-          <div class="col">
+          <div class="col-md-6">
             <p><i class="icofont-people"></i> {{ user_recipe.serves }} Servings</p>
-          </div>
-          <div class="col">
-            <p><i class="icofont-lunch"></i> {{ user_recipe.meal_type_list}} </p>
           </div>
         </div>
       </section>
@@ -26,8 +23,15 @@
     <!-- DIET TYPE SECTION-->
     <div class="col-md-3 text-center mt-4">
       <div class="diets">
-        <h1 class="mb-3">Diets Type</h1>
-          <p> {{ user_recipe.diet_type_list }} </p>
+        <h3 class="mb-1">Diets Type</h3>
+        {% for d in user_recipe.diet_type_list %}
+          <p class="small mb-1"> {{ d }} </p>
+        {% endfor %}
+        <!-- MEAL TYPE SECTION-->
+        <h3 class="mb-1 mt-3">Meal Type</h3>
+        {% for m in user_recipe.meal_type_list %}
+          <p class="small mb-1"> {{ m }} </p>
+        {% endfor %}
       </div> 
     </div>
   </div> 

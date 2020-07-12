@@ -24,9 +24,9 @@
           {% for r in user_added_recipes %}
           <div class="col-sm-6">
             
-            <div class="card-deck card-recipes mb-3">
+            <div class="card-deck card-recipes mb-5">
                 <div class="card text-center">
-                  {% if r.recipe_image is defined %}
+                  {% if r.recipe_image is defined and r.recipe_image | length > 0 %}
                       <img src="{{r.recipe_image}}" class="img-responsive w-100" alt="{{r.recipe_image}}" />
                     {% else %}
                       <img src="../static/img/No_image_available.png" class="img-responsive w-100" alt="Image Not Available" />
