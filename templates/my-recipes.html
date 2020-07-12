@@ -22,13 +22,17 @@
       <div class="container-fluid"> 
         <div class="row">
           {% for r in user_added_recipes %}
-          <div class="col-md-4">
+          <div class="col-sm-6">
             
-            <div class="card-deck ">
+            <div class="card-deck card-recipes mb-3">
                 <div class="card text-center">
-                  <img src="../static/img/No_image_available.svg.png" class="img-responsive w-100" alt="{{r.recipe_name}}" />
+                  {% if r.recipe_image is defined %}
+                      <img src="{{r.recipe_image}}" class="img-responsive w-100" alt="{{r.recipe_image}}" />
+                    {% else %}
+                      <img src="../static/img/No_image_available.png" class="img-responsive w-100" alt="Image Not Available" />
+                  {% endif %}
                   <div class="card-body">
-                    <a href="{{url_for('user_recipe_details', recipe_id=r._id)}}" class="title-padding">{{r.recipe_name}}</a>
+                    <a href="{{url_for('user_recipe_details', recipe_id=r._id)}}" class="">{{r.recipe_name |upper}}</a>
                     <p class="small mt-2">{{r.cuisines_list}}</p>
                     <button type="button" class="btn btn-color">Edit</button>
                     <a href="#"><i class="icofont-bin lead color-bin"></i></a>

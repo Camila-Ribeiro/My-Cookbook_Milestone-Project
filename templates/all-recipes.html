@@ -75,26 +75,39 @@
               {% for random in random_recipes %}
               <div class="col-md-3">
                 <div class="card">
-                  <img src="{{ random.image }}" class="on-inview " alt="{{ random.title }}" />
+                  {% if random.image is defined and random.image | length > 0 %}
+                      <img src="{{ random.image }}" class="on-inview " alt="{{ random.title }}" />
+                    {% else %}
+                      <img src="../static/img/No_image_available.png" class="img-responsive w-100" alt="Image Not Available" />
+                  {% endif %}
+                  
                   <div class="card-body">
-                    <a href="{{url_for('recipe_details', recipe_id=random.id)}}" class="title-padding">{{ random.title }}</a>
+                    <a href="{{url_for('recipe_details', recipe_id=random.id)}}" class="">{{ random.title }}</a>
                   </div>
                 </div>
               </div>
               {% endfor %}
           </div>
         </div>
+
+        <!-- User recipe cards -->
         {% if 'username' in session %}
           <h1 class="mt-4 mb-4 center-text">Recipes by {{ session['username'].title() }}</h1>
           <div class="container">
             <div class="row">
               {% for r in user_added_recipes %}
                   <div class="col-md-3">
-                    <div class="card-deck">
+                    <div class="card-deck card-custom">
                       <div class="card text-center">
-                        <img src="../static/img/No_image_available.svg.png" class="img-responsive w-100" alt="{{r.recipe_name}}" />
+                        
+                        {% if r.recipe_image is defined %}
+                          <img src="{{r.recipe_image}}" class="img-responsive w-100" alt="{{r.recipe_image}}" />
+                        {% else %}
+                          <img src="../static/img/No_image_available.png" class="img-responsive w-100" alt="Image Not Available" />
+                        {% endif %}
+                        
                         <div class="card-body">
-                          <a href="{{url_for('user_recipe_details', recipe_id=r._id)}}" class="title-padding">{{r.recipe_name}}</a>
+                          <a href="{{url_for('user_recipe_details', recipe_id=r._id)}}" class="">{{r.recipe_name |upper}}</a>
                           <p class="small mt-2">{{r.cuisines_list}}</p>
                         </div>
                       </div>

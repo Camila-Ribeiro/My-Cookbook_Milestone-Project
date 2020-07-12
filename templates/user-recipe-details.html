@@ -1,29 +1,36 @@
 {% include 'base.html' %} {% include 'includes/_nav.html' %} {% block content %}
 
 <div class="container mt-5 mb-5">
-  <h1 class="text-center mb-5">{{ user_recipe.recipe_name}}</h1><img alt="Responsive image" class="img-recipe" src="/static/img/No_image_available.svg.png">
+  <div class="row">
+    <div class="col-md 9">
+      <h1 class="text-center mb-5">{{ user_recipe.recipe_name |capitalize }}</h1>
+      <img alt="Responsive image" class="img-recipe" src="/static/img/No_image_available.png">
+    
 
-  <!-- RECIPE INFO SECTION-->
-	<section class="recipe-info">
-		<div class="row">
-			<div class="col">
-				<p><i class="icofont-clock-time"></i> Ready in {{ user_recipe.prep_time }} min</p>
-			</div>
-			<div class="col">
-				<p><i class="icofont-people"></i> {{ user_recipe.serves }} Servings</p>
-      </div>
-      <div class="col">
-        <p><i class="icofont-lunch"></i> {{ user_recipe.meal_type_list}} </p>
-      </div>
+      <!-- RECIPE INFO SECTION-->
+      <section class="recipe-info">
+        <div class="row">
+          <div class="col">
+            <p><i class="icofont-clock-time"></i> Ready in {{ user_recipe.prep_time }} min</p>
+          </div>
+          <div class="col">
+            <p><i class="icofont-people"></i> {{ user_recipe.serves }} Servings</p>
+          </div>
+          <div class="col">
+            <p><i class="icofont-lunch"></i> {{ user_recipe.meal_type_list}} </p>
+          </div>
+        </div>
+      </section>
     </div>
-  </section>
 
-  <!-- DIET TYPE SECTION-->
-	<section class="diets text-center mt-4">
-    <div class="col bg-diet">
-      <p> {{ user_recipe.diet_type_list }} </p>
-    </div> 
-  </section>
+    <!-- DIET TYPE SECTION-->
+    <div class="col-md-3 text-center mt-4">
+      <div class="diets">
+        <h1 class="mb-3">Diets Type</h1>
+          <p> {{ user_recipe.diet_type_list }} </p>
+      </div> 
+    </div>
+  </div> 
 
   <!-- INGREDIENTES SECTION-->
   <section class="ingredient">
@@ -34,14 +41,13 @@
           <div class="col-sm-6 col-md-2">
             <ul>
               {% for list in user_recipe.add_ingredients %}
-                <li>{{list}}</li>
+                <li>{{list |capitalize}}</li>
               {% endfor %}
             </ul>
           </div>
         </div>
       </div>
   </section>
-
   
   <!-- INSTRUCTION SECTION-->
   <section class="instruction">
@@ -52,7 +58,7 @@
         <div class="col-sm-6 col-md-2">
           <ol>
             {% for list in user_recipe.add_instructions %}
-              <li>{{list}}</li>
+              <li>{{list |capitalize}}</li>
             {% endfor %}
           </ol>
         </div>

@@ -138,6 +138,7 @@ def add_recipes():
         if request.method == 'POST':
             add_recipes = mongo.db.add_recipes
             add_recipes.insert_one({'user_recipe': request.form['user_recipe'],
+                'recipe_image': request.form['recipe_image'],
                 'cuisines_list': request.form['cuisines_list'],
                 'allergen_list': request.form['allergen_list'],
                 'meal_type_list': request.form['meal_type_list'],
@@ -147,7 +148,6 @@ def add_recipes():
                 'serves': request.form['serves'],
                 'add_ingredients': request.form.getlist('add_ingredients'),
                 'add_instructions': request.form.getlist('add_instructions'),
-                # 'img_url': request.form['img_url']
                 })
 
             # add_recipes.insert_one(request.form.to_dict())

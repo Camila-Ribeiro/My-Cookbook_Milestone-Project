@@ -1,52 +1,52 @@
 {% include 'base.html' %} {% include 'includes/_nav.html' %} {% block content %}
 
 <div class="container mt-5 mb-5">
-	<h1 class="text-center mb-5">{{ details.title }}</h1><img alt="Responsive image" class="img-recipe" src="{{details.image}}">
-	<section class="recipe-info">
-		<div class="row">
-			<div class="col">
-				<p><i class="icofont-like"></i> {{ details.aggregateLikes }} likes</p>
-			</div>
-			<div class="col">
-				<p><i class="icofont-clock-time"></i> Ready in {{ details.readyInMinutes }} min</p>
-			</div>
-			<div class="col">
-				<p><i class="icofont-people"></i> {{ details.servings }} Servings</p>
-      </div>
+  <div class="row">
+    <div class="col-md-9">
+      <h1 class="text-center mb-5">{{ details.title |capitalize }}</h1>
+      <img alt="Responsive image" class="img-recipe" src="{{details.image}}">
     
-      {% if details.dishTypes %}
-        <div class="col">
-          {% for dish in details.dishTypes%}
-          <p><i class="icofont-lunch"></i> {{ dish if dish is not none }} </p>
-          {% endfor %}
+      <!-- RECIPE INFO SECTION-->
+      <section class="recipe-info">
+        <div class="row">
+          <div class="col">
+            <div class="row">
+              <div class="col-3">
+                <p><i class="icofont-like"></i> {{ details.aggregateLikes }} likes</p>
+              </div>
+              <div class="col-3">
+                <p><i class="icofont-clock-time"></i> Ready in {{ details.readyInMinutes }} min</p>
+              </div>
+              <div class="col-3">
+                <p><i class="icofont-people"></i> {{ details.servings }} Servings</p>
+              </div>
+          
+              {% if details.dishTypes %}
+                <div class="col-3">
+                  {% for dish in details.dishTypes%}
+                  <p><i class="icofont-lunch"></i> {{ dish if dish is not none }} </p>
+                  {% endfor %}
+                </div>
+              {% endif %}
+            </div>
+          </div>
         </div>
-      {% endif %}
-		</div>
-  </section>
+      </section>
+    </div>
   
-  <!-- DIET TYPE SECTION-->
-	<section class="diets text-center mt-4">
-		<div class="row mt-5">
-
-      {% if details.diets %}
-        {% for diets in details.diets %}
-       
-         
-            <!-- <div class="col">
-              <p><i class="icofont-chicken"></i> </p>
-            </div> -->
-           
-        
-            <div class="col">
-              <p><i class="icofont-apple"></i> {{ diets if diets is not none }} </p>
-            </div> 
-
-        {% endfor %}
-      {% endif %}
-
-		</div>
-  </section>
-
+    <!-- DIET TYPE SECTION-->
+    <div class="col-md-3 text-center mt-4">
+      <div class="diets">
+        <h1 class="mb-3">Diets Type</h1>
+        {% if details.diets %}
+          {% for diets in details.diets %}
+              <p>{{ diets if diets is not none }} </p>
+          {% endfor %}
+        {% endif %}
+      </div>
+    </div>
+  </div>
+   
   <!-- INGREDIENTES SECTION-->
   <section class="ingredient">
     <h3 class="mb-4">Ingredients</h3>
@@ -64,7 +64,6 @@
       </div>
   </section>
 
-  
   <!-- EQUIPMENT SECTION-->
 	<section class="equipment">
     <h3 class="mb-4">Equipment</h3>
@@ -89,11 +88,13 @@
   <section class="instruction">
       <h3 class="mb-4">Instruction</h3>
       <hr>
-      {% for instructions in details.analyzedInstructions %}
-        {% for step in instructions.steps %}
-          <p><strong>{{ step.number }}. </strong> {{ step.step }}</p>
+      <ol>
+        {% for instructions in details.analyzedInstructions %}
+          {% for step in instructions.steps %}
+            <li>{{ step.step }}</li>
+          {% endfor %}
         {% endfor %}
-      {% endfor %}
+      </ol>
   </section>
 
   <!-- WINE PAIRING SECTION-->

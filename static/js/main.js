@@ -1,7 +1,7 @@
 $(document).ready(function(){
     var scriptElement = $('#baseScript')[0];
     var path = scriptElement.getAttribute('data-path');
-    console.log(path)
+    
     $('a[href="'+path+'"]').addClass("active");
     $('.center').slick({
         centerMode: true,
@@ -28,6 +28,7 @@ $(document).ready(function(){
             }
         ]
     });
+
 
     var api_key = '7b98ae9af6fe4cc6b9a33b00e08db54d';
     var api_url = '';
@@ -108,5 +109,5 @@ $(document).ready(function(){
     });
 
 
-
 });//.doc.ready
+

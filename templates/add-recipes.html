@@ -2,7 +2,7 @@
 {% block content %} 
 <div class="container mt-5 mb-5 mx-auto d-block">
     <h1 class="text-center mb-5">Add Recipes</h1>
-    <form action="upload.php" method="POST" class="recipe-form w-100">
+    <form action="" method="POST" class="recipe-form w-100">
         <div class="row">
             <!-- ADD CUISINES LIST SELECTION-->
             <div class="col">
@@ -59,10 +59,12 @@
             <input type="text" class="form-control" id="recipe" name="recipe_name" placeholder="" aria-describedby="recipeName" required />
             <input type="hidden" id="user_recipe" name="user_recipe" value="{{session['username'].title()}}" />
         </div>
-        <div class="form-group mt-3">
-            <label for="recipe_img">Recipe Image</label>
-            <input type="submit" class="form-control" id="recipe_img" name="recipe_img" value="Upload Image" placeholder="" aria-describedby="recipeImage" required />
+        
+        <div class="form-group">
+            <label for="recipe_image">Recipe Image</label>
+            <input type="file" class="form-control-file" name="recipe_image" id="recipe_image">
         </div>
+          
         <div class="row mt-4">
             <div class="col">
                 <label for="prep">Preparation Time:</label>
@@ -92,7 +94,7 @@
             </div>
         </div>
         <div class="add-recipes mt-5 mx-auto">
-            <button class="btn_add_recipes btn btn-color" value="submit"> Add recipes </button>
+            <button class="btn_add_recipes btn btn-color w-100" value="submit"> Add recipes </button>
         </div>
     </form>
 </div>
