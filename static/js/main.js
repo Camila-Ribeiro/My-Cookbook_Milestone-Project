@@ -74,7 +74,7 @@ $(document).ready(function(){
 
     function add_Ingredient() {
         var add_div = `<div class= "added-input-ingredients">
-                        <input type="text" class="form-control mt-2" name="add_ingredients" placeholder="add ingredient" minlength="1" aria-describedby="ingredients" />
+                        <input type="text" class="form-control mt-2" name="add_ingredients" placeholder="add ingredient" minlength="1" aria-describedby="ingredients" required/>
                             <span>
                                 <i class="icofont-close-circled d-inline"></i>
                             </span>
@@ -96,7 +96,7 @@ $(document).ready(function(){
 
     function add_Instruction() {
         var add_div = `<div class= "added-input-instructions">
-                        <input type="text" class="form-control mt-2" name="add_instructions" placeholder="add instruction" minlength="1" aria-describedby="add_instructions" />
+                        <input type="text" class="form-control mt-2" name="add_instructions" placeholder="add instruction" minlength="1" aria-describedby="add_instructions" required/>
                             <span>
                                 <i class="icofont-close-circled d-inline"></i>
                             </span>

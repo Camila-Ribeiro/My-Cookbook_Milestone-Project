@@ -35,9 +35,9 @@
                     <a href="{{url_for('user_recipe_details', recipe_id=r._id)}}" class="">{{r.recipe_name |upper}}</a>
                     <p class="small mt-2">{{r.cuisines_list}}</p>
                     
-                    <button type="button" class="btn btn-color" onclick="window.location.href='{{url_for('edit_recipe',recipe_id=r._id)}}' ">Edit</button>
+                    <button type="button" class="btn btn-color" onclick="window.location.href='{{ url_for('edit_recipe',recipe_id=r._id) }}' ">Edit</button>
                     
-                    <a href="#"><i class="icofont-bin lead color-bin"></i></a>
+                    <a href="{{ url_for('delete_recipe', recipe_id=r._id )}}"><i class="icofont-bin lead color-bin"></i></a>
                   </div>
                  
                 </div>

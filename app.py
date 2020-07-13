@@ -228,6 +228,13 @@ def update_recipe(recipe_id):
     })
     return redirect(url_for('my_recipes'))
 
+# DELETE RECIPES
+@app.route('/delete_recipe/<recipe_id>')
+def delete_recipe(recipe_id):
+    mongo.db.add_recipes.remove({'_id': ObjectId(recipe_id)})
+    return redirect(url_for('my_recipes'))
+
+
 # FUNCTION GET USER ADDED RECIPES
 def get_user_recipes():
     user_added_recipes = mongo.db.add_recipes.find()
