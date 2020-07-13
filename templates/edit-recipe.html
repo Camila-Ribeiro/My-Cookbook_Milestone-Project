@@ -1,0 +1,147 @@
+{% include 'base.html' %} {% include 'includes/_nav.html' %} 
+{% block content %} 
+
+<div class="container mt-5 mb-5 mx-auto d-block">
+    <h1 class="text-center mb-5">Edit Recipe</h1>
+    <form action="{{ url_for('update_recipe', recipe_id=recipe_id._id) }}" method="POST" class="recipe-form w-100">
+        <div class="row">
+            <!-- EDIT CUISINES LIST SELECTION-->
+            <div class="col">
+                <div class="form-group">
+                    <p>Cuisines</p>
+                    <select class="d-block selectpicker show-tick" id="cuisines_type" name="cuisines_list" aria-label="Select Cuisine(s)" title="Please Select" required>
+                        <option class="bs-title-option d-none" value=""></option>
+                        <option value="{{recipe_id.cuisines_list }}" selected >{{recipe_id.cuisines_list }}</option>   
+                        {% for select in option_cuisines %}
+                            {% if not select.cuisine_type == recipe_id.cuisines_list %}
+                                <option value="{{ select.cuisine_type }}" >{{ select.cuisine_type }}</option>
+                            {% endif %}
+                        {% endfor %} 
+                    </select>
+                </div>
+            </div>
+
+            <!-- EDIT ALLERGEN LIST SELECTION-->
+            <div class="col">
+                <div class="form-group">
+                    <p>Allergen</p>
+                    <select class="d-block selectpicker show-tick" id="allergen_type" name="allergen_list" aria-label="Select Allergen(s)" multiple data-selected-text-format="count" data-max-options="4" title="Please Select" >
+                        <option class="bs-title-option d-none" value=""></option>    
+                        {% for selected in allergen_list %}
+                            
+                               
+                        <option value="{{ selected }}" selected >{{ selected }}</option> 
+                            {% for option in option_allergens %} 
+                                {% if option == selected  %}
+                                    <option value="{{ option.allergen_type}}" >{{ option.allergen_type }}</option>
+
+                        
+                                     
+
+                                {% endif %}
+                            {% endfor %} 
+                            
+                        {% endfor %}   
+
+                       
+                    
+                    </select>
+                </div>
+            </div>
+
+            <!-- EDIT MEAL TYPE LIST SELECTION-->
+            <div class="col">
+                <div class="form-group">
+                    <p>Meal Type</p>
+                    <select class="d-block selectpicker show-tick" id="meal_type" name="meal_type_list" aria-label="Select Meal Type(s)" multiple data-selected-text-format="count" data-max-options="4" title="Please Select" >
+                        <option class="bs-title-option d-none" value=""></option>
+                        {% for meal in recipe_id.meal_type_list %}
+                            {% if meal.meal_type_list == recipe_id.meal_type_list %}
+                            <option value="{{ meal.meal_type_list |capitalize}}" selected >{{ meal.meal_type_list |capitalize }}</option>
+                            {% else %}
+                            {% for select in option_meals %}
+                            {% if not select.option_meals ==  meal_type_list%}
+                                <option value="{{ select.meal_type |capitalize}}" >{{ select.meal_type |capitalize }}</option>
+                                {% endif %}
+                            {% endfor %}
+                            {% endif %}
+                        {% endfor %}
+                    </select>
+                </div>
+            </div>
+            <!-- EDIT DIETS LIST SELECTION-->
+            <div class="col">
+                <div class="form-group">
+                    <p>Diet Label</p>
+                    <select class="d-block selectpicker show-tick" id="diet_type" name="diet_type_list" aria-label="Select diet(s)" multiple data-selected-text-format="count" data-max-options="4" title="Please Select" >
+                        <option class="bs-title-option d-none" value=""></option>
+                        {% for select in option_diets %}
+                            <option value="{{ select.diet_type }}">{{ select.diet_type }}</option>
+                        {% endfor %}
+                    </select>
+                </div>
+            </div>
+            
+        </div>
+
+        <!-- EDIT RECIPE'S NAME -->
+        <div class="form-group mt-5">
+            <label for="recipe">Recipe Name</label>
+            <input type="text" class="form-control" id="recipe" name="recipe_name" placeholder="" aria-describedby="recipeName" value="{{ recipe_id.recipe_name }}" required />
+            <input type="hidden" id="user_recipe" name="user_recipe" value="{{ session['username'].title() }}" />
+        </div>
+        
+        <!-- EDIT RECIPE'S IMAGE -->
+        <div class="form-group">
+            <label for="recipe_image">Recipe Image</label>
+            <input type="file" class="form-control-file" name="recipe_image" id="recipe_image">
+        </div>
+        
+        <!-- EDIT RECIPE'S PREPARATION TIME -->
+        <div class="row mt-4">
+            <div class="col">
+                <label for="prep">Preparation Time:</label>
+                <input type="number" id="prep" name="prep_time" min="1" max="120" value="{{ recipe_id.prep_time }}" aria-describedby="prepTime" required />
+            </div>
+
+            <!-- EDIT RECIPE'S SERVINGS -->
+            <div class="col">
+                <label for="quantity">Serves:</label>
+                <input type="number" id="quantity" name="serves" min="1" max="25" value="{{ recipe_id.serves }}" required />
+            </div>
+        </div>
+
+        <!-- EDIT INGREDIENT(S) -->
+        <div class="row mt-5">
+            <div class="col ingredients" id="ingredients">
+                <label>Ingredients</label> 
+                {% for ingredient in recipe_id.add_ingredients %}
+                    <input type="text" class="form-control mt-2" name="add_ingredients" value="{{ ingredient }}" placeholder="add ingredient" aria-describedby="ingredients" />
+                {%endfor%}
+                <div class="add-more-ingredients">
+                    <a class="btn-more btn mt-3 add_ingredients"> <span> <i class="icofont-plus-circle"></i> Add more </span> </a>
+                </div>
+            </div>
+
+            <!-- EDIT INSTRUCTION(S) -->
+            <div class="col instructions" id="instructions">
+                <label>Instructions</label>
+                {% for instruction in recipe_id.add_instructions %}
+                    <input type="text" class="form-control mt-2" name="add_instructions" value="{{ instruction }}" placeholder="add instruction" aria-describedby="instructions"/>
+                {%endfor%}
+                
+                <div class="add-more-instructions">
+                    <a class="btn-more btn mt-3 add_instruction"> <span> <i class="icofont-plus-circle"></i> Add more </span> </a>
+                </div>
+            </div>
+        </div>
+        <div class="add-recipes mt-5 mx-auto">
+            <button class="btn_add_recipes btn btn-color" value="submit"> Edit recipe </button>
+        </div>
+    </form>
+</div>
+
+
+{% include 'includes/_footer.html' %}
+
+{% endblock %}

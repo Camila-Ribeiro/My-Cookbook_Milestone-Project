@@ -19,14 +19,21 @@
         </div>
       </section>
     </div>
-
+    
     <!-- DIET TYPE SECTION-->
     <div class="col-md-3 text-center mt-4">
       <div class="diets">
         <h3 class="mb-1">Diets Type</h3>
-        {% for d in user_recipe.diet_type_list %}
-          <p class="small mb-1"> {{ d }} </p>
-        {% endfor %}
+
+     
+        {% if user_recipe.diet_type_list |count > 0 %}
+            {% for d in user_recipe.diet_type_list  %}
+              <p class="small mb-1"> {{ d }} </p>  
+            {% endfor %}
+           {%else%}
+            <p class="small mb-1 else"> {{ user_recipe.diet_type_list }} </p>  
+          {% endif %}  
+        
         <!-- MEAL TYPE SECTION-->
         <h3 class="mb-1 mt-3">Meal Type</h3>
         {% for m in user_recipe.meal_type_list %}
@@ -42,7 +49,7 @@
     <hr>
       <div class="container">
         <div class="row">
-          <div class="col-sm-6 col-md-2">
+          <div class="col-sm-6 col-md-12">
             <ul>
               {% for list in user_recipe.add_ingredients %}
                 <li>{{list |capitalize}}</li>
@@ -59,7 +66,7 @@
     <hr>
     <div class="container">
       <div class="row">
-        <div class="col-sm-6 col-md-2">
+        <div class="col-sm-6 col-md-12">
           <ol>
             {% for list in user_recipe.add_instructions %}
               <li>{{list |capitalize}}</li>

@@ -449,7 +449,10 @@ i:before {
 /* ------------------------- media queries */
 /*mobile devices*/
 @media (max-width: 734px) {
-  /*index*/
+  
+  .btn_add_recipes {
+    width: 100%;
+  }
 
   /*all-recipes*/
   .jumbotron {

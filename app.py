@@ -43,6 +43,7 @@ def index():
         # recipes=recipes
         )
 
+
 # LOGIN https://www.youtube.com/watch?v=vVx1737auSE&t=621s
 @app.route('/login', methods=['GET','POST'])
 def login():
@@ -58,12 +59,14 @@ def login():
 
     return render_template('login.html')
 
-# SIGN OUT USER
+
+# LOGOUT 
 @app.route('/logout',methods=['GET', 'POST'])
 def logout():
     if request.method == 'GET':
         session.pop('username', None)
     return redirect(url_for('index'))   
+
 
 # REGISTER
 @app.route('/register', methods=['GET', 'POST'])
@@ -80,6 +83,7 @@ def register():
 
         return 'That username already exists!'
     return render_template('register.html')
+
 
 # GET ALL RECIPES from API
 @app.route('/all_recipes', methods=['GET'])
@@ -121,6 +125,7 @@ def user_recipe_details(recipe_id):
     getId = recipe_id
     user_recipe = mongo.db.add_recipes.find_one({'_id':ObjectId(getId)})
     return render_template('user-recipe-details.html', user_recipe=user_recipe)
+ 
 
 # ADD RECIPES TO MONGODB
 @app.route('/add_recipes', methods=['GET', 'POST'])
@@ -147,7 +152,7 @@ def add_recipes():
                 'prep_time': request.form['prep_time'],
                 'serves': request.form['serves'],
                 'add_ingredients': request.form.getlist('add_ingredients'),
-                'add_instructions': request.form.getlist('add_instructions'),
+                'add_instructions': request.form.getlist('add_instructions')
                 })
 
             # add_recipes.insert_one(request.form.to_dict())
@@ -161,7 +166,8 @@ def add_recipes():
         return redirect(url_for('index'))  
 
    # session['username'] = request.form['username']
-     
+
+
 # MY RECIPES
 @app.route('/my_recipes', methods=['GET'])
 def my_recipes():
@@ -178,8 +184,54 @@ def my_recipes():
             user_recipes_count=user_recipes_count,
             )
     else:
-        return redirect(url_for('index'))  
+        return redirect(url_for('index')) 
 
+
+# EDIT RECIPE
+@app.route('/edit_recipe/<recipe_id>')
+def edit_recipe(recipe_id):
+    the_recipe_id = mongo.db.add_recipes.find_one({"_id": ObjectId(recipe_id)})
+    all_recipe_details = get_user_recipes()
+
+    # lists
+    option_cuisines = get_cuisines()
+    option_allergens = get_allergens()
+    option_diets = get_diets()
+    option_meals = get_meals()
+
+    return render_template('edit-recipe.html', 
+        recipe_id=the_recipe_id, 
+        all_recipe_details=all_recipe_details,
+        option_diets=option_diets, 
+        option_meals=option_meals,
+        option_cuisines=option_cuisines, 
+        option_allergens=option_allergens )
+
+
+# UPDATE RECIPES
+@app.route('/update_recipe/<recipe_id>', methods=['POST'])
+def update_recipe(recipe_id):
+    the_recipe_id = mongo.db.add_recipes
+    the_recipe_id.update({"_id": ObjectId(recipe_id)},
+    {
+    'user_recipe': request.form['user_recipe'],
+    'recipe_image': request.form['recipe_image'],
+    'cuisines_list': request.form['cuisines_list'],
+    'allergen_list': request.form.getlist('allergen_list'),
+    'meal_type_list': request.form.getlist('meal_type_list'),
+    'diet_type_list': request.form.getlist('diet_type_list'),
+    'recipe_name': request.form['recipe_name'],
+    'prep_time': request.form['prep_time'],
+    'serves': request.form['serves'],
+    'add_ingredients': request.form.getlist('add_ingredients'),
+    'add_instructions': request.form.getlist('add_instructions')
+    })
+    return redirect(url_for('my_recipes'))
+
+# FUNCTION GET USER ADDED RECIPES
+def get_user_recipes():
+    user_added_recipes = mongo.db.add_recipes.find()
+    return user_added_recipes
 
 # FUNCTION TO GET LISTS
 def get_cuisines():
@@ -198,9 +250,7 @@ def get_meals():
     option_meals = mongo.db.meals.find().sort("meal_type", 1)
     return option_meals
 
-def get_user_recipes():
-    user_added_recipes = mongo.db.add_recipes.find()
-    return user_added_recipes
+
 
 
 if __name__ == '__main__':
