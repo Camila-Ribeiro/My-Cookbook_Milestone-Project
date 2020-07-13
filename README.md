@@ -1,8 +1,8 @@
 # [My Cookbook](https://github.com/Camila-Ribeiro/My-Cookbook_Milestone-Project)
 
 ## Table of Contents
-
-1. [**UX**](#ux)
+1. [**My project overview**](#my Cookbook)
+2. [**UX**](#ux)
    - [**User Stories**](#user-stories)
    - [**Design**](#design)
      - [**Libraries/Framework Used**](#Libraries/-framework-used)
@@ -10,35 +10,50 @@
      - [**Icons**](#icons)
      - [**Typography**](#typography)
    - [**Wireframes**](#wireframes)
-2. [**Technologies Used**](#technologies-used)
+3. [**Technologies Used**](#technologies-used)
 
    - [**Front-End Technologies**](#front-end-technologies)
+   - [**Back-End Technologies**](#back-end-technologies)
 
-3. [**Testing**](#testing)
+4. [**Database Schema**](#database schema)
+
+5. [**Testing**](#testing)
 
    - [**Validators**](#validators)
    - [**Automated Testing**](#automated-testing)
 
-4. [**Deployment**](#deployment)
+6. [**Deployment**](#deployment)
 
    - [**Local Deployment**](#local-deployment)
    - [**Remote Deployment**](#remote-deployment)
 
-5. [**Credits**](#credits)
+7. [**Credits**](#credits)
    - [**Content**](#content)
    - [**Media**](#media)
    - [**Acknowledgements**](#acknowledgements)
 
 ---
 
+## My Cookbook application
+It's an app built with Flask and MongoDB.
+
+Throughout this project I will make use of Python a high-end programming language along with Flask a Python micro framework and MongoDB a document-based database.
+Recipes for the cookbook have been gathered from the Spoonacular API
+
+
 ## UX
 
-My Cookbook is a website designed for users with interest in find out information about recipes. The user can add their own recipes and also edit and delete them.
-The website is simple and structured in a way that is easy to navigate and find the information needed. It was designed based on database from Spoonacular API.
+My Cookbook is an online web application designed for users with interest in gather information about recipes. The user can add their own recipes and also edit,update and delete them. 
+
+The website is simple and structured in a way that is easy to navigate through and find recipes.
 
 ### User Stories
 
-- As a user I want to ..., to perform this action I clicked on ..., then I ..., doing that I achieved my goal to ...
+- As a user I want to search recipes filtered by allergen type, to perform this action I clicked on All recipes page, then I clicked on filter "Allergens", doing that I achieved my goal to see only recipes that were peanut free and I'm allergic to it.
+
+- As a user I want to store my own recipes, to perform this action I registered into the website, then I clicked on "Add recipes", doing that I achieved my goal to store only recipes that were created by myself and have a list of my own recipes.
+
+- As a user I want to edit my own recipes, to perform this action I logged into the website, then I clicked on "My recipes" and then on "Edit recipes", doing that I achieved my goal to edit and update recipes.
 
 ### Design
 
@@ -113,6 +128,25 @@ My wireframes for this project can be found in the UX folder.
 
 - ![Python]()
   - [jasmine-jquery](https://www.python.org/downloads/) - Used to automate specific series of tasks, making it more efficient.
+
+##### back to [top](#table-of-contents)
+
+---
+## Database Schema
+
+My MongoDB database consists of the following collections
+
+- add_recipes
+- cuisines
+- allergens
+- diets
+- meals
+- users
+
+Diagram of website database schema
+
+### Database data
+All my recipe data was source from Edam a free recipe search API that can provide recipe data from calling a API endpoint and receiving the data back as JSON. The way I utilise this API was by using Python requests and creating a simple but yet effective CLI (Command Line Interface) script which was taken and adapted from the course material. In the course we made a program to work with MongoDB via the CLI. By creating a script to request data from the API I then adapt the Mongo CLI program to then inject my retrieved data and insert it into a Mongo collection. My import script can be found within this repo. 
 
 ##### back to [top](#table-of-contents)
 
