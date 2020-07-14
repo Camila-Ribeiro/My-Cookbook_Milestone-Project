@@ -1,14 +1,12 @@
 import os
 import requests
 from flask import Flask, render_template, redirect, request, url_for, session
-from flask_jsglue import JSGlue
 from flask_pymongo import PyMongo
 from bson.objectid import ObjectId
 import bcrypt
 from flask_wtf import FlaskForm
 from wtforms import Form, StringField, PasswordField
 from wtforms.validators import DataRequired
-
 
 if os.path.exists('env.py'):
     import env
@@ -20,7 +18,6 @@ app.config['MONGO_URI'] = os.environ.get('MONGO_URI')
 app.secret_key = os.environ.get('SECRET_KEY')
 
 mongo = PyMongo(app)
-jsglue = JSGlue(app)
 api_key = os.environ['api_key']
 
 # single decoretor '/'set the default function to  call '/index'
