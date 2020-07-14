@@ -17,9 +17,8 @@ app.config['MONGO_DBNAME'] = os.environ.get('SECRET_KEY')
 app.config['MONGO_URI'] = os.environ.get('MONGO_URI')
 app.secret_key = os.environ.get('SECRET_KEY')
 
-mongo = PyMongo(app)
+mongo = PyMongo(app, os.environ['MONGO_URI'])
 api_key = os.environ['api_key']
-
 
 # single decoretor '/'set the default function to  call '/index'
 # @app.route('/')
@@ -254,9 +253,6 @@ def get_diets():
 def get_meals():
     option_meals = mongo.db.meals.find().sort("meal_type", 1)
     return option_meals
-
-
-
 
 if __name__ == '__main__':
     app.run(host=os.environ.get('IP'),
