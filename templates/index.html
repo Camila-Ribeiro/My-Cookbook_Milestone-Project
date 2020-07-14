@@ -11,7 +11,7 @@
     <div class="center" data-slick='{"slidesToShow": 3, "slidesToScroll": 3}'>
       {% for recipe in recipes %}
       <div>
-        <img src="{{ recipe.image }}" class="on-inview" alt="..." />
+        <img src="{{ recipe.image }}" class="on-inview" alt="{{ recipe.image }}" />
         <a
           href="{{url_for('recipe_details', recipe_id=recipe.id)}}"
           class="title-padding"
@@ -97,23 +97,24 @@
             </div>
             <div class="col-sm-4">
               <div class="circle">
-                <div class="circle__inner">
-                  <div class="circle__wrapper">
-                    <div class="circle__content">
-                      <p>2</p>
-                      <a class="color_text" href="{{url_for('my_recipes')}}">Create<br/>your Recipes</a>
+                  <div class="circle__inner">
+                    <div class="circle__wrapper">
+                      <div class="circle__content">
+                        <p>2</p>
+                        <a class="color_text" href="{{url_for('my_recipes')}}">Create<br/>your Recipes</a>
+                    </div>
                   </div>
                 </div>
               </div>
-            </div>
-            <div class="col-sm-4">
-              <div class="circle">
-                <div class="circle__inner">
-                  <div class="circle__wrapper">
-                    <div class="circle__content">
-                      <p>3</p>
-                        <a class="color_text" href="{{url_for('my_recipes')}}">Share<br/>with friends</a>
+              <div class="col-sm-4">
+                <div class="circle">
+                  <div class="circle__inner">
+                    <div class="circle__wrapper">
+                      <div class="circle__content">
+                        <p>3</p>
+                          <a class="color_text" href="{{url_for('my_recipes')}}">Share<br/>with friends</a>
                       </div>
+                    </div>
                   </div>
                 </div>
               </div>
