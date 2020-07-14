@@ -70,14 +70,20 @@
     <hr>
       <div class="container">
         <div class="row">
+          {% set existingIds = [] %}
           {% for instructions in details.analyzedInstructions %}
             {% for step in instructions.steps %}
               {% for equipment in step.equipment %}
               
+                {% if equipment.id not in existingIds %}
+                  {{ equipment.id }}
+                  {% set existingIds = existingIds|merge([equipment.id]) %}
                 <div class="col-sm-6 col-md-2">
                   <p class="text-center">{{equipment.name}}</p>
                   <img class="mx-auto d-block" src="https://spoonacular.com/cdn/equipment_100x100/{{equipment.image}}" alt="">
                 </div>
+               
+                {% endif%}
               {% endfor %}
             {% endfor %}
           {% endfor %}
