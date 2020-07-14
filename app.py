@@ -16,6 +16,7 @@ app = Flask(__name__)
 app.config['MONGO_DBNAME'] = os.environ.get('SECRET_KEY')
 app.config['MONGO_URI'] = os.environ.get('MONGO_URI')
 app.secret_key = os.environ.get('SECRET_KEY')
+app.jinja_env.add_extension('jinja2.ext.do')
 
 mongo = PyMongo(app)
 api_key = os.environ['api_key']
@@ -113,6 +114,7 @@ def recipe_details(recipe_id):
     # APIused = r.headers.set('X-API-Quota-Used', "default-src 'self'")
     obj = r.json()
     details = obj
+    
     return render_template('recipe-details.html', details=details)
 
 
@@ -138,9 +140,12 @@ def add_recipes():
         
         # add recipes form
         if request.method == 'POST':
+            upload_recipe_image = request.files['recipe_image']
+            mongo.save_file(upload_recipe_image.filename, upload_recipe_image)
+        
             add_recipes = mongo.db.add_recipes
             add_recipes.insert_one({'user_recipe': request.form['user_recipe'],
-                'recipe_image': request.form['recipe_image'],
+                'recipe_image': upload_recipe_image.filename,
                 'cuisines_list': request.form['cuisines_list'],
                 'allergen_list': request.form.getlist('allergen_list'),
                 'meal_type_list': request.form.getlist('meal_type_list'),
@@ -163,6 +168,12 @@ def add_recipes():
         return redirect(url_for('index'))  
 
    # session['username'] = request.form['username']
+
+#RETURN IMAGE FILE
+@app.route('/file/<filename>')
+def file(filename):
+    return mongo.send_file(filename)
+
 
 
 # MY RECIPES
@@ -225,6 +236,7 @@ def update_recipe(recipe_id):
     })
     return redirect(url_for('my_recipes'))
 
+
 # DELETE RECIPES
 @app.route('/delete_recipe/<recipe_id>')
 def delete_recipe(recipe_id):
@@ -256,5 +268,5 @@ def get_meals():
 
 if __name__ == '__main__':
     app.run(host=os.environ.get('IP'),
-            port=int(os.environ.get('PORT', 27017)),
+            port=int(os.environ.get('PORT', 5000)),
             debug=True)

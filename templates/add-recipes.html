@@ -3,7 +3,7 @@
 
 <div class="container mt-5 mb-5 mx-auto d-block">
     <h1 class="text-center mb-5">Add Recipes</h1>
-    <form action="" method="POST" class="recipe-form w-100">
+    <form action="" enctype="multipart/form-data" method="POST" class="recipe-form w-100">
         <div class="row">
             <!-- ADD CUISINES LIST SELECTION-->
             <div class="col">
@@ -63,7 +63,7 @@
         
         <div class="form-group">
             <label for="recipe_image">Recipe Image</label>
-            <input type="file" class="form-control-file" name="recipe_image" id="recipe_image">
+            <input type="file" class="form-control-file" name="recipe_image" id="recipe_image" >
         </div>
           
         <div class="row mt-4">
