@@ -1,7 +1,7 @@
 # [My Cookbook](https://github.com/Camila-Ribeiro/My-Cookbook_Milestone-Project)
 
 ## Table of Contents
-1. [**My project overview**](#my Cookbook)
+1. [**My project overview**](#my-Cookbook)
 2. [**UX**](#ux)
    - [**User Stories**](#user-stories)
    - [**Design**](#design)
@@ -15,7 +15,7 @@
    - [**Front-End Technologies**](#front-end-technologies)
    - [**Back-End Technologies**](#back-end-technologies)
 
-4. [**Database Schema**](#database schema)
+4. [**Database Schema**](#database-schema)
 
 5. [**Testing**](#testing)
 
