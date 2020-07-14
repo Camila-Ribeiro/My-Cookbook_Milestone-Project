@@ -2,5 +2,5 @@ dnspython==1.16.0
 Flask==1.1.2
 Flask-Bcrypt==0.7.1
 Flask-PyMongo==2.3.0
+Flask-WTF==0.14.3
 requests==2.24.0
-WTForms==2.3.1
