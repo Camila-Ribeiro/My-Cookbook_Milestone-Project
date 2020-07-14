@@ -9,7 +9,6 @@ dnspython==1.16.0
 Flask==1.1.2
 Flask-Bcrypt==0.7.1
 Flask-PyMongo==2.3.0
-get==0.0.0
 idna==2.9
 itsdangerous==1.1.0
 Jinja2==2.11.2
