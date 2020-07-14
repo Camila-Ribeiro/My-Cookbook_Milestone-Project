@@ -4,9 +4,13 @@
   <div class="row">
     <div class="col-md 9">
       <h1 class="text-center mb-5">{{ user_recipe.recipe_name |capitalize }}</h1>
-      <img alt="Responsive image" class="img-recipe" src="/static/img/No_image_available.png">
-    
 
+      {% if user_recipe.recipe_image is defined and user_recipe.recipe_image | length > 0 %}
+          <img src="{{url_for('file', filename=user_recipe.recipe_image)}}" class="img-responsive w-100" alt="{{user_recipe.recipe_image}}" />
+        {% else %}
+          <img src="../static/img/No_image_available.png" class="img-responsive w-100" alt="Image Not Available" />
+      {% endif %}
+      
       <!-- RECIPE INFO SECTION-->
       <section class="recipe-info">
         <div class="row">

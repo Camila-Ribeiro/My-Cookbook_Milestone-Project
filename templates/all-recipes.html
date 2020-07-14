@@ -100,10 +100,10 @@
                     <div class="card-deck card-custom mb-5">
                       <div class="card text-center">
                         
-                        {% if r.recipe_image is defined and r.recipe_image  | length > 0 %}
-                          <img src="{{r.recipe_image}}" class="img-responsive w-100" alt="{{r.recipe_image}}" />
-                        {% else %}
-                          <img src="../static/img/No_image_available.png" class="img-responsive w-100" alt="Image Not Available" />
+                        {% if r.recipe_image is defined and r.recipe_image | length > 0 %}
+                          <img src="{{url_for('file', filename=r.recipe_image)}}" class="img-responsive w-100" alt="{{r.recipe_image}}" />
+                          {% else %}
+                            <img src="../static/img/No_image_available.png" class="img-responsive w-100" alt="Image Not Available" />
                         {% endif %}
                         
                         <div class="card-body">

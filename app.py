@@ -25,10 +25,10 @@ api_key = os.environ['api_key']
 @app.route('/')
 @app.route('/index', methods=['GET','POST'])
 def index():
-    r = requests.get(
-        'https://api.spoonacular.com/recipes/random?number=10&apiKey='+api_key+'')
-    json_obj = r.json()
-    recipes = json_obj['recipes']
+    # r = requests.get(
+    #     'https://api.spoonacular.com/recipes/random?number=10&apiKey='+api_key+'')
+    # json_obj = r.json()
+    # recipes = json_obj['recipes']
 
     if 'username' in session:
         current_user = mongo.db.user.find_one({'username': session[
@@ -38,7 +38,7 @@ def index():
         current_user=current_user)
     else:
         return render_template('index.html', 
-        recipes=recipes
+        # recipes=recipes
         )
 
 
@@ -123,6 +123,7 @@ def recipe_details(recipe_id):
 def user_recipe_details(recipe_id):
     getId = recipe_id
     user_recipe = mongo.db.add_recipes.find_one({'_id':ObjectId(getId)})
+
     return render_template('user-recipe-details.html', user_recipe=user_recipe)
  
 
@@ -173,8 +174,6 @@ def add_recipes():
 @app.route('/file/<filename>')
 def file(filename):
     return mongo.send_file(filename)
-
-
 
 # MY RECIPES
 @app.route('/my_recipes', methods=['GET'])
