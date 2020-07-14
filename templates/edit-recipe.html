@@ -69,14 +69,14 @@
                     </select>
                 </div>
             </div>
-            <!-- EDIT DIETS LIST SELECTION-->
+            <!-- EDIT DIET LABEL SELECTION-->
             <div class="col">
                 <div class="form-group">
                     <p>Diet Label</p>
                     <select class="d-block selectpicker show-tick" id="diet_type" name="diet_type_list" aria-label="Select diet(s)" multiple data-selected-text-format="count" data-max-options="4" title="Please Select" >
-                        <option class="bs-title-option d-none" value=""></option>
+                        <option class="bs-title-option d-none" value=""selected ></option>
                         {% for select in option_diets %}
-                            <option value="{{ select.diet_type }}">{{ select.diet_type }}</option>
+                            <option value="{{ select.diet_type }}" >{{ select.diet_type }}</option>
                         {% endfor %}
                     </select>
                 </div>
