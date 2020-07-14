@@ -17,7 +17,7 @@ app.config['MONGO_DBNAME'] = os.environ.get('SECRET_KEY')
 app.config['MONGO_URI'] = os.environ.get('MONGO_URI')
 app.secret_key = os.environ.get('SECRET_KEY')
 
-mongo = PyMongo(app, uri=os.environ['MONGO_URI'],port=27017)
+mongo = PyMongo(app)
 api_key = os.environ['api_key']
 
 # single decoretor '/'set the default function to  call '/index'
