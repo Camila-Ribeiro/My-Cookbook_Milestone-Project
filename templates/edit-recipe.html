@@ -24,23 +24,17 @@
             <!-- EDIT ALLERGEN LIST SELECTION-->
             <div class="col">
                 <div class="form-group">
-                    <p>Allergen</p>
+                    <p>Allergen</p> 
                     <select class="d-block selectpicker show-tick" id="allergen_type" name="allergen_list" aria-label="Select Allergen(s)" multiple data-selected-text-format="count" data-max-options="4" title="Please Select" >
                         <option class="bs-title-option d-none" value=""></option>    
-                        {% for selected in allergen_list %}
-                            
-                               
-                        <option value="{{ selected }}" selected >{{ selected }}</option> 
-                            {% for option in option_allergens %} 
-                                {% if option == selected  %}
-                                    <option value="{{ option.allergen_type}}" >{{ option.allergen_type }}</option>
-
+                       
                         
-                                     
-
-                                {% endif %}
-                            {% endfor %} 
-                            
+                        {% for item in option_allergens %}  
+                            <option value="{{ item.allergen_type   }}" >{{ item.allergen_type }}</option> 
+                        {% endfor %}
+                
+                        {% for selected in recipe_id.allergen_list %}     
+                            <option value="{{ selected }}" selected >{{ selected }}</option> 
                         {% endfor %}   
 
                        

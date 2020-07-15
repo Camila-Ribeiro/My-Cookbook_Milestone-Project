@@ -1,41 +1,39 @@
 {% include 'base.html' %} 
-
 {% block content %}
+    <div class="body-login-register">
+        <div class="container">
+            <div class="container close-button w-100">
+                <!-- https://codepen.io/andreivictor/pen/aJEpEx -->
+                <div class="close-icon-container">
+                    <a href="{{url_for('index')}}">
+                        <span class="close-icon">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 40 40" enable-background="new 0 0 40 40">
+                                <line x1="15" y1="15" x2="25" y2="25" stroke="#fff" stroke-width="2.5" stroke-linecap="round" stroke-miterlimit="10"></line>
+                                <line x1="25" y1="15" x2="15" y2="25" stroke="#fff" stroke-width="2.5" stroke-linecap="round" stroke-miterlimit="10"></line>    
+                                <circle class="circle" cx="20" cy="20" r="19" opacity="0" stroke="#fff" stroke-width="2.5" stroke-linecap="round" stroke-miterlimit="10" fill="none"></circle>
+                                <path d="M20 1c10.45 0 19 8.55 19 19s-8.55 19-19 19-19-8.55-19-19 8.55-19 19-19z" stroke="#fff" stroke-width="2.5" stroke-linecap="round" stroke-miterlimit="10" fill="none"></path>
+                            </svg>
+                        </span>
+                    </a>
+                </div>                                
+            </div>
+            <section class="mt-5">
+                <h1 class="text-center mb-3">Sign-in into your account</h1>
+                <form class="form-container" method="POST" action="{{ url_for('login') }}">
+                    <div class="form-group">
+                    <input type="text" class="form-control" id="username" name="username" placeholder="Username" aria-describedby="username" autofocus>
+                    </div>
 
+                    <div class="form-group">
+                    <input type="password" class="form-control" id="password" name="password" placeholder="Enter password">
+                    </div>
 
-<body class="body-login-register">
-<div class="container">
-    <div class="container close-button w-100">
-        <!-- https://codepen.io/andreivictor/pen/aJEpEx -->
-        <div class="close-icon-container">
-            <a href="{{url_for('index')}}">
-                <span class="close-icon">
-                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 40 40" enable-background="new 0 0 40 40">
-                        <line x1="15" y1="15" x2="25" y2="25" stroke="#fff" stroke-width="2.5" stroke-linecap="round" stroke-miterlimit="10"></line>
-                        <line x1="25" y1="15" x2="15" y2="25" stroke="#fff" stroke-width="2.5" stroke-linecap="round" stroke-miterlimit="10"></line>    
-                        <circle class="circle" cx="20" cy="20" r="19" opacity="0" stroke="#fff" stroke-width="2.5" stroke-linecap="round" stroke-miterlimit="10" fill="none"></circle>
-                        <path d="M20 1c10.45 0 19 8.55 19 19s-8.55 19-19 19-19-8.55-19-19 8.55-19 19-19z" stroke="#fff" stroke-width="2.5" stroke-linecap="round" stroke-miterlimit="10" fill="none"></path>
-                    </svg>
-                </span>
-            </a>
-        </div>                                
+                    <button type="submit" class="btn btn-color" value="submit">Sign In</button>
+                    <div class="form-group mt-3">
+                        <p class="small"> Not Registered? <a href="{{url_for('register')}}">Click Here To Register Account</a> </p>
+                    </div>
+                </form>                             
+            </section>
+        </div>
     </div>
-    <section class="mt-5">
-        <h1 class="text-center mb-3">Sign-in into your account</h1>
-        <form class="form-container" method="POST" action="{{ url_for('login') }}">
-            <div class="form-group">
-            <input type="text" class="form-control" id="username" name="username" placeholder="Username" aria-describedby="username" autofocus>
-            <!-- <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small> -->
-            </div>
-            <div class="form-group">
-            <input type="password" class="form-control" id="password" name="password" placeholder="Enter password">
-            </div>
-            <button type="submit" class="btn btn-color" value="submit">Sign In</button>
-            <div class="form-group mt-3">
-                <p> Not Registered? <a href="{{url_for('register')}}">Click Here To Register Account</a> </p>
-            </div>
-        </form>                             
-    </section>
-</div>
-</body>
 {% endblock %}

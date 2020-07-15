@@ -172,10 +172,25 @@ def add_recipes():
 
    # session['username'] = request.form['username']
 
-#RETURN IMAGE FILE
-@app.route('/file/<filename>')
-def file(filename):
-    return mongo.send_file(filename)
+# UPDATE RECIPES
+@app.route('/update_recipe/<recipe_id>', methods=['POST'])
+def update_recipe(recipe_id):
+    the_recipe_id = mongo.db.add_recipes
+    the_recipe_id.update({"_id": ObjectId(recipe_id)},
+    {
+    'user_recipe': request.form['user_recipe'],
+    'recipe_image': request.form['recipe_image'],
+    'cuisines_list': request.form['cuisines_list'],
+    'allergen_list': request.form.getlist('allergen_list'),
+    'meal_type_list': request.form.getlist('meal_type_list'),
+    'diet_type_list': request.form.getlist('diet_type_list'),
+    'recipe_name': request.form['recipe_name'],
+    'prep_time': request.form['prep_time'],
+    'serves': request.form['serves'],
+    'add_ingredients': request.form.getlist('add_ingredients'),
+    'add_instructions': request.form.getlist('add_instructions')
+    })
+    return redirect(url_for('my_recipes'))
 
 # MY RECIPES
 @app.route('/my_recipes', methods=['GET'])
@@ -198,7 +213,6 @@ def my_recipes():
             user=user,
             counting=counting,
             user_added_recipes=user_added_recipes,
-            # user_recipes_count=user_recipes_count
             )
     else:
         return redirect(url_for('index')) 
@@ -208,8 +222,9 @@ def my_recipes():
 @app.route('/edit_recipe/<recipe_id>')
 def edit_recipe(recipe_id):
     the_recipe_id = mongo.db.add_recipes.find_one({"_id": ObjectId(recipe_id)})
+    #all_recipe_details = mongo.db.add_recipes.find( { "allergen_list": session['username'].title() })
     all_recipe_details = get_user_recipes()
-
+    
     # lists
     option_cuisines = get_cuisines()
     option_allergens = get_allergens()
@@ -224,38 +239,16 @@ def edit_recipe(recipe_id):
         option_cuisines=option_cuisines, 
         option_allergens=option_allergens )
 
-
-# UPDATE RECIPES
-@app.route('/update_recipe/<recipe_id>', methods=['POST'])
-def update_recipe(recipe_id):
-    the_recipe_id = mongo.db.add_recipes
-    the_recipe_id.update({"_id": ObjectId(recipe_id)},
-    {
-    'user_recipe': request.form['user_recipe'],
-    'recipe_image': request.form['recipe_image'],
-    'cuisines_list': request.form['cuisines_list'],
-    'allergen_list': request.form.getlist('allergen_list'),
-    'meal_type_list': request.form.getlist('meal_type_list'),
-    'diet_type_list': request.form.getlist('diet_type_list'),
-    'recipe_name': request.form['recipe_name'],
-    'prep_time': request.form['prep_time'],
-    'serves': request.form['serves'],
-    'add_ingredients': request.form.getlist('add_ingredients'),
-    'add_instructions': request.form.getlist('add_instructions')
-    })
-    return redirect(url_for('my_recipes'))
-
-
 # DELETE RECIPES
 @app.route('/delete_recipe/<recipe_id>')
 def delete_recipe(recipe_id):
     mongo.db.add_recipes.remove({'_id': ObjectId(recipe_id)})
     return redirect(url_for('my_recipes'))
 
-# Error page
-@app.errorhandler(404)
-def page_not_found(e):
-    return render_template("error-page.html"), 500
+#GET IMAGE FILE
+@app.route('/file/<filename>')
+def file(filename):
+    return mongo.send_file(filename)
 
 # FUNCTION GET USER ADDED RECIPES
 def get_user_recipes():
@@ -278,6 +271,11 @@ def get_diets():
 def get_meals():
     option_meals = mongo.db.meals.find().sort("meal_type", 1)
     return option_meals
+
+# ERROR PAGE
+@app.errorhandler(404)
+def page_not_found(e):
+    return render_template("error-page.html"), 500
 
 if __name__ == '__main__':
     app.run(host=os.environ.get('IP'),

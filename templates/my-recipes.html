@@ -11,9 +11,8 @@
 
             <!-- USER PROFILE CARD-->
               <div class="card-content">    
-                  <h2>{{user.username}}
-                      <small>Recipes: {{counting}}</small>
-                  </h2>
+                  <h2>{{user.username |capitalize}}</h2>
+                  <p class="small">Recipes: {{counting}}</p>
               </div>
           </div>
         </div>
@@ -46,8 +45,9 @@
                     </div>
                   {% endfor %}
                 {% else %}
-                  <div class="container text-center">
-                    <p>No recipes yet</p>
+                  <div class="container text-center mt-5">
+                    <p class="small">No recipes yet</p>
+                    <button type="button" onclick="window.location.href='{{url_for('add_recipes')}}';" class="btn btn-color">Add your first recipe</button>
                   </div>
                 {% endif %}
             </div>
