@@ -5,7 +5,7 @@
 My CookBook is a Milestone Project created for the "Data Centric Development" module of my FullStack Software Development Course offered by [Code Institute](https://codeinstitute.net/).
 
 ## Table of Contents
-1. [**Project overview**](#my-Cookbook-Application)
+1. [**Project overview**](#project-overview)
 2. [**UX**](#ux)
    - [**User Stories**](#user-stories)
    - [**Design**](#design)

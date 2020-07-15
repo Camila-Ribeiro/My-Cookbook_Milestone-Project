@@ -246,6 +246,10 @@ def delete_recipe(recipe_id):
     mongo.db.add_recipes.remove({'_id': ObjectId(recipe_id)})
     return redirect(url_for('my_recipes'))
 
+# Error page
+@app.errorhandler(404)
+def page_not_found(e):
+    return render_template("error-page.html"), 500
 
 # FUNCTION GET USER ADDED RECIPES
 def get_user_recipes():
