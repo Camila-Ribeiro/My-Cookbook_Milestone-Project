@@ -160,7 +160,7 @@ def add_recipes():
                 'add_instructions': request.form.getlist('add_instructions')
                 })
 
-            add_recipes.insert_one(request.form.to_dict())
+            # add_recipes.insert_one(request.form.to_dict())
             return redirect(url_for('add_recipes'))
         return render_template('add-recipes.html', 
             option_diets=option_diets, 

@@ -10,17 +10,17 @@
       <div class="card profile-card-1">
           <img src="https://images.pexels.com/photos/946351/pexels-photo-946351.jpeg?w=500&h=650&auto=compress&cs=tinysrgb" alt="profile-sample1" class="background"/>
 
-            {% if user.avatar %}
+            {% if user.avatar is defined %}
               <img src="../static/img/{{user.avatar}}.jpg" class="profile img-responsive w-100" alt="{{user.avatar}}" />
             {% endif %}
 
-
+        <!-- USER PROFILE CARD-->
           <div class="card-content">    
             
               <h2>{{ session['username'].title() }}
                 {% for c in user_recipes_count %}
-                  {% if c.user_recipe == session['username'].title() and loop.last %}
-                  <small>Recipes: {{loop.index}}</small>
+                  {% if session['username'].title() == c.user_recipe%}
+                  <small>Recipes: {{ c.user_recipe |count }}</small>
                   {% endif %}
                 {% endfor %}
               </h2>
@@ -31,8 +31,9 @@
       <div class="container-fluid"> 
         <div class="row">
           
+          <!-- USER RECIPES CARDS-->
           {% for r in user_added_recipes %}
-            {% if r.user_recipe == session['username'].title() %}
+            {% if session['username'].title() == r.user_recipe and not empty %}
               <div class="col-sm-6">
                 
                 <div class="card-deck card-recipes mb-5">
@@ -54,10 +55,10 @@
                     </div>
                 </div>
               </div>
-              {% elif loop.first %}
-              <div class="col">
-                <p class="text-center mt-5">No Recipes yet</p>
-              </div>
+              {% else %}
+                <div class="container text-center">
+                  <p>No recipes yet</p>
+                </div>
             {% endif %}
           {% endfor %}
           
