@@ -218,12 +218,30 @@ img.on-inview {
 .color-green {
   color: #60a59f;
 }
- 
+
 /* ------------------------------------------------------- my-Recipes */
-/* .my-recipes img {
-  width: 100%;
-  height: 300px;
-} */
+section.my-recipes .card-deck img {
+  object-fit: contain;
+  height: 202px;
+}
+section.my-recipes .card-recipes .card-body {
+  background-color: #61a5a0;
+}
+
+section.my-recipes .card-recipes .card-body a{
+  color: #FFF;
+}
+
+section.my-recipes .card-foot {
+  background-color: #90c0bc;
+  padding: 10px;
+  color: #2e4e4c;
+}
+
+section.my-recipes .card-foot a{
+  color: #2e4e4c99;
+  font-size: 14px;
+}
 
 .profile-card-1 {
   font-family: 'Open Sans', Arial, sans-serif;
@@ -233,7 +251,7 @@ img.on-inview {
   width: 100%;
   color: #ffffff;
   text-align: center;
-  height:368px;
+  height:358px;
   border:none;
 }
 .profile-card-1 .background {
@@ -513,9 +531,7 @@ i:before {
 
   
   /*my-recipes*/
-  .cards-recipes {
-    margin-top: 20px;
-  }
+  
 }
 
 @media (max-width: 1023px) {
