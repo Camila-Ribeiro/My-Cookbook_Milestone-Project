@@ -262,6 +262,7 @@ img.on-inview {
   border: 2px solid rgba(255, 255, 255, 1);
   -webkit-transform: translate(-50%, 0%);
   transform: translate(-50%, 0%);
+  background: #FFF;
 }
 .profile-card-1 h2 {
   margin: 0 0 5px;
@@ -318,6 +319,7 @@ img.on-inview {
 .form-container {
   max-width: 350px;
   margin: 0 auto;
+  display: block;
 }
 
 .form-container button {

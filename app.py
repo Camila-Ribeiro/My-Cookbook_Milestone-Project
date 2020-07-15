@@ -34,7 +34,7 @@ def index():
         current_user = mongo.db.user.find_one({'username': session[
             'username'].title()})
         return render_template('index.html', 
-        recipes=recipes, 
+        # recipes=recipes, 
         current_user=current_user)
     else:
         return render_template('index.html', 
@@ -75,7 +75,7 @@ def register():
         
         if existing_user is None:
             hashpass = bcrypt.hashpw(request.form['password'].encode('utf-8'), bcrypt.gensalt())
-            users.insert({'username': request.form['username'], 'password' : hashpass })
+            users.insert({'username': request.form['username'], 'password' : hashpass, 'avatar': request.form['avatar']  })
             session['username'] = request.form['username']
             return redirect(url_for('login'))
 
@@ -180,15 +180,17 @@ def file(filename):
 def my_recipes():
     if 'username' in session:
         user_added_recipes = get_user_recipes()
-        user_recipes_count = get_user_recipes().count()
+        # user_recipes_count = get_user_recipes().count()
+        user_recipes_count = get_user_recipes()
         
-        current_user = mongo.db.user.find_one({'username': session[
-            'username'].title()})
-
+        current_user = session['username'].title()
+        user = mongo.db.users.find_one({"username" : session['username']})
+        
         return render_template('my-recipes.html', 
             current_user=current_user, 
+            user=user,
             user_added_recipes=user_added_recipes,
-            user_recipes_count=user_recipes_count,
+            user_recipes_count=user_recipes_count
             )
     else:
         return redirect(url_for('index')) 
