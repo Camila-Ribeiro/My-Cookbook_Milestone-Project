@@ -1,80 +1,60 @@
 {% include 'base.html' %} {% include 'includes/_nav.html' %} {% block content %}
+  <section class="mt-5">
+    <h1 class="text-center mb-5">Your Recipes</h1>
+    <div class="container mt-5 mb-5">
+      <div class="row">
+        <div class="col-md-4">
+          <div class="card profile-card-1">
+              <img src="https://images.pexels.com/photos/946351/pexels-photo-946351.jpeg?w=500&h=650&auto=compress&cs=tinysrgb" alt="profile-sample1" class="background"/>
 
-<div class="container mt-5 mb-5">
-  <h1 class="text-center mb-5">Your Recipes</h1>
- 
-<section class="mt-5">
-<div class="container">
-  <div class="row">
-    <div class="col-md-4">
-      <div class="card profile-card-1">
-          <img src="https://images.pexels.com/photos/946351/pexels-photo-946351.jpeg?w=500&h=650&auto=compress&cs=tinysrgb" alt="profile-sample1" class="background"/>
+                <img src="../static/img/{{user.avatar}}.jpg" class="profile img-responsive w-100" alt="{{user.avatar}}" />
 
-            {% if user.avatar is defined %}
-              <img src="../static/img/{{user.avatar}}.jpg" class="profile img-responsive w-100" alt="{{user.avatar}}" />
-            {% endif %}
-
-        <!-- USER PROFILE CARD-->
-          <div class="card-content">    
-            
-              <h2>{{ session['username'].title() }}
-                {% for c in user_recipes_count %}
-                  {% if session['username'].title() == c.user_recipe%}
-                  <small>Recipes: {{ c.user_recipe |count }}</small>
-                  {% endif %}
-                {% endfor %}
-              </h2>
-          </div>
-      </div>
-    </div>
-    <div class="col-md-8">
-      <div class="container-fluid"> 
-        <div class="row">
-          
-          <!-- USER RECIPES CARDS-->
-          {% for r in user_added_recipes %}
-            {% if session['username'].title() == r.user_recipe and not empty %}
-              <div class="col-sm-6">
-                
-                <div class="card-deck card-recipes mb-5">
-                    <div class="card text-center">
-                      {% if r.recipe_image is defined and r.recipe_image | length > 0 %}
-                          <img src="{{url_for('file', filename=r.recipe_image)}}" class="img-responsive w-100" alt="{{r.recipe_image}}" />
-                        {% else %}
-                          <img src="../static/img/No_image_available.png" class="img-responsive w-100" alt="Image Not Available" />
-                      {% endif %}
-                      <div class="card-body">
-                        <a href="{{url_for('user_recipe_details', recipe_id=r._id)}}" class="">{{r.recipe_name |upper}}</a>
-                        <p class="small mt-2">{{r.cuisines_list}}</p>
-                        
-                        <a class="mr-4 color-green" href="{{ url_for('edit_recipe',recipe_id=r._id) }}"><i class="icofont-ui-edit"></i> Edit </a>
-                        
-                        <a href="{{ url_for('delete_recipe', recipe_id=r._id )}}"><i class="icofont-bin lead color-green"></i> </a>
-                      </div>
-                    
-                    </div>
-                </div>
+            <!-- USER PROFILE CARD-->
+              <div class="card-content">    
+                  <h2>{{user.username}}
+                      <small>Recipes: {{counting}}</small>
+                  </h2>
               </div>
-              {% else %}
-                <div class="container text-center">
-                  <p>No recipes yet</p>
-                </div>
-            {% endif %}
-          {% endfor %}
-          
-          
-  
+          </div>
+        </div>
+        <div class="col-md-8">
+          <div class="container-fluid"> 
+            <div class="row">  
+              <!-- USER RECIPES CARDS-->
+              {% if counting > 0 %}
+                {% for r in user_added_recipes %}
+                    <div class="col-sm-6">
+                      <div class="card-deck card-recipes mb-5">
+                          <div class="card text-center">
+                            {% if r.recipe_image is defined and r.recipe_image | length > 0 %}
+                                <img src="{{url_for('file', filename=r.recipe_image)}}" class="img-responsive w-100" alt="{{r.recipe_image}}" />
+                              {% else %}
+                                <img src="../static/img/No_image_available.png" class="img-responsive w-100" alt="Image Not Available" />
+                            {% endif %}
+                            <div class="card-body">
+                              <a href="{{url_for('user_recipe_details', recipe_id=r._id)}}" class="">{{r.recipe_name |upper}}</a>
+                              <p class="small mt-2">{{r.cuisines_list}}</p>
+                              
+                              <a class="mr-4 color-green" href="{{ url_for('edit_recipe',recipe_id=r._id) }}"><i class="icofont-ui-edit"></i> Edit </a>
+                              
+                              <a href="{{ url_for('delete_recipe', recipe_id=r._id )}}"><i class="icofont-bin lead color-green"></i> </a>
+                            </div>
+                          </div>
+                      </div>
+                    </div>
+                  {% endfor %}
+                {% else %}
+                  <div class="container text-center">
+                    <p>No recipes yet</p>
+                  </div>
+                {% endif %}
+            </div>
+          </div>
         </div>
       </div>
     </div>
-   
-  </div>
-</section>
-
-
-  
-</div>
-  {% endblock%}
+  </section>
+{% endblock%}
 
 {% include 'includes/_footer.html' %}
 

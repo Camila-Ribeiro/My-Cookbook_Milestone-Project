@@ -181,18 +181,24 @@ def file(filename):
 @app.route('/my_recipes', methods=['GET'])
 def my_recipes():
     if 'username' in session:
-        user_added_recipes = get_user_recipes()
-        # user_recipes_count = get_user_recipes().count()
-        user_recipes_count = get_user_recipes()
-        
+        #GET CURRENT USER from session
         current_user = session['username'].title()
+
+        #GET CURRENT USER in add_recipes db
+        user_added_recipes = mongo.db.add_recipes.find( { "user_recipe": current_user })
+
+        #GET USER DATABASE from user db
         user = mongo.db.users.find_one({"username" : session['username']})
-        
+
+        #COUNTER user recipes
+        counting = mongo.db.add_recipes.count_documents({ 'user_recipe': current_user })
+   
         return render_template('my-recipes.html', 
             current_user=current_user, 
             user=user,
+            counting=counting,
             user_added_recipes=user_added_recipes,
-            user_recipes_count=user_recipes_count
+            # user_recipes_count=user_recipes_count
             )
     else:
         return redirect(url_for('index')) 
