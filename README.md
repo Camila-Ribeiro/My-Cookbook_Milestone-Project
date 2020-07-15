@@ -5,7 +5,7 @@
 My CookBook is a Milestone Project created for the "Data Centric Development" module of my FullStack Software Development Course offered by [Code Institute](https://codeinstitute.net/).
 
 ## Table of Contents
-1. [**My project overview**](#my-Cookbook-Application)
+1. [**Project overview**](#my-Cookbook-Application)
 2. [**UX**](#ux)
    - [**User Stories**](#user-stories)
    - [**Design**](#design)
@@ -19,10 +19,10 @@ My CookBook is a Milestone Project created for the "Data Centric Development" mo
    - [**Front-End Technologies**](#front-end-technologies)
    - [**Back-End Technologies**](#back-end-technologies)
 
-4. [**Databases Used*](#databases-used)
+4. [**Databases Used**](#databases-used)
 
-  - [**API - Spoonacular**](#api-spoonacular)
-  - [**MongoDB**](#mongoDB)
+    - [**API - Spoonacular**](#api-spoonacular)
+    - [**MongoDB**](#mongoDB)
 
 5. [**Testing**](#testing)
 
@@ -41,8 +41,8 @@ My CookBook is a Milestone Project created for the "Data Centric Development" mo
 
 ---
 
-## My Cookbook Application
-This application was built using [Python](https://www.python.org/) - programming language, [Flask](https://flask.palletsprojects.com/en/1.1.x/) - which is a Python micro framework and [MongoDB Atlas](https://www.mongodb.com/) - a document-based database.
+## Project overview 
+My Cookbook application was built using [Python](https://www.python.org/) - programming language, [Flask](https://flask.palletsprojects.com/en/1.1.x/) - which is a Python micro framework and [MongoDB Atlas](https://www.mongodb.com/) - a document-based database.
 
 
 ## UX
