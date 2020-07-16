@@ -24,21 +24,18 @@
             <!-- EDIT ALLERGEN LIST SELECTION-->
             <div class="col">
                 <div class="form-group">
-                    <p>Allergen</p> 
+                    <p>Allergen</p>{{x}}
+
                     <select class="d-block selectpicker show-tick" id="allergen_type" name="allergen_list" aria-label="Select Allergen(s)" multiple data-selected-text-format="count" data-max-options="4" title="Please Select" >
-                        <option class="bs-title-option d-none" value=""></option>    
-                       
-                        
-                        {% for item in option_allergens %}  
-                            <option value="{{ item.allergen_type   }}" >{{ item.allergen_type }}</option> 
+                        <option class="bs-title-option d-none" value=""></option>  
+                         
+                        {% for selected in selected_allergens %}    
+                            <option value="{{ selected }}" selected>{{ selected }}</option>
                         {% endfor %}
-                
-                        {% for selected in recipe_id.allergen_list %}     
-                            <option value="{{ selected }}" selected >{{ selected }}</option> 
+                        {% for not_selected in not_selected_allergens %}
+                            <option value="{{ not_selected }}" >{{ not_selected }}</option>
                         {% endfor %}   
 
-                       
-                    
                     </select>
                 </div>
             </div>
@@ -49,17 +46,12 @@
                     <p>Meal Type</p>
                     <select class="d-block selectpicker show-tick" id="meal_type" name="meal_type_list" aria-label="Select Meal Type(s)" multiple data-selected-text-format="count" data-max-options="4" title="Please Select" >
                         <option class="bs-title-option d-none" value=""></option>
-                        {% for meal in recipe_id.meal_type_list %}
-                            {% if meal.meal_type_list == recipe_id.meal_type_list %}
-                            <option value="{{ meal.meal_type_list |capitalize}}" selected >{{ meal.meal_type_list |capitalize }}</option>
-                            {% else %}
-                            {% for select in option_meals %}
-                            {% if not select.option_meals ==  meal_type_list%}
-                                <option value="{{ select.meal_type |capitalize}}" >{{ select.meal_type |capitalize }}</option>
-                                {% endif %}
+                            {% for selected in selected_meals %}    
+                                <option value="{{ selected }}" selected>{{ selected }}</option>
                             {% endfor %}
-                            {% endif %}
-                        {% endfor %}
+                            {% for not_selected in not_selected_meals %}
+                                <option value="{{ not_selected }}" >{{ not_selected }}</option>
+                            {% endfor %}
                     </select>
                 </div>
             </div>
@@ -69,9 +61,12 @@
                     <p>Diet Label</p>
                     <select class="d-block selectpicker show-tick" id="diet_type" name="diet_type_list" aria-label="Select diet(s)" multiple data-selected-text-format="count" data-max-options="4" title="Please Select" >
                         <option class="bs-title-option d-none" value=""selected ></option>
-                        {% for select in option_diets %}
-                            <option value="{{ select.diet_type }}" >{{ select.diet_type }}</option>
-                        {% endfor %}
+                            {% for selected in selected_diets %}    
+                                <option value="{{ selected }}" selected>{{ selected }}</option>
+                            {% endfor %}
+                            {% for not_selected in not_selected_diets %}
+                                <option value="{{ not_selected }}" >{{ not_selected }}</option>
+                            {% endfor %}
                     </select>
                 </div>
             </div>

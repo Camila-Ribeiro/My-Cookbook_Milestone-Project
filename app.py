@@ -222,22 +222,33 @@ def my_recipes():
 @app.route('/edit_recipe/<recipe_id>')
 def edit_recipe(recipe_id):
     the_recipe_id = mongo.db.add_recipes.find_one({"_id": ObjectId(recipe_id)})
-    #all_recipe_details = mongo.db.add_recipes.find( { "allergen_list": session['username'].title() })
+
     all_recipe_details = get_user_recipes()
     
     # lists
     option_cuisines = get_cuisines()
     option_allergens = get_allergens()
-    option_diets = get_diets()
     option_meals = get_meals()
+    option_diets = get_diets()
 
-    return render_template('edit-recipe.html', 
-        recipe_id=the_recipe_id, 
-        all_recipe_details=all_recipe_details,
-        option_diets=option_diets, 
-        option_meals=option_meals,
-        option_cuisines=option_cuisines, 
-        option_allergens=option_allergens )
+    #GET SELECTED's OPTIONS
+    selected_allergens = the_recipe_id.get('allergen_list')
+    selected_meals= the_recipe_id.get('meal_type_list')
+    selected_diets = the_recipe_id.get('diet_type_list')
+
+    not_selected_allergens = helper_loop(option_allergens, selected_allergens, 'allergen_type')
+    not_selected_meals = helper_loop(option_meals, selected_meals, 'meal_type')
+    not_selected_diets = helper_loop(option_diets, selected_diets, 'diet_type')
+
+    return render_template('edit-recipe.html',
+        recipe_id=the_recipe_id,  
+        not_selected_allergens=not_selected_allergens,
+        selected_allergens=selected_allergens,
+        not_selected_meals=not_selected_meals,
+        selected_meals=selected_meals,
+        not_selected_diets=not_selected_diets,
+        selected_diets= selected_diets,
+        option_cuisines=option_cuisines)
 
 # DELETE RECIPES
 @app.route('/delete_recipe/<recipe_id>')
@@ -271,6 +282,14 @@ def get_diets():
 def get_meals():
     option_meals = mongo.db.meals.find().sort("meal_type", 1)
     return option_meals
+
+#GENERIC FUNC LOOP
+def helper_loop(options, selected, type):
+    arr = []
+    for x in options:
+        if x[type] not in selected:
+            arr.append(x[type])
+    return arr
 
 # ERROR PAGE
 @app.errorhandler(404)
