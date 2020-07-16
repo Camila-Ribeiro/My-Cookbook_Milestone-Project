@@ -236,18 +236,19 @@ def edit_recipe(recipe_id):
     selected_meals= the_recipe_id.get('meal_type_list')
     selected_diets = the_recipe_id.get('diet_type_list')
 
+    #GET NOT SELECTED OPTIONS     
     not_selected_allergens = helper_loop(option_allergens, selected_allergens, 'allergen_type')
     not_selected_meals = helper_loop(option_meals, selected_meals, 'meal_type')
-    not_selected_diets = helper_loop(option_diets, selected_diets, 'diet_type')
-
+    not_selected_diets = helper_loop(option_diets, selected_diets, 'diet_type')     
+            
     return render_template('edit-recipe.html',
         recipe_id=the_recipe_id,  
-        not_selected_allergens=not_selected_allergens,
         selected_allergens=selected_allergens,
+        not_selected_allergens=not_selected_allergens,
+        selected_meals=selected_meals, 
         not_selected_meals=not_selected_meals,
-        selected_meals=selected_meals,
+        selected_diets=selected_diets,
         not_selected_diets=not_selected_diets,
-        selected_diets= selected_diets,
         option_cuisines=option_cuisines)
 
 # DELETE RECIPES

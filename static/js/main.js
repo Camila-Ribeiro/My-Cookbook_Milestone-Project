@@ -88,8 +88,8 @@ $(document).ready(function(){
         $(remove_ingredientes).remove();
     });
 
-     // ADD INPUT INSTRUCTIONS
-     $(".add_instruction").click(function(){
+    // ADD INPUT INSTRUCTIONS
+    $(".add_instruction").click(function(){
         add_Instruction();
         return false;
     });
@@ -110,6 +110,12 @@ $(document).ready(function(){
         $(remove_instructions).remove();
     });
 
+    // REMOVE IMG FROM EDIT PAGE
+    $("#remove_img_btn").click(function(){
+        $("#remove_img").remove();
+        $(this).remove();
+        $("#recipe_image").removeClass("d-none");
+    });
 
 });//.doc.ready
 

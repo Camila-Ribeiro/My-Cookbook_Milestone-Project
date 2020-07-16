@@ -45,13 +45,15 @@
                 <div class="form-group">
                     <p>Meal Type</p>
                     <select class="d-block selectpicker show-tick" id="meal_type" name="meal_type_list" aria-label="Select Meal Type(s)" multiple data-selected-text-format="count" data-max-options="4" title="Please Select" >
-                        <option class="bs-title-option d-none" value=""></option>
-                            {% for selected in selected_meals %}    
-                                <option value="{{ selected }}" selected>{{ selected }}</option>
-                            {% endfor %}
-                            {% for not_selected in not_selected_meals %}
-                                <option value="{{ not_selected }}" >{{ not_selected }}</option>
-                            {% endfor %}
+                        <option class="bs-title-option d-none" value=""></option>  
+                    
+                        {% for selected in selected_meals %}    
+                            <option value="{{ selected }}" selected>{{ selected |capitalize }}</option>
+                        {% endfor %}
+                        {% for not_selected in not_selected_meals %}
+                            <option value="{{ not_selected }}" >{{ not_selected |capitalize }}</option>
+                        {% endfor %} 
+
                     </select>
                 </div>
             </div>
@@ -60,13 +62,15 @@
                 <div class="form-group">
                     <p>Diet Label</p>
                     <select class="d-block selectpicker show-tick" id="diet_type" name="diet_type_list" aria-label="Select diet(s)" multiple data-selected-text-format="count" data-max-options="4" title="Please Select" >
-                        <option class="bs-title-option d-none" value=""selected ></option>
-                            {% for selected in selected_diets %}    
-                                <option value="{{ selected }}" selected>{{ selected }}</option>
-                            {% endfor %}
-                            {% for not_selected in not_selected_diets %}
-                                <option value="{{ not_selected }}" >{{ not_selected }}</option>
-                            {% endfor %}
+                        <option class="bs-title-option d-none" value=""></option>  
+                    
+                        {% for selected in selected_diets %}    
+                            <option value="{{ selected }}" selected>{{ selected }}</option>
+                        {% endfor %}
+                        {% for not_selected in not_selected_diets %}
+                            <option value="{{ not_selected }}" >{{ not_selected }}</option>
+                        {% endfor %} 
+                      
                     </select>
                 </div>
             </div>
@@ -81,9 +85,11 @@
         </div>
         
         <!-- EDIT RECIPE'S IMAGE -->
-        <div class="form-group">
+        <div class="form-group mb-5">
             <label for="recipe_image">Recipe Image</label>
-            <input type="file" class="form-control-file" name="recipe_image" id="recipe_image">
+            <img id="remove_img" src="{{url_for('file', filename=recipe_id.recipe_image)}}" class="img-responsive w-50" alt="{{recipe_id.recipe_image}}" />
+            <i id="remove_img_btn" class="icofont-close-circled d-inline"></i>
+            <input type="file" class="form-control-file d-none" name="recipe_image" id="recipe_image">
         </div>
         
         <!-- EDIT RECIPE'S PREPARATION TIME -->
