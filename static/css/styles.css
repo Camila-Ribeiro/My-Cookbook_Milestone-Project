@@ -4,9 +4,7 @@ h1 {
   font-size: 2em;
 }
 
-h1,
-h2,
-h3 {
+h1,h2,h3,h4,h5 {
   font-family: "Lobster Two", cursive;
   letter-spacing: 1px;
 }
@@ -128,7 +126,7 @@ img.on-inview {
 }
 
 .body-login-register {
-  background-color: gainsboro;
+  background-color: #dcdcdc;
 }
 
 /* ------------------------------------------------------- Recipe-Details */
@@ -154,8 +152,12 @@ img.on-inview {
 .diets {
   margin-top: 60px;
     height: 340px;
-    background-color: #e5c260;
+    background-color: #f2c277;
     padding: 20px;
+}
+
+.diets h3{
+  font-size: 1.25em;
 }
 
 .wine-img {

@@ -9,15 +9,13 @@ My CookBook is a Milestone Project created for the "Data Centric Development" mo
 2. [**UX**](#ux)
    - [**User Stories**](#user-stories)
    - [**Design**](#design)
-     - [**Libraries/Framework Used**](#Libraries/-framework-used)
+     - [**Libraries**](#libraries)
      - [**Color Scheme**](#color-scheme)
-     - [**Icons**](#icons)
      - [**Typography**](#typography)
    - [**Wireframes**](#wireframes)
+
 3. [**Technologies Used**](#technologies-used)
 
-   - [**Front-End Technologies**](#front-end-technologies)
-   - [**Back-End Technologies**](#back-end-technologies)
 
 4. [**Databases Used**](#databases-used)
 
@@ -42,12 +40,20 @@ My CookBook is a Milestone Project created for the "Data Centric Development" mo
 ---
 
 ## Project overview 
-My Cookbook application was built using [Python](https://www.python.org/) - programming language, [Flask](https://flask.palletsprojects.com/en/1.1.x/) - which is a Python micro framework and [MongoDB Atlas](https://www.mongodb.com/) - a document-based database.
+My Cookbook was built using [Python](https://www.python.org/) - programming language, [Flask](https://flask.palletsprojects.com/en/1.1.x/) - which is a Python micro framework and [MongoDB Atlas](https://www.mongodb.com/) - a document-based database.
 
 
 ## UX
 
-My Cookbook is an online web application designed for users with interest in gather information about recipes. The user can add their own recipes and also edit,update and delete them. 
+My Cookbook is an online web application designed for users with interest in gather information about recipes. The user can:
+- Register an account
+- Add their own recipe (by registered user)
+- Edit,update and delete recipes (by registered user)
+- Search recipes (by without an allergen)
+- Search recipes (by diet)
+- Search recipes (by cuisine)
+- Search recipes (by meal type)
+- View recipe details
 
 The website is simple and structured in a way that is easy to navigate through and find recipes.
 
@@ -63,39 +69,28 @@ The website is simple and structured in a way that is easy to navigate through a
 
 A standard layout is fully responsive on mobile devices and larger screens.
 
-#### Libraries/ Framework Used
+#### Libraries
 
-- [Bootstrap 4](https://getbootstrap.com/)
-- [jQuery](https://jquery.com/download/)
-- [Jasmine](https://jasmine.github.io/)
-- [Jasmine - jQuery](https://github.com/velesin/jasmine-jquery)
-- [MongoDB Atlas](https://www.mongodb.com/)
-- [Flask](https://flask.palletsprojects.com/en/1.1.x/)
+- [Bootstrap 4](https://getbootstrap.com/) - is a framework for building responsive, mobile-first websites.
+- [Icofont](https://icofont.com/) - is an icon font application that contains 2100+ icons in a single font. 
+- [jQuery](https://jquery.com/download/) - is a lightweight, "write less, do more", JavaScript library. The purpose of jQuery is to make it much easier to use JavaScript on your website.
+- [Slick](https://kenwheeler.github.io/slick/) - slick is a responsive carousel jQuery plugin that supports multiple breakpoints, CSS3 transitions, touch events/swiping & much more!
+- [Bootsrap Select](https://developer.snapappointments.com/bootstrap-select/) - is a jQuery plugin that brings select elements into the 21st century with intuitive multiselection, searching, and much more.
 
 #### Color Scheme
 
-- ![#343A40](https://placehold.it/15/343A40/343A40) navbar
-- ![#EBECF0](https://placehold.it/15/EBECF0/EBECF0) body background
-- ![#FFC107](https://placehold.it/15/FFC107/FFC107) yellow button
-- ![#FEBB00](https://placehold.it/15/FEBB00/FEBB00) yellow star
-- ![#FFFFFF](https://placehold.it/15/FFFFFF/FFFFFF) white cards
-- ![#3A88FD](https://placehold.it/15/3A88FD/3A88FD) ![#343A40](https://placehold.it/15/343A40/343A40) ![#EBECF0](https://placehold.it/15/EBECF0/EBECF0) ![#FFC107](https://placehold.it/15/FFC107/FFC107) ![#FEBB00](https://placehold.it/15/FEBB00/FEBB00) loading gif
-
-#### Icons
-
-- [Icofont](https://icofont.com/)
-  - 4 _Icofont_ icons were used on ....
-    - [bars]()
-    - [star]()
-    - [phone]()
-    - [globe]()
+- ![#61a5a0](https://placehold.it/15/61a5a0/#61a5a0) 
+- ![#90c0bc](https://placehold.it/15/90c0bc/90c0bc) 
+- ![#55928d](https://placehold.it/15/55928d/55928d) 
+- ![#dcdcdc](https://placehold.it/15/dcdcdc/dcdcdc) 
+- ![#f2c277](https://placehold.it/15/f2c277/f2c277) 
 
 #### Typography
 
-- 2 [Google Fonts](https://fonts.google.com/) were used across the site:
-  - [Open Sans](https://fonts.google.com/specimen/OpenSans) : main body text.
-  - [Lobster Two](https://fonts.google.com/specimen/LobsterTwo) : headings 1,2 and 3.
-  - [Montserrat](https://fonts.google.com/specimen/Montserrat) : heading 6.
+- 3 [Google Fonts](https://fonts.google.com/) were used across the site:
+  - [Open Sans](https://fonts.google.com/specimen/OpenSans) : body text
+  - [Lobster Two](https://fonts.google.com/specimen/LobsterTwo) : h1, h2, h3, h4, h5
+  - [Montserrat](https://fonts.google.com/specimen/Montserrat) : h6
 
 ### Wireframes
 
@@ -110,28 +105,49 @@ My wireframes for this project can be found in the UX folder.
 
 ## Technologies Used
 
-### Front-End Technologies
 
 <b>Built with</b>
 
-- ![HTML5](https://img.shields.io/static/v1?label=HTML&message=5&color=E34F26&logo=html5&logoColor=ffffff)
-  - [HTML5](https://developer.mozilla.org/en-US/docs/Web/Guide/HTML/HTML5) - Used as the base for markup text.
+- ![Bson](https://img.shields.io/badge/Bson-Version%201.1-blue)
+  - [Bson](http://bsonspec.org/) - short for Bin­ary JSON, is a bin­ary-en­coded seri­al­iz­a­tion of JSON-like doc­u­ments.
+- ![Chrome Developer Tools](https://img.shields.io/badge/Chrome%20Dev%20Tools-Google%20Chrome-blue)
+  - [Chrome Developer Tools](https://developers.google.com/web/tools/chrome-devtools) - is a set of web developer tools built directly into the Google Chrome browser.
 - ![CSS3](https://img.shields.io/static/v1?label=CSS&message=3&color=1572B6&logo=css3&logoColor=ffffff)
   - [CSS3](https://developer.mozilla.org/en-US/docs/Web/CSS/CSS3) - Used as the base for cascading styles.
-- ![JavaScript](https://img.shields.io/static/v1?label=JavaScript&message=ES6&color=F7DF1E&logo=javascript&logoColor=ffffff)
-  - [JavaScript ES6](https://developer.mozilla.org/en-US/docs/Web/JavaScript) - Used as the base for website interaction.
-- ![Jasmine](https://img.shields.io/static/v1?label=Jasmine&message=3.5.0&color=8A4182)
-  - [Jasmine](https://jasmine.github.io/) - Used for Test-Driven Development (TDD).
-- ![jasmine-jquery](https://img.shields.io/static/v1?label=jasmine-jquery&message=2.1.1&color=535B9F)
-
-  - [jasmine-jquery](https://www.npmjs.com/package/jasmine-jquery) - Used to simplify some of the automated Jasmine tests.
-
-### Back-End Technologies
-
-<b>Built with</b>
-
-- ![Python]()
-  - [jasmine-jquery](https://www.python.org/downloads/) - Used to automate specific series of tasks, making it more efficient.
+- ![Flask](https://img.shields.io/badge/Flask-Version%201.1-orange)
+  - [Flask](https://flask.palletsprojects.com/en/1.1.x/) - is a web framework, it provides you with tools, libraries and technologies that allow you to build a web application. 
+- ![Flask-Bcrypt]()
+  - [Flask-Bcrypt](https://flask-bcrypt.readthedocs.io/en/latest/) - is a Flask extension that provides bcrypt hashing utilities for your application.
+- ![Flask PyMongo]()
+  - [Flask PyMongo](https://flask-pymongo.readthedocs.io/en/latest/) - Bridges between Flask and PyMongo.
+- ![Flask Session]()
+  - [Flask Session](https://flask.palletsprojects.com/en/1.0.x/api/#flask.session) - Flask-Session is an extension for Flask that adds support for Server-side Session to your application.
+- ![Flask WTF]()
+  - [Flask WTF](https://flask-wtf.readthedocs.io/en/stable/) - Simple integration of Flask and WTForms, including CSRF, file upload, and reCAPTCHA.
+- ![Git]()
+  - [Git](https://git-scm.com/) - open source distributed version control system.
+- ![GitHub]()
+  - [GitHub](https://github.com/) - is a Web-based hosting service for version control using Git.
+- ![GitIgnore]()
+  - [GitIgnore](https://www.toptal.com/developers/gitignore) - is a web service designed to help you create .gitignore files for your Git repositories.
+- ![Heroku]()
+  - [Heroku](https://dashboard.heroku.com/) - lets you deploy, run and manage applications written in Ruby, Node.js, Java, Python, Clojure, Scala, Go and PHP.
+- ![HTML5](https://img.shields.io/static/v1?label=HTML&message=5&color=E34F26&logo=html5&logoColor=ffffff)
+  - [HTML5](https://developer.mozilla.org/en-US/docs/Web/Guide/HTML/HTML5) - used as the base for markup text.
+- ![jQuery]()
+  - [jQuery](https://jquery.com/) - is a fast, small, and feature-rich JavaScript library. It makes things like HTML document traversal and manipulation, event handling, animation, and Ajax much simpler with an easy-to-use API that works across a multitude of browsers.
+- ![Jinja]()
+  - [Jinja2](https://jinja.palletsprojects.com/en/2.11.x/) - a full featured template engine for Python.
+- ![MongoDB Atlas](https://img.shields.io/badge/MongoDB%20Atlas-4.4-green)
+  - [MongoDB Atlas](https://www.mongodb.com/) - is a document database with the scalability and flexibility that you want with the querying and indexing that you need.
+- ![Phyton]()
+  - [Python 3.8.3](https://www.python.org/downloads/release/python-383/) - is a scripting language.
+- ![PyMongo]()
+  - [PyMongo](https://docs.mongodb.com/drivers/pymongo) - is a MongoDB driver for Python used to access the MongoDB database.
+- ![Werkzeug]()
+  - [Werkzeug](https://werkzeug.palletsprojects.com/en/1.0.x/) - is a WSGI utility library for Python
+- ![WTforms]()
+  - [WTforms](https://pypi.org/project/WTForms/) - is  a framework agnostic library handling web forms in python.
 
 ##### back to [top](#table-of-contents)
 
@@ -139,13 +155,18 @@ My wireframes for this project can be found in the UX folder.
 ## Databases Used
 
 ### API - Spoonacular
-The recipes on the [index.html](https://my-cookbook-milestone-project.herokuapp.com/index) and [all-recipes.html](https://my-cookbook-milestone-project.herokuapp.com/all_recipes)(on filters) were sourced from Spoonacular -
+[Spoonacular](https://spoonacular.com/) Food API is a free recipe search API that provides recipes data from calling a API endpoint and receiving the data back as [JSON](https://www.json.org/json-en.html) format.
+Using Python resquets I populated the recipes displayed on:
 
- a free recipe search API that can provide recipe data from calling a API endpoint and receiving the data back as JSON. The way I utilise this API was by using Python requests and creating a simple but yet effective CLI (Command Line Interface) script which was taken and adapted from the course material. In the course we made a program to work with MongoDB via the CLI. By creating a script to request data from the API I then adapt the Mongo CLI program to then inject my retrieved data and insert it into a Mongo collection. My import script can be found within this repo. 
+- [index.html](https://my-cookbook-milestone-project.herokuapp.com/index) in the "Get Inspired" section
+- all filters across the website
+- [all-recipes.html](https://my-cookbook-milestone-project.herokuapp.com/all_recipes), populating cards accondigly the filter selected
+- [recipes-details]((https://my-cookbook-milestone-project.herokuapp.com/recipe_details)
 
 ### MongoDB
 
-My MongoDB database consists of the following collections
+MongoDB is a highly scalable database server that stores data in a non-relational format and it's designed to store humongous amounts of data.
+My MongoDB database consists of the following collections:
 
 - add_recipes
 - cuisines
@@ -162,8 +183,9 @@ My MongoDB database consists of the following collections
 
 ## Testing
 
-Automated and manual testing were conducted during this project. I also have validated all files using online validation sites cited bellow and checked across differents browsers and devices.
-I have tried automated test as much as possible but based on the fact that it is purely running entirely from the XHR itself I couldn't get more done. It is a feature left to implement later after I graduate from the course. I have conducted a detailed [manual testing](testing/manual/testing.md) to show that I have testing done.
+The project guidelines stated that a Test Driven Development (TDD) approach should be taken to developing thie web application but I only manual testing was conducted during this project to fix bugs I used print() method. Bellow I outlined most of what I did below for documentation purposes.
+I also have validated all files using online validation sites cited bellow and checked across differents browsers and devices.
+
 
 ### Validators
 
@@ -187,7 +209,19 @@ I have tried automated test as much as possible but based on the fact that it is
 - [JShint](https://jshint.com/)
 
 ### Manual Testing
-More details can be found on my [manual testing folder] (testing/manual/)
+I have conducted a detailed [manual testing](testing/manual/testing.md) to show that I have testing done.
+
+#### Testing Flask 
+
+#### Testing Flask-Bcrypt 
+
+#### Testing Python 
+
+#### Testing Flask Views
+
+#### Testing the database
+
+#### Testing CRUD
 
 I have also created a testing matrix ([raw Excel file here](testing/manual/curious_world-testing-milestone.xlsx)).
 

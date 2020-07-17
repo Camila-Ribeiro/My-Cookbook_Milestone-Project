@@ -71,29 +71,29 @@
       <div class="container">
         <div class="row">
           {% for instructions in details.analyzedInstructions %}
-            {% set dup_id = [] %}
-            {% for step in instructions.steps if step.equipment not in dup_id %}
-             
+          {% set dup_id = [] %}
+          {% for step in instructions.steps if step.equipment not in dup_id %}
+           
+
+            
+              {% do dup_id.append(step.equipment) %}
+              
+              
+              {% set step = dup_id %}
+          
+              {% print(dup_id )%}
 
               
-                {% do dup_id.append(step.equipment) %}
-                
-                
-                {% set step = dup_id %}
-            
-                {% print(dup_id )%}
-
-                
-              {% for equipment in step.equipment %}
-            
-             
-                <div class="col-sm-6 col-md-2">
-                  <p class="text-center">{{equipment.name}}</p>
-                  <img class="mx-auto d-block" src="https://spoonacular.com/cdn/equipment_100x100/{{equipment.image}}" alt="">
-                </div>
-              {% endfor %}
+            {% for equipment in step.equipment %}
+          
+           
+              <div class="col-sm-6 col-md-2">
+                <p class="text-center">{{equipment.name}}</p>
+                <img class="mx-auto d-block" src="https://spoonacular.com/cdn/equipment_100x100/{{equipment.image}}" alt="">
+              </div>
             {% endfor %}
           {% endfor %}
+        {% endfor %}
         </div>
     </div>
   </section>

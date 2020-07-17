@@ -95,12 +95,12 @@ def all_recipes():
     option_meals = get_meals()
     user_added_recipes = get_user_recipes()
     
-    r = requests.get(
-        'https://api.spoonacular.com/recipes/random?number=8&apiKey='+api_key+'')
-    obj = r.json()
-    random_recipes = obj['recipes']
+    # r = requests.get(
+    #     'https://api.spoonacular.com/recipes/random?number=8&apiKey='+api_key+'')
+    # obj = r.json()
+    # random_recipes = obj['recipes']
     return render_template('all-recipes.html', 
-        random_recipes=random_recipes, 
+        # random_recipes=random_recipes, 
         option_allergens=option_allergens,
         option_cuisines=option_cuisines,
         option_diets=option_diets,
@@ -116,7 +116,14 @@ def recipe_details(recipe_id):
     # APIused = r.headers.set('X-API-Quota-Used', "default-src 'self'")
     obj = r.json()
     details = obj
-    
+
+    # dup = []
+    # for x in details.get('analyzedInstructions'):
+    #     for y in x.get('steps'):
+    #         for z in y.get('equipment'):
+    #             if z['id'] not in dup:
+    #                 dup.append(z['id'])
+    #                 print(dup)
     return render_template('recipe-details.html', details=details)
 
 
