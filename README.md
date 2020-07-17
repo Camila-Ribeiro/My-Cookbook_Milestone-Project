@@ -14,6 +14,10 @@ My CookBook is a Milestone Project created for the "Data Centric Development" mo
      - [**Typography**](#typography)
    - [**Wireframes**](#wireframes)
 
+3. [**Features**](#features)
+    - [**Existing Features**](#existing-features)
+    - [**Features Left to Implement**](#features-left-to-implemement)
+
 3. [**Technologies Used**](#technologies-used)
 
 
@@ -103,50 +107,60 @@ My wireframes for this project can be found in the UX folder.
 
 ---
 
+## Features
+
+### Existing Features
+
+### Features Left to Implement
+
+##### back to [top](#table-of-contents)
+
+---
+
 ## Technologies Used
 
 
 <b>Built with</b>
 
-- ![Bson](https://img.shields.io/badge/Bson-Version%201.1-blue)
+1. ![Bson](https://img.shields.io/badge/Bson-Version%201.1-blue)
   - [Bson](http://bsonspec.org/) - short for Bin­ary JSON, is a bin­ary-en­coded seri­al­iz­a­tion of JSON-like doc­u­ments.
-- ![Chrome Developer Tools](https://img.shields.io/badge/Chrome%20Dev%20Tools-Google%20Chrome-blue)
+2. ![Chrome Developer Tools](https://img.shields.io/badge/Chrome%20Dev%20Tools-Google%20Chrome-blue)
   - [Chrome Developer Tools](https://developers.google.com/web/tools/chrome-devtools) - is a set of web developer tools built directly into the Google Chrome browser.
-- ![CSS3](https://img.shields.io/static/v1?label=CSS&message=3&color=1572B6&logo=css3&logoColor=ffffff)
+3. ![CSS3](https://img.shields.io/static/v1?label=CSS&message=3&color=1572B6&logo=css3&logoColor=ffffff)
   - [CSS3](https://developer.mozilla.org/en-US/docs/Web/CSS/CSS3) - Used as the base for cascading styles.
-- ![Flask](https://img.shields.io/badge/Flask-Version%201.1-orange)
+4. ![Flask](https://img.shields.io/badge/Flask-Version%201.1-orange)
   - [Flask](https://flask.palletsprojects.com/en/1.1.x/) - is a web framework, it provides you with tools, libraries and technologies that allow you to build a web application. 
-- ![Flask-Bcrypt]()
+5. ![Flask-Bcrypt]()
   - [Flask-Bcrypt](https://flask-bcrypt.readthedocs.io/en/latest/) - is a Flask extension that provides bcrypt hashing utilities for your application.
-- ![Flask PyMongo]()
+6. ![Flask PyMongo]()
   - [Flask PyMongo](https://flask-pymongo.readthedocs.io/en/latest/) - Bridges between Flask and PyMongo.
-- ![Flask Session]()
+7. ![Flask Session]()
   - [Flask Session](https://flask.palletsprojects.com/en/1.0.x/api/#flask.session) - Flask-Session is an extension for Flask that adds support for Server-side Session to your application.
-- ![Flask WTF]()
+8. ![Flask WTF]()
   - [Flask WTF](https://flask-wtf.readthedocs.io/en/stable/) - Simple integration of Flask and WTForms, including CSRF, file upload, and reCAPTCHA.
-- ![Git]()
+9. ![Git]()
   - [Git](https://git-scm.com/) - open source distributed version control system.
-- ![GitHub]()
+10. ![GitHub]()
   - [GitHub](https://github.com/) - is a Web-based hosting service for version control using Git.
-- ![GitIgnore]()
+11. ![GitIgnore]()
   - [GitIgnore](https://www.toptal.com/developers/gitignore) - is a web service designed to help you create .gitignore files for your Git repositories.
-- ![Heroku]()
+12. ![Heroku]()
   - [Heroku](https://dashboard.heroku.com/) - lets you deploy, run and manage applications written in Ruby, Node.js, Java, Python, Clojure, Scala, Go and PHP.
-- ![HTML5](https://img.shields.io/static/v1?label=HTML&message=5&color=E34F26&logo=html5&logoColor=ffffff)
+13. ![HTML5](https://img.shields.io/static/v1?label=HTML&message=5&color=E34F26&logo=html5&logoColor=ffffff)
   - [HTML5](https://developer.mozilla.org/en-US/docs/Web/Guide/HTML/HTML5) - used as the base for markup text.
-- ![jQuery]()
+14. ![jQuery]()
   - [jQuery](https://jquery.com/) - is a fast, small, and feature-rich JavaScript library. It makes things like HTML document traversal and manipulation, event handling, animation, and Ajax much simpler with an easy-to-use API that works across a multitude of browsers.
-- ![Jinja]()
+15. ![Jinja]()
   - [Jinja2](https://jinja.palletsprojects.com/en/2.11.x/) - a full featured template engine for Python.
-- ![MongoDB Atlas](https://img.shields.io/badge/MongoDB%20Atlas-4.4-green)
+16. ![MongoDB Atlas](https://img.shields.io/badge/MongoDB%20Atlas-4.4-green)
   - [MongoDB Atlas](https://www.mongodb.com/) - is a document database with the scalability and flexibility that you want with the querying and indexing that you need.
-- ![Phyton]()
+17. ![Phyton]()
   - [Python 3.8.3](https://www.python.org/downloads/release/python-383/) - is a scripting language.
-- ![PyMongo]()
+18. ![PyMongo]()
   - [PyMongo](https://docs.mongodb.com/drivers/pymongo) - is a MongoDB driver for Python used to access the MongoDB database.
-- ![Werkzeug]()
+19. ![Werkzeug]()
   - [Werkzeug](https://werkzeug.palletsprojects.com/en/1.0.x/) - is a WSGI utility library for Python
-- ![WTforms]()
+20. ![WTforms]()
   - [WTforms](https://pypi.org/project/WTForms/) - is  a framework agnostic library handling web forms in python.
 
 ##### back to [top](#table-of-contents)
@@ -155,13 +169,13 @@ My wireframes for this project can be found in the UX folder.
 ## Databases Used
 
 ### API - Spoonacular
-[Spoonacular](https://spoonacular.com/) Food API is a free recipe search API that provides recipes data from calling a API endpoint and receiving the data back as [JSON](https://www.json.org/json-en.html) format.
-This API has daily limmit calls
+[Spoonacular](https://spoonacular.com/) Food API is a free recipe search API that provides recipes data from calling a API endpoint and receiving the data back as [JSON](https://www.json.org/json-en.html) format. This API has daily limmit calls based on 150 quota points per day.
+
 Using Python resquets I populated the recipes displayed on:
 
 - [index.html](https://my-cookbook-milestone-project.herokuapp.com/index) in the "Get Inspired" section
 - all filters across the website
-- [all-recipes.html](https://my-cookbook-milestone-project.herokuapp.com/all_recipes), populating cards accondigly the filter selected
+- [all-recipes.html](https://my-cookbook-milestone-project.herokuapp.com/all_recipes), populating cards accondigly with filter selected
 - [recipes-details]((https://my-cookbook-milestone-project.herokuapp.com/recipe_details)
 
 ### MongoDB

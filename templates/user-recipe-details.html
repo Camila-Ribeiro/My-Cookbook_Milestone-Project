@@ -1,91 +1,93 @@
 {% include 'base.html' %} {% include 'includes/_nav.html' %} {% block content %}
 
-<div class="container mt-5 mb-5">
-  <div class="row">
-    <div class="col-md 9">
-      <h1 class="text-center mb-5">{{ user_recipe.recipe_name |capitalize }}</h1>
+<section class="user-recipes">
+  <div class="container mt-5 mb-5">
+    <div class="row">
+      <div class="col-md 9">
+        <h1 class="text-center mb-5">{{ user_recipe.recipe_name |capitalize }}</h1>
 
-      {% if user_recipe.recipe_image is defined and user_recipe.recipe_image | length > 0 %}
-          <img src="{{url_for('file', filename=user_recipe.recipe_image)}}" class="img-responsive w-100" alt="{{user_recipe.recipe_image}}" />
-        {% else %}
-          <img src="../static/img/No_image_available.png" class="img-responsive w-100" alt="Image Not Available" />
-      {% endif %}
-      
-      <!-- RECIPE INFO SECTION-->
-      <section class="recipe-info">
-        <div class="row">
-          <div class="col-md-6">
-            <p><i class="icofont-clock-time"></i> Ready in {{ user_recipe.prep_time }} min</p>
+        {% if user_recipe.recipe_image is defined and user_recipe.recipe_image | length > 0 %}
+            <img src="{{url_for('file', filename=user_recipe.recipe_image)}}" class="img-fluid main-img w-100" alt="{{user_recipe.recipe_image}}" />
+          {% else %}
+            <img src="../static/img/No_image_available.png" class="img-fluid main-img w-100" alt="Image Not Available" />
+        {% endif %}
+        
+        <!-- RECIPE INFO SECTION-->
+        <section class="recipe-info">
+          <div class="row">
+            <div class="col-md-6">
+              <p><i class="icofont-clock-time"></i> Ready in {{ user_recipe.prep_time }} min</p>
+            </div>
+            <div class="col-md-6">
+              <p><i class="icofont-people"></i> {{ user_recipe.serves }} Servings</p>
+            </div>
           </div>
-          <div class="col-md-6">
-            <p><i class="icofont-people"></i> {{ user_recipe.serves }} Servings</p>
+        </section>
+      </div>
+      
+      <!-- DIET TYPE SECTION-->
+      <div class="col-md-3 text-center mt-4">
+        <div class="diets">
+          <h3 class="mb-1">Diets Type</h3>
+
+      
+          {% if user_recipe.diet_type_list |count > 0 %}
+              {% for d in user_recipe.diet_type_list  %}
+                <p class="small mb-1"> {{ d }} </p>  
+              {% endfor %}
+            {%else%}
+              <p class="small mb-1 else"> {{ user_recipe.diet_type_list }} </p>  
+            {% endif %}  
+          
+          <!-- MEAL TYPE SECTION-->
+          <h3 class="mb-1 mt-3">Meal Type</h3>
+          {% for m in user_recipe.meal_type_list %}
+            <p class="small mb-1"> {{ m }} </p>
+          {% endfor %}
+        </div> 
+      </div>
+    </div> 
+
+    <!-- INGREDIENTES SECTION-->
+    <section class="ingredient">
+      <h3 class="mb-4">Ingredients</h3>
+      <hr>
+        <div class="container">
+          <div class="row">
+            <div class="col-sm-6 col-md-12">
+              <ul>
+                {% for list in user_recipe.add_ingredients %}
+                  <li>{{list |capitalize}}</li>
+                {% endfor %}
+              </ul>
+            </div>
           </div>
         </div>
-      </section>
-    </div>
+    </section>
     
-    <!-- DIET TYPE SECTION-->
-    <div class="col-md-3 text-center mt-4">
-      <div class="diets">
-        <h3 class="mb-1">Diets Type</h3>
-
-     
-        {% if user_recipe.diet_type_list |count > 0 %}
-            {% for d in user_recipe.diet_type_list  %}
-              <p class="small mb-1"> {{ d }} </p>  
-            {% endfor %}
-           {%else%}
-            <p class="small mb-1 else"> {{ user_recipe.diet_type_list }} </p>  
-          {% endif %}  
-        
-        <!-- MEAL TYPE SECTION-->
-        <h3 class="mb-1 mt-3">Meal Type</h3>
-        {% for m in user_recipe.meal_type_list %}
-          <p class="small mb-1"> {{ m }} </p>
-        {% endfor %}
-      </div> 
-    </div>
-  </div> 
-
-  <!-- INGREDIENTES SECTION-->
-  <section class="ingredient">
-    <h3 class="mb-4">Ingredients</h3>
-    <hr>
+    <!-- INSTRUCTION SECTION-->
+    <section class="instruction">
+      <h3 class="mb-4">Instruction</h3>
+      <hr>
       <div class="container">
         <div class="row">
           <div class="col-sm-6 col-md-12">
-            <ul>
-              {% for list in user_recipe.add_ingredients %}
+            <ol>
+              {% for list in user_recipe.add_instructions %}
                 <li>{{list |capitalize}}</li>
               {% endfor %}
-            </ul>
+            </ol>
           </div>
         </div>
       </div>
-  </section>
-  
-  <!-- INSTRUCTION SECTION-->
-  <section class="instruction">
-    <h3 class="mb-4">Instruction</h3>
-    <hr>
-    <div class="container">
-      <div class="row">
-        <div class="col-sm-6 col-md-12">
-          <ol>
-            {% for list in user_recipe.add_instructions %}
-              <li>{{list |capitalize}}</li>
-            {% endfor %}
-          </ol>
-        </div>
-      </div>
+    </section>
+    
+    <div class="mt-5 mb-5 ">
+      <a class="mr-4 color-green" href="{{ url_for('edit_recipe',recipe_id=user_recipe._id) }}"><i class="icofont-ui-edit"></i> Edit </a>          
+      <a href="{{ url_for('delete_recipe', recipe_id=user_recipe._id )}}"><i class="icofont-bin lead color-green"></i> </a>
     </div>
-  </section>
-  
-  <div class="mt-5 mb-5 ">
-    <a class="mr-4 color-green" href="{{ url_for('edit_recipe',recipe_id=user_recipe._id) }}"><i class="icofont-ui-edit"></i> Edit </a>          
-    <a href="{{ url_for('delete_recipe', recipe_id=user_recipe._id )}}"><i class="icofont-bin lead color-green"></i> </a>
   </div>
-</div>
+</section>
 
 {% include 'includes/_footer.html' %}
 
