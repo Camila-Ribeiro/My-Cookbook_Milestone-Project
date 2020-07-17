@@ -1,7 +1,8 @@
 # My Cookbook
 ### [Heroku App](https://my-cookbook-milestone-project.herokuapp.com)
 ### [GitHub](https://github.com/Camila-Ribeiro/My-Cookbook_Milestone-Project) 
-(static/img/web-app-devices.png)
+
+![devices image](static/img/web-app-devices.png)
 
 My CookBook is a Milestone Project created for the "Data Centric Development" module of my FullStack Software Development Course offered by [Code Institute](https://codeinstitute.net/).
 
