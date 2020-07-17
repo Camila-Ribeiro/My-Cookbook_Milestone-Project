@@ -41,8 +41,8 @@ def index():
         recipes=recipes
         )
 
-
-# LOGIN https://www.youtube.com/watch?v=vVx1737auSE&t=621s
+# achieved code using https://www.youtube.com/watch?v=vVx1737auSE&t=621s
+# LOGIN 
 @app.route('/login', methods=['GET','POST'])
 def login():
     if request.method == 'POST':

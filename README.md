@@ -156,6 +156,7 @@ My wireframes for this project can be found in the UX folder.
 
 ### API - Spoonacular
 [Spoonacular](https://spoonacular.com/) Food API is a free recipe search API that provides recipes data from calling a API endpoint and receiving the data back as [JSON](https://www.json.org/json-en.html) format.
+This API has daily limmit calls
 Using Python resquets I populated the recipes displayed on:
 
 - [index.html](https://my-cookbook-milestone-project.herokuapp.com/index) in the "Get Inspired" section

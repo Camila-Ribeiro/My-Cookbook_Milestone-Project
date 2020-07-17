@@ -54,8 +54,7 @@ $(document).ready(function(){
                             "<div class='card'> \n " +
                                 "<img src="+imageUrl+cat.image+" class='on-inview' alt="+cat.title+" /> \n " +
                                 "<div class='card-body'> \n " +
-                                    "<a href='"+ 
-                                    Flask.url_for("recipe_details", "recipe_id="+apiUrl) +" class='title-padding'>"+cat.title+"</a>  \n " +
+                                    "<a href='{{url_for('recipe_details', recipe_id="+apiUrl+")}}' class='title-padding'>"+cat.title+"</a>  \n " +
                                 "</div> \n " +
                             "</div> \n " +
                         "</div>" 
