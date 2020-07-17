@@ -1,6 +1,7 @@
 # My Cookbook
 ### [Heroku App](https://my-cookbook-milestone-project.herokuapp.com)
-### [GitHub](https://https://github.com/Camila-Ribeiro/My-Cookbook_Milestone-Project) 
+### [GitHub](https://github.com/Camila-Ribeiro/My-Cookbook_Milestone-Project) 
+(static/img/web-app-devices.png)
 
 My CookBook is a Milestone Project created for the "Data Centric Development" module of my FullStack Software Development Course offered by [Code Institute](https://codeinstitute.net/).
 
@@ -20,21 +21,15 @@ My CookBook is a Milestone Project created for the "Data Centric Development" mo
 
 3. [**Technologies Used**](#technologies-used)
 
-
 4. [**Databases Used**](#databases-used)
-
     - [**API - Spoonacular**](#api-spoonacular)
     - [**MongoDB**](#mongoDB)
 
 5. [**Testing**](#testing)
-
    - [**Validators**](#validators)
    - [**Automated Testing**](#automated-testing)
 
 6. [**Deployment**](#deployment)
-
-   - [**Local Deployment**](#local-deployment)
-   - [**Remote Deployment**](#remote-deployment)
 
 7. [**Credits**](#credits)
    - [**Content**](#content)
@@ -78,7 +73,7 @@ A standard layout is fully responsive on mobile devices and larger screens.
 - [Bootstrap 4](https://getbootstrap.com/) - is a framework for building responsive, mobile-first websites.
 - [Icofont](https://icofont.com/) - is an icon font application that contains 2100+ icons in a single font. 
 - [jQuery](https://jquery.com/download/) - is a lightweight, "write less, do more", JavaScript library. The purpose of jQuery is to make it much easier to use JavaScript on your website.
-- [Slick](https://kenwheeler.github.io/slick/) - slick is a responsive carousel jQuery plugin that supports multiple breakpoints, CSS3 transitions, touch events/swiping & much more!
+- [Slick](https://kenwheeler.github.io/slick/) - is a responsive carousel jQuery plugin that supports multiple breakpoints, CSS3 transitions, touch events/swiping & much more!
 - [Bootsrap Select](https://developer.snapappointments.com/bootstrap-select/) - is a jQuery plugin that brings select elements into the 21st century with intuitive multiselection, searching, and much more.
 
 #### Color Scheme
@@ -175,8 +170,8 @@ Using Python resquets I populated the recipes displayed on:
 
 - [index.html](https://my-cookbook-milestone-project.herokuapp.com/index) in the "Get Inspired" section
 - all filters across the website
-- [all-recipes.html](https://my-cookbook-milestone-project.herokuapp.com/all_recipes), populating cards accondigly with filter selected
-- [recipes-details]((https://my-cookbook-milestone-project.herokuapp.com/recipe_details)
+- [all-recipes.html](https://my-cookbook-milestone-project.herokuapp.com/all_recipes), populating cards accondigly withclear filter selected
+- [recipes-details](https://my-cookbook-milestone-project.herokuapp.com/recipe_details)
 
 ### MongoDB
 
@@ -224,7 +219,7 @@ I also have validated all files using online validation sites cited bellow and c
 - [JShint](https://jshint.com/)
 
 ### Manual Testing
-I have conducted a detailed [manual testing](testing/manual/testing.md) to show that I have testing done.
+I have conducted a detailed [manual testing](static/testing/manual/testing.md) to show that I have extensively tested this web application.
 
 #### Testing Flask 
 
@@ -259,45 +254,18 @@ I have also created a testing matrix ([raw Excel file here](testing/manual/curio
 
 ## Deployment
 
-[My CookBook](https://https://github.com/Camila-Ribeiro/My-Cookbook_Milestone-Project) was developed locally using **VS Code**, and all commits were pushed to **GitHub** using **Git**. and also on [heroku](https://my-cookbook-milestone-project.herokuapp.com)
+[My CookBook](https://https://github.com/Camila-Ribeiro/My-Cookbook_Milestone-Project) was developed  locally using **VS Code**, and all commits were pushed to [**Heroku**](https://my-cookbook-milestone-project.herokuapp.com) using [**Git**](https://git-scm.com/).
 
-This website was deployed on GitHub pages built from the Master branch to publish the project.
-To run this project locally, download the files and navigate through the index.html to start.
+In order to get the application ready for deployment I followed the next steps:
+1. I removed all my hard-coded environment variables from app.py to protect my Database name, URI and secret-key and placed them in the env.py for development and entered it into herouku's Config Var for production.
+2. On terminal window using the command `pip3 freeze > requirements.txt` I installed `requirements.txt` file, which contains a list of items to be installed, defining the modules imported to Heroku.
+3. Set up the Procfile (Remember to use a capital P in Procfile). using the command `echo web: python app.py > Procfile` - The Procfile file contains `web: python app.py` which tells Heroku to start a process called web and to run `python app.py` when it starts.
+4. Created a nrw Heroku app
+5. Created Config Var for production adding api_key, IP, PORT, MONGO_DBNAME, MONGO_URI & SECRET_KEY.
+6. Set Flask's debugging to False.
+7. Pushed the code to Heroku.
 
-### Local Deployment
-
-To run this project locally on your own system, you will need to clone this repository and need to have [GIT](https://www.atlassian.com/git/tutorials/install-git) installed and any suitable IDE.
-
-Next, to proceed with local deployment, you can...
-
-- **Download** this GitHub repository
-    - by clicking the green "*Clone or download*" button above,
-    - select *Download Zip*,
-    - this will download the project as a zip-file (*remember to unzip it first*).
-
-### Remote Deployment
-
-This site was deployed using [GitHub Pages](https://pages.github.com/) using the **master branch**.
-and also on 
-
-Deployed Site:
-
-- [GitHub](https://github.com/Camila-Ribeiro/My-Cookbook_Milestone-Project)
-- [heroku](https://my-cookbook-milestone-project.herokuapp.com) ?? onde colocar isso
-
-Once you have the project setup locally, you can proceed to deploy it remotely with the following steps:
-
-1. Navigate to your GitHub repository:
-   - `https://github.com/USERNAME/REPO`
-2. Click on the **Settings** tab at the top:
-   - `https://github.com/USERNAME/REPO/settings`
-3. Scroll down on that page to the **GitHub Pages** section.
-4. The first drop-down field should be **Source** with _None_ preselected.
-5. Select **master branch** from the list.
-6. The page should refresh.
-7. Scroll back down to the **GitHub Pages** section.
-8. You should now have a deployed link:
-   - `https://USERNAME.github.io/REPO`
+Upon successful deployment Heroku will give you the URL that is hosted your app!
 
 **IMPORTANT NOTE**:
 
@@ -318,7 +286,7 @@ Congratulations! Your project should be deployed successfully on GitHub Pages! :
 ### Media
 
 - [Spoonacular API](https://spoonacular.com/) - Database images
-- [Unsplash](https://unsplash.com/) - Photo by
+- [Unsplash](https://unsplash.com/) - Photo by Brook Lark
 
 ### Acknowledgements
 
