@@ -19,8 +19,6 @@ app.secret_key = os.environ.get('SECRET_KEY')
 app.jinja_env.add_extension('jinja2.ext.do')
 
 
-
-
 mongo = PyMongo(app)
 api_key = os.environ['api_key']
 
@@ -98,17 +96,18 @@ def all_recipes():
     option_meals = get_meals()
     user_added_recipes = get_user_recipes()
     
-    # r = requests.get(
-    #     'https://api.spoonacular.com/recipes/random?number=8&apiKey='+api_key+'')
-    # obj = r.json()
-    # random_recipes = obj['recipes']
+    r = requests.get(
+        'https://api.spoonacular.com/recipes/random?number=6&apiKey='+api_key+'')
+    obj = r.json()
+    random_recipes = obj['recipes']
     return render_template('all-recipes.html', 
-        # random_recipes=random_recipes, 
+        random_recipes=random_recipes, 
         option_allergens=option_allergens,
         option_cuisines=option_cuisines,
         option_diets=option_diets,
         option_meals=option_meals,
-        user_added_recipes=user_added_recipes
+        user_added_recipes=user_added_recipes,
+        api_key=api_key
         )
 
 
@@ -240,12 +239,12 @@ def my_recipes():
 
         #COUNTER user recipes
         counting = mongo.db.add_recipes.count_documents({ 'user_recipe': current_user })
-   
+  
         return render_template('my-recipes.html', 
             current_user=current_user, 
             user=user,
             counting=counting,
-            user_added_recipes=user_added_recipes,
+            user_added_recipes=user_added_recipes
             )
     else:
         return redirect(url_for('index')) 

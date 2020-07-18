@@ -38,10 +38,12 @@
     <div class="col-md-3 text-center mt-4">
       <div class="diets">
         <h1 class="mb-3">Diets Type</h1>
-        {% if details.diets %}
+        {% if details.diets is defined and details.diets | length > 0%}
           {% for diets in details.diets %}
-              <p>{{ diets if diets is not none }} </p>
+              <p>{{ diets }} </p>
           {% endfor %}
+        {% else %}
+          <p>Not Avalaible</p>
         {% endif %}
       </div>
     </div>

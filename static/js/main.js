@@ -1,15 +1,14 @@
 $(document).ready(function(){
     var scriptElement = $('#baseScript')[0];
     var path = scriptElement.getAttribute('data-path');
+    $('a[href="'+path+'"]').addClass("active");
 
     $('select').selectpicker();
     $('[data-toggle="tooltip"]').tooltip()
       
     
-    $('a[href="'+path+'"]').addClass("active");
     $('.center').slick({
         centerMode: true,
-        // centerPadding: '100px',
         slidesToShow: 3,
         responsive: [
             {
@@ -33,35 +32,39 @@ $(document).ready(function(){
         ]
     });
 
-
-    var api_key = '7b98ae9af6fe4cc6b9a33b00e08db54d';
-    var api_url = '';
+    var api_key = scriptElement.getAttribute('data-api');
     var imageUrl = "https://spoonacular.com/recipeImages/";
-    $('.select_list').on('change', function() {
+    $(".select_list").on('change', function() {
         var value = $(this).val();
-
+        
         $.ajax({
             method: "GET",
+            beforeSend: function(){
+                $('#loading').addClass("loading");
+            },
             url: 'https://api.spoonacular.com/recipes/search?diet='+value+'&apiKey='+api_key+'',
             contentType: "application/json",
             dataType: 'json',
-            success: function(obj){;
-                $("#title_results").html(value);
+            success: function(obj){
                 $.each( obj.results, function( index, cat ){
-                   // $("#results .results").empty();
-                   let apiUrl = cat.id;
-                //    let urlLink = "$.post(Flask.url_for('recipe_details', recipe_id='"+apiUrl+"'))";
+                    $("#title_results").html(value);
+                    var apiUrl = cat.id;
+                    var go = "recipe_details/"+apiUrl+" ";
+
                     $( "#results .results" ).after(
-                        "<div class='col-md-3'> \n " +
+                        "<div class='col-md-4 mb-5'> \n " +
                             "<div class='card'> \n " +
                                 "<img src="+imageUrl+cat.image+" class='on-inview' alt="+cat.title+" /> \n " +
                                 "<div class='card-body'> \n " +
-                                    "<a href='{{url_for('recipe_details', recipe_id="+apiUrl+")}}' class='title-padding'>"+cat.title+"</a>  \n " +
+                                     "<a href="+go+" class='title-padding'>"+cat.title+"</a>  \n " +
                                 "</div> \n " +
                             "</div> \n " +
                         "</div>" 
                     );
                 });
+            },
+            complete: function(){
+                $('#loading').removeClass("loading");
                 $("html,body").animate({scrollTop:$("#title_results").offset().top}, 500);
             }
         })

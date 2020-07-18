@@ -1,6 +1,6 @@
 {% include 'base.html' %} {% include 'includes/_nav.html' %} {% block content %}
   <section class="my-recipes mt-5">
-    <h1 class="text-center mb-5">My Recipes</h1>
+    <h1 class="text-center mb-5">My Recipes</h1> 
     <div class="container mt-5 mb-5">
       <div class="row">
         <div class="col-md-3">
@@ -9,7 +9,7 @@
               <img src="../static/img/{{user.avatar}}.jpg" class="profile img-responsive w-100" alt="{{user.avatar}}" />
 
             <!-- USER PROFILE CARD-->
-              <div class="card-content">    
+              <div class="card-content">  
                   <h2>{{user.username |capitalize}}</h2>
                   <p class="small">Recipes: {{counting}}</p>
               </div>

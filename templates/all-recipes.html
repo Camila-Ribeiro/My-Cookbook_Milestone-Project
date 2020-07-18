@@ -1,5 +1,5 @@
 {% include 'base.html' %} {% include 'includes/_nav.html' %} {% block content %}
-
+<div id="loading"></div>
 <section class="filter">
   <div class="container-fluid">
     <div class="img-hero">
@@ -11,8 +11,9 @@
             <div class="col">
               <p>Diet Label</p>
               <select class="mr-3 w-100 selectpicker select_list show-tick" name="diet_list" title="Please select">
-                <option class="bs-title-option d-none" value="" ></option>
+                
                 {% for select in option_diets %}
+                <option class="bs-title-option d-none" value="" ></option>
                     <option value="{{ select.diet_type }}">{{ select.diet_type }}</option>
                 {% endfor %}
               </select>
@@ -73,7 +74,7 @@
               </div>
               {%endif%}
               {% for random in random_recipes %}
-              <div class="col-md-3">
+              <div class="col-md-4 mb-5">
                 <div class="card">
                   {% if random.image is defined and random.image | length > 0 %}
                       <img src="{{ random.image }}" class="on-inview " alt="{{ random.title }}" />
@@ -107,7 +108,7 @@
                         
                         <div class="card-body">
                           <a href="{{url_for('user_recipe_details', recipe_id=r._id)}}">{{r.recipe_name |upper}}</a>
-                          <p class="small mt-2">by {{ r.user_recipe }}</p>
+                          <p class="small mt-2"><i class="icofont-ui-user"></i> {{ r.user_recipe }}</p>
                         </div>
                       </div>
                     </div>
