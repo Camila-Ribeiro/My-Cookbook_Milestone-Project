@@ -9,7 +9,7 @@
         <h1 class="text-center mb-5">{{ user_recipe.recipe_name |capitalize }}</h1>
 
         {% if user_recipe.recipe_image is defined and user_recipe.recipe_image | length > 0 %}
-            <img src="{{url_for('file', filename=user_recipe.recipe_image)}}" class="img-fluid main-img w-100" alt="{{user_recipe.recipe_image}}" />
+            <img src="{{ url_for('file', filename=user_recipe.recipe_image) }}" class="img-fluid main-img w-100" alt="{{ user_recipe.recipe_image }}" />
           {% else %}
             <img src="../static/img/No_image_available.png" class="img-fluid main-img w-100" alt="Image Not Available" />
         {% endif %}
@@ -38,7 +38,7 @@
               {% if d |count > 0 %}
                 
                 
-                <p class="small mb-1"> {{ d }} </p>  
+                <p class="small mb-1"> {{ d |capitalize }} </p>  
 
                 {%else%}
 
@@ -52,7 +52,7 @@
             {% for m in user_recipe.meal_type_list %}
               {% if m |count > 0 %}
 
-                <p class="small mb-1"> {{ m }} </p>
+                <p class="small mb-1"> {{ m |capitalize }} </p>
               {%else%}
                   
                   <p class="small mb-1 else"> Not Available </p>  
@@ -72,7 +72,7 @@
             <div class="col-sm-6 col-md-12">
               <ul>
                 {% for list in user_recipe.add_ingredients %}
-                  <li>{{list |capitalize}}</li>
+                  <li>{{ list |capitalize }}</li>
                 {% endfor %}
               </ul>
             </div>
@@ -89,7 +89,7 @@
           <div class="col-sm-6 col-md-12">
             <ol>
               {% for list in user_recipe.add_instructions %}
-                <li>{{list |capitalize}}</li>
+                <li>{{ list |capitalize }}</li>
               {% endfor %}
             </ol>
           </div>
@@ -99,7 +99,7 @@
     
     <div class="mt-5 mb-5 ">
       <a class="mr-4 color-green" href="{{ url_for('edit_recipe',recipe_id=user_recipe._id) }}"><i class="icofont-ui-edit"></i> Edit </a>          
-      <a href="{{ url_for('delete_recipe', recipe_id=user_recipe._id )}}"><i class="icofont-bin lead color-green"></i> </a>
+      <a href="{{ url_for('delete_recipe', recipe_id=user_recipe._id) }}"><i class="icofont-bin lead color-green"></i> </a>
     </div>
   </div>
 </section>

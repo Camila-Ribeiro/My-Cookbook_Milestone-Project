@@ -6,7 +6,6 @@ $(document).ready(function(){
     $('select').selectpicker();
     $('[data-toggle="tooltip"]').tooltip()
       
-    
     $('.center').slick({
         centerMode: true,
         slidesToShow: 3,

@@ -11,7 +11,7 @@
                     <p>Cuisines</p>
                     <select class="d-block selectpicker show-tick" id="cuisines_type" name="cuisines_list" aria-label="Select Cuisine(s)" title="Please Select" required>
                         <option class="bs-title-option d-none" value=""></option>
-                        <option value="{{recipe_id.cuisines_list }}" selected >{{recipe_id.cuisines_list }}</option>   
+                        <option value="{{ recipe_id.cuisines_list }}" selected >{{ recipe_id.cuisines_list }}</option>   
                         {% for select in option_cuisines %}
                             {% if not select.cuisine_type == recipe_id.cuisines_list %}
                                 <option value="{{ select.cuisine_type }}" >{{ select.cuisine_type }}</option>
@@ -130,7 +130,7 @@
             </div>
         </div>
         <div class="add-recipes mt-5 mx-auto">
-            <button class="btn_add_recipes btn btn-color" value="submit"> Update recipe </button>
+            <button class="btn_add_recipes btn btn-color" value="submit"> Update Recipe </button>
         </div>
     </form>
 </div>

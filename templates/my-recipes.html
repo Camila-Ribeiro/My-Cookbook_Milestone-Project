@@ -5,13 +5,13 @@
       <div class="row">
         <div class="col-md-3">
           <div class="card profile-card-1">
-              <img src="https://images.pexels.com/photos/946351/pexels-photo-946351.jpeg?w=500&h=650&auto=compress&cs=tinysrgb" alt="profile-sample1" class="background"/>
-              <img src="../static/img/{{user.avatar}}.jpg" class="profile img-responsive w-100" alt="{{user.avatar}}" />
+              <img src="https://images.pexels.com/photos/946351/pexels-photo-946351.jpeg?w=500&h=650&auto=compress&cs=tinysrgb" alt="Profile Image" class="background"/>
+              <img src="../static/img/{{ user.avatar }}.jpg" class="profile img-responsive w-100" alt="{{ user.avatar }}" />
 
             <!-- USER PROFILE CARD-->
               <div class="card-content">  
-                  <h2>{{user.username |capitalize}}</h2>
-                  <p class="small">Recipes: {{counting}}</p>
+                  <h2>{{ user.username |capitalize }}</h2>
+                  <p class="small">Recipes: {{ counting }}</p>
               </div>
           </div>
         </div>
@@ -25,13 +25,13 @@
                       <div class="card-deck card-recipes mb-5">
                         <div class="card text-center">
                           {% if r.recipe_image is defined and r.recipe_image | length > 0 %}
-                              <img src="{{url_for('file', filename=r.recipe_image)}}" class="img-responsive w-100" alt="{{r.recipe_image}}" />
+                              <img src="{{ url_for('file', filename=r.recipe_image) }}" class="img-responsive w-100" alt="{{ r.recipe_image }}" />
                             {% else %}
                               <img src="../static/img/No_image_available.png" class="img-responsive w-100" alt="Image Not Available" />
                           {% endif %}
                           <div class="card-body">
-                            <a href="{{url_for('user_recipe_details', recipe_id=r._id)}}">{{r.recipe_name |upper}}</a>
-                            <p class="small mt-2">{{r.cuisines_list}}</p>
+                            <a href="{{ url_for('user_recipe_details', recipe_id=r._id) }}">{{ r.recipe_name |upper }}</a>
+                            <p class="small mt-2">{{ r.cuisines_list }}</p>
                             
                           </div>
                           <div class="card-foot">
@@ -45,7 +45,7 @@
                 {% else %}
                   <div class="container text-center mt-5">
                     <p class="small">No recipes yet</p>
-                    <button type="button" onclick="window.location.href='{{url_for('add_recipes')}}';" class="btn btn-color">Add your first recipe</button>
+                    <button type="button" onclick="window.location.href='{{ url_for('add_recipes') }}';" class="btn btn-color">Add your first recipe</button>
                   </div>
                 {% endif %}
             </div>

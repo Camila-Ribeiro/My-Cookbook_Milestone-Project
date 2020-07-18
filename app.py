@@ -18,7 +18,6 @@ app.config['MONGO_URI'] = os.environ.get('MONGO_URI')
 app.secret_key = os.environ.get('SECRET_KEY')
 app.jinja_env.add_extension('jinja2.ext.do')
 
-
 mongo = PyMongo(app)
 api_key = os.environ['api_key']
 
@@ -115,18 +114,18 @@ def all_recipes():
 @app.route('/recipe_details/<recipe_id>', methods=['GET'])
 def recipe_details(recipe_id):
     r = requests.get('https://api.spoonacular.com/recipes/'+recipe_id+'/information?apiKey='+api_key+'')
-    # APIused = r.headers.set('X-API-Quota-Used', "default-src 'self'")
+
     obj = r.json()
     details = obj
 
-    # dup = []
-    # for x in details.get('analyzedInstructions'):
-    #     for y in x.get('steps'):
-    #         for z in y.get('equipment'):
-    #             if z['id'] not in dup:
-    #                 dup.append(z['id'])
-    #                 print(dup)
-    return render_template('recipe-details.html', details=details)
+    dup = []
+    for x in details.get('analyzedInstructions'):
+        for y in x.get('steps'):
+            for z in y.get('equipment'):
+                if z['id'] not in dup:
+                    dup.append(z['id'])
+                    print(dup)
+    return render_template('recipe-details.html', details=details, dup=dup)
 
 
 # GET USER RECIPES DETAILS from MONGODB

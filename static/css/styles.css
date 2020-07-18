@@ -199,12 +199,15 @@ https://codepen.io/tbrownvisuals/pen/ZpXEZw*/
 .logo {
 	max-width: 90px;
 	width: 100%;
+	display: block;
+	margin: 0 auto;
+	padding-bottom: 8px
 }
 
 .my-cookbook-logo {
-	font-family: "Lobster Two", cursive;
 	color: #f2c277 !important;
-	font-size: 25px;
+	text-transform: uppercase;
+	font-size: 18px;
 }
 
 .my-cookbook-logo a:hover {
@@ -548,11 +551,23 @@ section.my-recipes .card-foot a {
 	font-weight: bold;
 }
 
-.navbar-light .navbar-nav .nav-link:focus,
-.navbar-light .navbar-nav .nav-link:hover,
-.navbar-light .navbar-nav .nav-link.active {
+.navbar-dark .navbar-nav .nav-link.active {
+	cursor: default;
+	pointer-events: none;
+}
+
+.navbar-dark .navbar-nav .nav-link:focus{
 	color: #FFF;
 }
+
+.navbar-dark .navbar-nav .nav-link {
+	color:#2f4e4c;
+}
+
+.navbar-dark .navbar-nav .nav-link:hover {
+	text-decoration: underline;
+}
+
 
 .recipe-form {
 	width: 700px;
@@ -573,6 +588,10 @@ section.my-recipes .card-foot a {
 
 .navbar-light .navbar-brand {
 	color: #f8f9fa;
+}
+
+.navbar-light .navbar-toggler {
+	border: 2px solid #FFF;
 }
 
 .jumbotron {

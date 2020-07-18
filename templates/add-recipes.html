@@ -13,7 +13,7 @@
                     <select class="d-block selectpicker" id="cuisines_type" name="cuisines_list" aria-label="Select Cuisine(s)" title="Please Select" required>
                         <option class="bs-title-option d-none" value=""></option>
                         {% for select in option_cuisines %}
-                            <option value="{{ select.cuisine_type}}">{{ select.cuisine_type }}</option>
+                            <option value="{{ select.cuisine_type }}">{{ select.cuisine_type }}</option>
                         {% endfor %}
                     </select>
                 </div>
@@ -25,7 +25,7 @@
                     <select class="d-block selectpicker" id="allergen_type" name="allergen_list" aria-label="Select Allergen(s)" multiple data-selected-text-format="count" data-max-options="4" title="Please Select" required>
                         <option class="bs-title-option d-none" value=""></option>
                         {% for select in option_allergens %}
-                            <option value="{{ select.allergen_type}}">{{ select.allergen_type }}</option>
+                            <option value="{{ select.allergen_type }}">{{ select.allergen_type }}</option>
                         {% endfor %}
                     </select>
                 </div>
@@ -37,7 +37,7 @@
                     <select class="d-block selectpicker" id="meal_type" name="meal_type_list" aria-label="Select Meal Type(s)" multiple data-selected-text-format="count" data-max-options="4" title="Please Select" required>
                         <option class="bs-title-option d-none" value=""></option>
                         {% for select in option_meals %}
-                            <option value="{{ select.meal_type}}">{{ select.meal_type }}</option>
+                            <option value="{{ select.meal_type }}">{{ select.meal_type }}</option>
                         {% endfor %}
                     </select>
                 </div>
@@ -59,7 +59,7 @@
         <div class="form-group mt-5">
             <label for="recipe">Recipe Name</label>
             <input type="text" class="form-control" id="recipe" name="recipe_name" placeholder="" aria-describedby="recipe_name" required />
-            <input type="hidden" id="user_recipe" name="user_recipe" value="{{session['username'].title()}}" />
+            <input type="hidden" id="user_recipe" name="user_recipe" value="{{ session['username'].title() }}" />
         </div>
         
         <div class="form-group">
@@ -96,10 +96,7 @@
             </div>
         </div>
         <div class="add-recipes mt-5 mx-auto">
-            <button class="btn_add_recipes btn btn-color" value="submit"> Add recipes </button>
-        </div>
-        <div class="alert alert-warning mt-4" role="alert">
-            The Recipe was added successfully!
+            <button class="btn_add_recipes btn btn-color" value="submit"> Add Recipe </button>
         </div>
     </form>
 </div>

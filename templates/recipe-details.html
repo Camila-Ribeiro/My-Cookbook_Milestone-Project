@@ -4,7 +4,7 @@
   <div class="row">
     <div class="col-md-9">
       <h1 class="text-center mb-5">{{ details.title |capitalize }}</h1>
-      <img alt="Responsive image" class="img-recipe" src="{{details.image}}">
+      <img alt="Responsive image" class="img-recipe" src="{{ details.image }}">
     
       <!-- RECIPE INFO SECTION-->
       <section class="recipe-info">
@@ -37,10 +37,10 @@
     <!-- DIET TYPE SECTION-->
     <div class="col-md-3 text-center mt-4">
       <div class="diets">
-        <h1 class="mb-3">Diets Type</h1>
+        <h3 class="mb-1">Diets Type</h3>
         {% if details.diets is defined and details.diets | length > 0%}
           {% for diets in details.diets %}
-              <p>{{ diets }} </p>
+              <p class="small mb-1">{{ diets |capitalize }} </p>
           {% endfor %}
         {% else %}
           <p>Not Avalaible</p>
@@ -57,9 +57,9 @@
         <div class="row">
           {% for d in details.extendedIngredients %}
             <div class="col-sm-6 col-md-2">
-              <p class="text-center">{{d.amount|int}} {{d.unit}}</p>
-              <img class="mx-auto d-block" src="https://spoonacular.com/cdn/ingredients_100x100/{{d.image}}" alt="">
-              <p class="small text-center">{{d.originalName}}</p>
+              <p class="text-center">{{ d.amount|int }} {{ d.unit }}</p>
+              <img class="mx-auto d-block" src="https://spoonacular.com/cdn/ingredients_100x100/{{ d.image }}" alt="Ingredients Image">
+              <p class="small text-center">{{ d.originalName }}</p>
             </div>
           {% endfor %}
         </div>
@@ -72,27 +72,30 @@
     <hr>
       <div class="container">
         <div class="row">
+          
           {% for instructions in details.analyzedInstructions %}
           {% set dup_id = [] %}
-          {% for step in instructions.steps if step.equipment not in dup_id %}
+          {% for step in instructions.steps  %}
            
 
             
-              {% do dup_id.append(step.equipment) %}
               
               
-              {% set step = dup_id %}
-          
-              {% print(dup_id )%}
+              
+            
+      
+              
+            {% for equipment in step.equipment  %}
+              {% do dup_id.append(equipment.id) if loop.first  %}
+
+              {% if dup_id not in dup %}
 
               
-            {% for equipment in step.equipment %}
-          
-           
               <div class="col-sm-6 col-md-2">
-                <p class="text-center">{{equipment.name}}</p>
-                <img class="mx-auto d-block" src="https://spoonacular.com/cdn/equipment_100x100/{{equipment.image}}" alt="">
+                <p class="text-center">{{ equipment.name }}</p>
+                <img class="mx-auto d-block" src="https://spoonacular.com/cdn/equipment_100x100/{{ equipment.image }}" alt="Equiments Image">
               </div>
+              {% endif %}
             {% endfor %}
           {% endfor %}
         {% endfor %}
@@ -125,13 +128,13 @@
         <div class="mt-4">
           {% for wines in details.winePairing.pairedWines %}
             {% if wines is not none %} 
-              <p><i class="icofont-glass"></i> {{wines}}</p>
+              <p><i class="icofont-glass"></i> {{ wines }}</p>
             {% endif %} 
           {% endfor %}
         </div>
         <div class="mt-3">
           {% if details.winePairing.pairedWines %}
-            <p >{{details.winePairing.pairingText}}</p>
+            <p >{{ details.winePairing.pairingText }}</p>
           {% endif %} 
         </div>
       </div>  
@@ -142,12 +145,12 @@
           <div class="border mt-5 px-3 py-3">
             <div class="row">
               <div class="col-3">
-                <img class="img-responsive" src="{{products.imageUrl}}" alt="">
+                <img class="img-responsive" src="{{ products.imageUrl }}" alt="Wine Image">
               </div>
               <div class="col-9 mt-3">
-                <h5 class="mb-3">{{products.title}}</h5>
+                <h5 class="mb-3">{{ products.title }}</h5>
                 <p class="mb-1">Description:</p>
-                <p class="small"> {{products.description}} <a href="{{products.link}}">See product here</a></p>
+                <p class="small"> {{ products.description }} <a href="{{ products.link }}">See product here</a></p>
               </div>
             </div>          
           </div> 

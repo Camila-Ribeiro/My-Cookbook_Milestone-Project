@@ -25,7 +25,7 @@
               <select class="mr-3 w-100 selectpicker select_list show-tick" id="allergen_type" name="allergen_list" aria-label="Select Allergen(s)" title="Please select">
                 <option class="bs-title-option d-none" value=""></option>
                 {% for select in option_allergens %}
-                    <option value="{{ select.allergen_type}}">{{ select.allergen_type }}</option>
+                    <option value="{{ select.allergen_type }}">{{ select.allergen_type }}</option>
                 {% endfor %}
               </select>
             </div>
@@ -47,7 +47,7 @@
               <select class="w-100 selectpicker select_list show-tick" id="cuisines_type" name="cuisines_list" aria-label="Select Cuisine(s)" title="Please select">
                 <option class="bs-title-option d-none" value=""></option>
                 {% for select in option_cuisines %}
-                    <option value="{{ select.cuisine_type}}">{{ select.cuisine_type }}</option>
+                    <option value="{{ select.cuisine_type }}">{{ select.cuisine_type }}</option>
                 {% endfor %}
               </select>
             </div>
@@ -83,7 +83,7 @@
                   {% endif %}
                   
                   <div class="card-body">
-                    <a href="{{url_for('recipe_details', recipe_id=random.id)}}" class="">{{ random.title }}</a>
+                    <a href="{{ url_for('recipe_details', recipe_id=random.id) }}" class="">{{ random.title }}</a>
                   </div>
                 </div>
               </div>
@@ -101,13 +101,13 @@
                     <div class="card-deck card-custom mb-5">
                       <div class="card text-center">
                         {% if r.recipe_image is defined and r.recipe_image | length > 0 %}
-                          <img src="{{url_for('file', filename=r.recipe_image)}}" class="img-responsive w-100 users-image" alt="{{r.recipe_image}}" />
+                          <img src="{{ url_for('file', filename=r.recipe_image) }}" class="img-responsive w-100 users-image" alt="{{ r.recipe_image }}" />
                           {% else %}
                             <img src="../static/img/No_image_available.png" class="img-responsive w-100 users-image" alt="Image Not Available" />
                         {% endif %}
                         
                         <div class="card-body">
-                          <a href="{{url_for('user_recipe_details', recipe_id=r._id)}}">{{r.recipe_name |upper}}</a>
+                          <a href="{{ url_for('user_recipe_details', recipe_id=r._id) }}">{{ r.recipe_name |upper }}</a>
                           <p class="small mt-2"><i class="icofont-ui-user"></i> {{ r.user_recipe }}</p>
                         </div>
                       </div>
