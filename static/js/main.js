@@ -3,6 +3,8 @@ $(document).ready(function(){
     var path = scriptElement.getAttribute('data-path');
 
     $('select').selectpicker();
+    $('[data-toggle="tooltip"]').tooltip()
+      
     
     $('a[href="'+path+'"]').addClass("active");
     $('.center').slick({
@@ -44,7 +46,7 @@ $(document).ready(function(){
             contentType: "application/json",
             dataType: 'json',
             success: function(obj){;
-                $("#title-results").html(value);
+                $("#title_results").html(value);
                 $.each( obj.results, function( index, cat ){
                    // $("#results .results").empty();
                    let apiUrl = cat.id;
@@ -60,7 +62,7 @@ $(document).ready(function(){
                         "</div>" 
                     );
                 });
-                $("html,body").animate({scrollTop:$("#title-results").offset().top}, 500);
+                $("html,body").animate({scrollTop:$("#title_results").offset().top}, 500);
             }
         })
     });
@@ -107,13 +109,6 @@ $(document).ready(function(){
     $('.instructions').on('click', 'span', function () {
         var remove_instructions = $(this).closest('div.added-input-instructions');
         $(remove_instructions).remove();
-    });
-
-    // REMOVE IMG FROM EDIT PAGE
-    $("#remove_img_btn").click(function(){
-        $("#remove_img").remove();
-        $(this).remove();
-        $("#recipe_image").removeClass("d-none");
     });
 
 });//.doc.ready

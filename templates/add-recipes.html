@@ -1,4 +1,5 @@
 {% include 'base.html' %} {% include 'includes/_nav.html' %} 
+
 {% block content %} 
 
 <div class="container mt-5 mb-5 mx-auto d-block">
@@ -57,7 +58,7 @@
         </div>
         <div class="form-group mt-5">
             <label for="recipe">Recipe Name</label>
-            <input type="text" class="form-control" id="recipe" name="recipe_name" placeholder="" aria-describedby="recipeName" required />
+            <input type="text" class="form-control" id="recipe" name="recipe_name" placeholder="" aria-describedby="recipe_name" required />
             <input type="hidden" id="user_recipe" name="user_recipe" value="{{session['username'].title()}}" />
         </div>
         
@@ -69,7 +70,7 @@
         <div class="row mt-4">
             <div class="col">
                 <label for="prep">Preparation Time:</label>
-                <input type="number" id="prep" name="prep_time" min="1" max="120" aria-describedby="prepTime"  required />
+                <input type="number" id="prep" name="prep_time" min="1" max="120" aria-describedby="prep_time"  required />
             </div>
             <div class="col">
                 <label for="quantity">Serves:</label>
@@ -96,6 +97,9 @@
         </div>
         <div class="add-recipes mt-5 mx-auto">
             <button class="btn_add_recipes btn btn-color" value="submit"> Add recipes </button>
+        </div>
+        <div class="alert alert-warning mt-4" role="alert">
+            The Recipe was added successfully!
         </div>
     </form>
 </div>

@@ -1,4 +1,6 @@
-{% include 'base.html' %} {% include 'includes/_nav.html' %} {% block content %}
+{% include 'base.html' %} {% include 'includes/_nav.html' %} 
+
+{% block content %}
 
 <section class="user-recipes">
   <div class="container mt-5 mb-5">
@@ -28,22 +30,35 @@
       <!-- DIET TYPE SECTION-->
       <div class="col-md-3 text-center mt-4">
         <div class="diets">
-          <h3 class="mb-1">Diets Type</h3>
+          
 
-      
-          {% if user_recipe.diet_type_list |count > 0 %}
-              {% for d in user_recipe.diet_type_list  %}
+          
+          <h3 class="mb-1">Diets Type</h3>
+            {% for d in user_recipe.diet_type_list  %}
+              {% if d |count > 0 %}
+                
+                
                 <p class="small mb-1"> {{ d }} </p>  
-              {% endfor %}
-            {%else%}
-              <p class="small mb-1 else"> {{ user_recipe.diet_type_list }} </p>  
-            {% endif %}  
+
+                {%else%}
+
+                  <p class="small mb-5 else"> Not Available </p>  
+
+              {% endif %}  
+            {% endfor %}
           
           <!-- MEAL TYPE SECTION-->
           <h3 class="mb-1 mt-3">Meal Type</h3>
-          {% for m in user_recipe.meal_type_list %}
-            <p class="small mb-1"> {{ m }} </p>
-          {% endfor %}
+            {% for m in user_recipe.meal_type_list %}
+              {% if m |count > 0 %}
+
+                <p class="small mb-1"> {{ m }} </p>
+              {%else%}
+                  
+                  <p class="small mb-1 else"> Not Available </p>  
+
+              {% endif %}
+            {% endfor %}
         </div> 
       </div>
     </div> 

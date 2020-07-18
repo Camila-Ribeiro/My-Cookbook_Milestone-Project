@@ -2,7 +2,7 @@
 
 {% block content %}
 
-<body class="body-login-register">
+<div class="body-login-register">
     <div class="container">
         <div class="container close-button w-100">
             <!-- https://codepen.io/andreivictor/pen/aJEpEx -->
@@ -34,11 +34,11 @@
                     <div class="form-check form-check-inline">
                         <label for="avatar_1">
                         <input class="form-check-input" type="radio" name="avatar" id="avatar_1" value="avatar-1" required>
-                        <img class="d-inline img-fluid" src="../static/img/avatar-1.jpg" />
+                        <img class="d-inline img-fluid" src="../static/img/avatar-1.jpg" alt="Avatar Image 2" />
                     </label>
                         <label for="avatar_2">
                         <input class="form-check-input" type="radio" name="avatar" id="avatar_2" value="avatar-2" required>
-                        <img class="d-inline img-fluid" src="../static/img/avatar-2.jpg" /> 
+                        <img class="d-inline img-fluid" src="../static/img/avatar-2.jpg" alt="Avatar Image 2" /> 
                     </label>
                     </div>
                 </div>
@@ -47,6 +47,6 @@
             </form>                                                              
         </section>
     </div>
-</body>
+</div>
 
 {% endblock %}

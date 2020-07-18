@@ -1,78 +1,74 @@
 {% include 'base.html' %} {% include 'includes/_nav.html' %} {% block content %} 
 
-<!-- GET INSPIRED SECTION-->
-<div class="container mt-3">
-  <section class="mb-5">
-    <h1 class="mt-5 mb-3 text-center">Get Inspired</h1>
-    <h6 class="text-center">
-      "No one is born a great coot, one learns by doing"
-    </h6>
-    <h6 class="text-center"><small> - Julia Child - </small></h6>
-    <div class="center" data-slick='{"slidesToShow": 3, "slidesToScroll": 3}'>
-      {% for recipe in recipes %}
-      <div>
-        <img src="{{ recipe.image }}" class="on-inview" alt="{{ recipe.image }}" />
-        <a
-          href="{{url_for('recipe_details', recipe_id=recipe.id)}}"
-          class="title-padding"
-          >{{ recipe.title }}</a
-        >
+  <!-- GET INSPIRED SECTION-->
+  <div class="container mt-3">
+    <section class="mb-5">
+      <h1 class="mt-5 mb-3 text-center">Get Inspired</h1>
+      <h6 class="text-center">
+        "No one is born a great coot, one learns by doing"
+      </h6>
+      <h6 class="text-center"><small> - Julia Child - </small></h6>
+      <div class="center" data-slick='{"slidesToShow": 3, "slidesToScroll": 3}'>
+        {% for recipe in recipes %}
+        <div>
+          <img src="{{ recipe.image }}" class="on-inview" alt="{{ recipe.image }}" />
+          <a href="{{url_for('recipe_details', recipe_id=recipe.id)}}" class="title-padding">{{ recipe.title }}</a>
+        </div>
+        {% endfor %}
       </div>
-      {% endfor %}
-    </div>
-  </section>
-</div>
+    </section>
+  </div>
  
-    <!-- FOR USERS LOGGED IN -->
-    {% if 'username' in session %}
+  <!-- FOR USERS LOGGED IN -->
+  {% if 'username' in session %}
 
-    <div class="container-circles">
-      <section class="own-cookbook">
-        <h2 class="text-center pt-4">Make your own Cookbook</h2>
-        <hr />
-        
-        <!-- https://codepen.io/cbracco/pen/qnduh -->
-        <div class="container">
-          <div class="row">
-            <div class="col-sm-4">
-              <div class="circle">
-                <div class="circle__inner">
-                  <div class="circle__wrapper">
-                    <div class="circle__content">
-                      <a class="color_text" href="{{url_for('add_recipes')}}">Add<br />your Recipes</a> 
-                    </div>
+  <div class="container-circles">
+    <section class="own-cookbook">
+      <h2 class="text-center pt-4">Make your own Cookbook</h2>
+      <hr />
+      
+      <!-- https://codepen.io/cbracco/pen/qnduh -->
+      <div class="container">
+        <div class="row">
+          <div class="col-sm-4">
+            <div class="circle">
+              <div class="circle__inner">
+                <div class="circle__wrapper">
+                  <div class="circle__content">
+                    <a class="color_text" href="{{url_for('add_recipes')}}">Add<br />your Recipes</a> 
                   </div>
                 </div>
               </div>
             </div>
-            <div class="col-sm-4">
-              <div class="circle">
-                <div class="circle__inner">
-                  <div class="circle__wrapper">
-                    <div class="circle__content">
-                      <a class="color_text" href="{{url_for('my_recipes')}}">Edit<br />& Delete Recipes</a> 
-                    </div>
+          </div>
+          <div class="col-sm-4">
+            <div class="circle">
+              <div class="circle__inner">
+                <div class="circle__wrapper">
+                  <div class="circle__content">
+                    <a class="color_text" href="{{url_for('my_recipes')}}">Edit<br />& Delete Recipes</a> 
                   </div>
                 </div>
               </div>
             </div>
-            <div class="col-sm-4">
-              <div class="circle">
-                <div class="circle__inner">
-                  <div class="circle__wrapper">
-                    <div class="circle__content">
-                      <a class="color_text" href="{{url_for('my_recipes')}}">Share<br/>your Recipes</a>
-                    </div>
+          </div>
+          <div class="col-sm-4">
+            <div class="circle">
+              <div class="circle__inner">
+                <div class="circle__wrapper">
+                  <div class="circle__content">
+                    <a class="color_text" href="{{url_for('my_recipes')}}">Share<br/>your Recipes</a>
                   </div>
                 </div>
               </div>
             </div>
           </div>
         </div>
-      </section>
-    </div>
+      </div>
+    </section>
+  </div>
 
-    {% else %}
+  {% else %}
 
     <!-- FOR USERS NOT LOGGED IN -->
     <div class="container-circles">
@@ -83,42 +79,41 @@
         <!-- https://codepen.io/cbracco/pen/qnduh -->
         <div class="container">
           <div class="row">
-              <div class="col-sm-4">
-                <div class="circle">
+            <div class="col-sm-4">
+              <div class="circle">
+                <div class="circle__inner">
+                  <div class="circle__wrapper">
+                    <div class="circle__content">
+                      <p>1</p>
+                      <a class="color_text" href="{{url_for('add_recipes')}}">Register</a> 
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-sm-4">
+              <div class="circle">
                   <div class="circle__inner">
                     <div class="circle__wrapper">
                       <div class="circle__content">
-                        <p>1</p>
-                        <a class="color_text" href="{{url_for('add_recipes')}}">Register</a> 
-                      </div>
+                        <p>2</p>
+                        <a class="color_text" href="{{url_for('my_recipes')}}">Create<br/>your Recipes</a>
                     </div>
                   </div>
                 </div>
               </div>
-              <div class="col-sm-4">
-                <div class="circle">
-                    <div class="circle__inner">
-                      <div class="circle__wrapper">
-                        <div class="circle__content">
-                          <p>2</p>
-                          <a class="color_text" href="{{url_for('my_recipes')}}">Create<br/>your Recipes</a>
-                      </div>
+            </div>
+            <div class="col-sm-4">
+              <div class="circle">
+                <div class="circle__inner">
+                  <div class="circle__wrapper">
+                    <div class="circle__content">
+                      <p>3</p>
+                        <a class="color_text" href="{{url_for('my_recipes')}}">Share<br/>with Friends</a>
                     </div>
                   </div>
                 </div>
               </div>
-                <div class="col-sm-4">
-                  <div class="circle">
-                    <div class="circle__inner">
-                      <div class="circle__wrapper">
-                        <div class="circle__content">
-                          <p>3</p>
-                            <a class="color_text" href="{{url_for('my_recipes')}}">Share<br/>with Friends</a>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
             </div>
           </div>
         </div>

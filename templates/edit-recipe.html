@@ -3,7 +3,7 @@
 
 <div class="container mt-5 mb-5 mx-auto d-block">
     <h1 class="text-center mb-5">Edit Recipe</h1>
-    <form action="{{ url_for('update_recipe', recipe_id=recipe_id._id) }}" method="POST" class="recipe-form w-100">
+    <form enctype="multipart/form-data" action="{{ url_for('update_recipe', recipe_id=recipe_id._id) }}" method="POST" class="recipe-form w-100" >
         <div class="row">
             <!-- EDIT CUISINES LIST SELECTION-->
             <div class="col">
@@ -24,11 +24,11 @@
             <!-- EDIT ALLERGEN LIST SELECTION-->
             <div class="col">
                 <div class="form-group">
-                    <p>Allergen</p>{{x}}
+                    <p>Allergen</p>
 
-                    <select class="d-block selectpicker show-tick" id="allergen_type" name="allergen_list" aria-label="Select Allergen(s)" multiple data-selected-text-format="count" data-max-options="4" title="Please Select" >
+                    <select class="d-block selectpicker show-tick" id="allergen_type" name="allergen_list" aria-label="Select Allergen(s)" multiple data-selected-text-format="count" data-max-options="4" title="Please Select" required>
                         <option class="bs-title-option d-none" value=""></option>  
-                         
+                    
                         {% for selected in selected_allergens %}    
                             <option value="{{ selected }}" selected>{{ selected }}</option>
                         {% endfor %}
@@ -44,16 +44,17 @@
             <div class="col">
                 <div class="form-group">
                     <p>Meal Type</p>
-                    <select class="d-block selectpicker show-tick" id="meal_type" name="meal_type_list" aria-label="Select Meal Type(s)" multiple data-selected-text-format="count" data-max-options="4" title="Please Select" >
+                    <select class="d-block selectpicker show-tick" id="meal_type" name="meal_type_list" aria-label="Select Meal Type(s)" multiple data-selected-text-format="count" data-max-options="4" title="Please Select" required>
                         <option class="bs-title-option d-none" value=""></option>  
                     
+                   
                         {% for selected in selected_meals %}    
                             <option value="{{ selected }}" selected>{{ selected |capitalize }}</option>
                         {% endfor %}
                         {% for not_selected in not_selected_meals %}
                             <option value="{{ not_selected }}" >{{ not_selected |capitalize }}</option>
                         {% endfor %} 
-
+                   
                     </select>
                 </div>
             </div>
@@ -61,7 +62,7 @@
             <div class="col">
                 <div class="form-group">
                     <p>Diet Label</p>
-                    <select class="d-block selectpicker show-tick" id="diet_type" name="diet_type_list" aria-label="Select diet(s)" multiple data-selected-text-format="count" data-max-options="4" title="Please Select" >
+                    <select class="d-block selectpicker show-tick" id="diet_type" name="diet_type_list" aria-label="Select diet(s)" multiple data-selected-text-format="count" data-max-options="4" title="Please Select" required>
                         <option class="bs-title-option d-none" value=""></option>  
                     
                         {% for selected in selected_diets %}    
@@ -80,23 +81,21 @@
         <!-- EDIT RECIPE'S NAME -->
         <div class="form-group mt-5">
             <label for="recipe">Recipe Name</label>
-            <input type="text" class="form-control" id="recipe" name="recipe_name" placeholder="" aria-describedby="recipeName" value="{{ recipe_id.recipe_name }}" required />
+            <input type="text" class="form-control" id="recipe" name="recipe_name" placeholder="" aria-describedby="recipe_name" value="{{ recipe_id.recipe_name }}" required />
             <input type="hidden" id="user_recipe" name="user_recipe" value="{{ session['username'].title() }}" />
         </div>
         
         <!-- EDIT RECIPE'S IMAGE -->
         <div class="form-group mb-5">
-            <label for="recipe_image">Recipe Image</label>
-            <img id="remove_img" src="{{url_for('file', filename=recipe_id.recipe_image)}}" class="img-responsive w-50" alt="{{recipe_id.recipe_image}}" />
-            <i id="remove_img_btn" class="icofont-close-circled d-inline"></i>
-            <input type="file" class="form-control-file d-none" name="recipe_image" id="recipe_image">
+            <label for="recipe_image">Recipe Image</label><br/>
+            <input type="file" class="form-control-file" name="recipe_image" id="recipe_image" placeholder="Upload File" required/>
         </div>
         
         <!-- EDIT RECIPE'S PREPARATION TIME -->
         <div class="row mt-4">
             <div class="col">
                 <label for="prep">Preparation Time:</label>
-                <input type="number" id="prep" name="prep_time" min="1" max="120" value="{{ recipe_id.prep_time }}" aria-describedby="prepTime" required />
+                <input type="number" id="prep" name="prep_time" min="1" max="120" value="{{ recipe_id.prep_time }}" aria-describedby="prep_time" required />
             </div>
 
             <!-- EDIT RECIPE'S SERVINGS -->
@@ -131,7 +130,7 @@
             </div>
         </div>
         <div class="add-recipes mt-5 mx-auto">
-            <button class="btn_add_recipes btn btn-color" value="submit"> Edit recipe </button>
+            <button class="btn_add_recipes btn btn-color" value="submit"> Update recipe </button>
         </div>
     </form>
 </div>

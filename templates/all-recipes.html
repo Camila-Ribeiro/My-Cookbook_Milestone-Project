@@ -1,67 +1,67 @@
 {% include 'base.html' %} {% include 'includes/_nav.html' %} {% block content %}
 
-<div class="container-fluid recipes">
+<section class="filter">
+  <div class="container-fluid">
     <div class="img-hero">
-        <section class="jumbotron">
-          <div>
-            <h2 class="text-center mb-4">Select filter </h2>
-          </div>  
-            <div class="row">
+      <div class="jumbotron">
+          <h2 class="text-center mb-4">Select filter </h2>
+          <div class="row">
 
-              <!-- FILTER MEAL TYPE LIST SELECTION-->
-              <div class="col">
-                <p>Diet Label</p>
-                <select class="mr-3 w-100 selectpicker select_list show-tick" name="diet_list" title="Please select">
-                  <option class="bs-title-option d-none" value="" ></option>
-                  {% for select in option_diets %}
-                      <option value="{{ select.diet_type }}">{{ select.diet_type }}</option>
-                  {% endfor %}
-                </select>
-              </div>
-
-              <!-- FILTER ALLERGEN LIST SELECTION-->
-              <div class="col">
-                <p>Allergen</p>
-                <select class="mr-3 w-100 selectpicker select_list show-tick" id="allergen_type" name="allergen_list" aria-label="Select Allergen(s)" title="Please select">
-                  <option class="bs-title-option d-none" value=""></option>
-                  {% for select in option_allergens %}
-                      <option value="{{ select.allergen_type}}">{{ select.allergen_type }}</option>
-                  {% endfor %}
-                </select>
-              </div>
-
-              <!-- FILTER MEAL TYPE LIST SELECTION-->
-              <div class="col">
-                <p>Meal Type</p>
-                <select class="mr-3 w-100 selectpicker select_list d-block show-tick" id="meal_type" name="meal_type_list" aria-label="Select Meal Type(s)" title="Please select">
-                  <option class="bs-title-option d-none" value=""></option>
-                  {% for select in option_meals %}
-                      <option value="{{ select.meal_type |capitalize }}">{{ select.meal_type |capitalize }}</option>
-                  {% endfor %}
-                </select>
-              </div>
-
-              <!-- FILTER CUISINES LIST SELECTION-->
-              <div class="col">
-                <p>Cuisines</p>
-                <select class="w-100 selectpicker select_list show-tick" id="cuisines_type" name="cuisines_list" aria-label="Select Cuisine(s)" title="Please select">
-                  <option class="bs-title-option d-none" value=""></option>
-                  {% for select in option_cuisines %}
-                      <option value="{{ select.cuisine_type}}">{{ select.cuisine_type }}</option>
-                  {% endfor %}
-                </select>
-              </div>
+            <!-- FILTER MEAL TYPE LIST SELECTION-->
+            <div class="col">
+              <p>Diet Label</p>
+              <select class="mr-3 w-100 selectpicker select_list show-tick" name="diet_list" title="Please select">
+                <option class="bs-title-option d-none" value="" ></option>
+                {% for select in option_diets %}
+                    <option value="{{ select.diet_type }}">{{ select.diet_type }}</option>
+                {% endfor %}
+              </select>
             </div>
-        </section>
+
+            <!-- FILTER ALLERGEN LIST SELECTION-->
+            <div class="col">
+              <p>Allergen</p>
+              <select class="mr-3 w-100 selectpicker select_list show-tick" id="allergen_type" name="allergen_list" aria-label="Select Allergen(s)" title="Please select">
+                <option class="bs-title-option d-none" value=""></option>
+                {% for select in option_allergens %}
+                    <option value="{{ select.allergen_type}}">{{ select.allergen_type }}</option>
+                {% endfor %}
+              </select>
+            </div>
+
+            <!-- FILTER MEAL TYPE LIST SELECTION-->
+            <div class="col">
+              <p>Meal Type</p>
+              <select class="mr-3 w-100 selectpicker select_list d-block show-tick" id="meal_type" name="meal_type_list" aria-label="Select Meal Type(s)" title="Please select">
+                <option class="bs-title-option d-none" value=""></option>
+                {% for select in option_meals %}
+                    <option value="{{ select.meal_type |capitalize }}">{{ select.meal_type |capitalize }}</option>
+                {% endfor %}
+              </select>
+            </div>
+
+            <!-- FILTER CUISINES LIST SELECTION-->
+            <div class="col">
+              <p>Cuisines</p>
+              <select class="w-100 selectpicker select_list show-tick" id="cuisines_type" name="cuisines_list" aria-label="Select Cuisine(s)" title="Please select">
+                <option class="bs-title-option d-none" value=""></option>
+                {% for select in option_cuisines %}
+                    <option value="{{ select.cuisine_type}}">{{ select.cuisine_type }}</option>
+                {% endfor %}
+              </select>
+            </div>
+          </div>
+      </div>
     </div>
-</div>
+  </div>
+</section>
   
 
 <!-- Cuisines cards -->
-<div class="container cuisines">
-  <section>
+<section class="recipes-cards">
+  <div class="container">
     <div id="results">
-      <h1 id="title-results" class="mt-4 mb-4 center-text">All Recipes</h1>
+      <h1 id="title_results" class="mt-4 mb-4 center-text">All Recipes</h1>
 
       <div class="container-fluid"> 
         <div class="row">    
@@ -69,7 +69,7 @@
             <div class="results"></div>
               {%if random_recipes%}
               <div class="container">
-                <h1 id="title-results" class="mt-4 mb-4 center-text">Inspiration Recipes</h1>
+                <h1 class="mt-4 mb-4 center-text">Inspiration Recipes</h1>
               </div>
               {%endif%}
               {% for random in random_recipes %}
@@ -92,40 +92,36 @@
 
         <!-- User recipe cards -->
         {% if 'username' in session %}
-          <h1 class="mt-4 mb-4 center-text">Recipes by {{ session['username'].title() }}</h1>
+          <h1 class="mt-4 mb-4 center-text">Recipes from members</h1>
           <div class="container">
             <div class="row">
               {% for r in user_added_recipes %}
-                  <div class="col-md-3">
+                  <div class="col-xs-12 col-sm-6 col-md-4">
                     <div class="card-deck card-custom mb-5">
                       <div class="card text-center">
-                        
                         {% if r.recipe_image is defined and r.recipe_image | length > 0 %}
-                          <img src="{{url_for('file', filename=r.recipe_image)}}" class="img-responsive w-100" alt="{{r.recipe_image}}" />
+                          <img src="{{url_for('file', filename=r.recipe_image)}}" class="img-responsive w-100 users-image" alt="{{r.recipe_image}}" />
                           {% else %}
-                            <img src="../static/img/No_image_available.png" class="img-responsive w-100" alt="Image Not Available" />
+                            <img src="../static/img/No_image_available.png" class="img-responsive w-100 users-image" alt="Image Not Available" />
                         {% endif %}
                         
                         <div class="card-body">
-                          <a href="{{url_for('user_recipe_details', recipe_id=r._id)}}" class="">{{r.recipe_name |upper}}</a>
-                          <p class="small mt-2">{{r.cuisines_list}}</p>
+                          <a href="{{url_for('user_recipe_details', recipe_id=r._id)}}">{{r.recipe_name |upper}}</a>
+                          <p class="small mt-2">by {{ r.user_recipe }}</p>
                         </div>
                       </div>
-                  </div>
+                    </div>
                   </div>
               {% endfor %}
             </div>
           </div>
-
-      </div>
+        </div>
     </div>
       {% else %}
-              <div></div>
+        <div></div>
       {% endif %}
-
-     
-  </section>
-</div>
+  </div>
+</section>
 
 {% include 'includes/_footer.html' %}
     

@@ -18,6 +18,9 @@ app.config['MONGO_URI'] = os.environ.get('MONGO_URI')
 app.secret_key = os.environ.get('SECRET_KEY')
 app.jinja_env.add_extension('jinja2.ext.do')
 
+
+
+
 mongo = PyMongo(app)
 api_key = os.environ['api_key']
 
@@ -38,7 +41,7 @@ def index():
         current_user=current_user)
     else:
         return render_template('index.html', 
-        recipes=recipes
+        # recipes=recipes
         )
 
 # achieved code using https://www.youtube.com/watch?v=vVx1737auSE&t=621s
@@ -183,20 +186,43 @@ def add_recipes():
 @app.route('/update_recipe/<recipe_id>', methods=['POST'])
 def update_recipe(recipe_id):
     the_recipe_id = mongo.db.add_recipes
-    the_recipe_id.update({"_id": ObjectId(recipe_id)},
-    {
-    'user_recipe': request.form['user_recipe'],
-    'recipe_image': request.form['recipe_image'],
-    'cuisines_list': request.form['cuisines_list'],
-    'allergen_list': request.form.getlist('allergen_list'),
-    'meal_type_list': request.form.getlist('meal_type_list'),
-    'diet_type_list': request.form.getlist('diet_type_list'),
-    'recipe_name': request.form['recipe_name'],
-    'prep_time': request.form['prep_time'],
-    'serves': request.form['serves'],
-    'add_ingredients': request.form.getlist('add_ingredients'),
-    'add_instructions': request.form.getlist('add_instructions')
-    })
+
+    if request.files:
+
+        upload_recipe_image = request.files['recipe_image']
+        mongo.save_file(upload_recipe_image.filename, upload_recipe_image)
+        
+        the_recipe_id.replace_one({"_id": ObjectId(recipe_id)},
+        {
+        'user_recipe': request.form['user_recipe'],
+        'recipe_image': upload_recipe_image.filename,
+        'cuisines_list': request.form['cuisines_list'],
+        'allergen_list': request.form.getlist('allergen_list'),
+        'meal_type_list': request.form.getlist('meal_type_list'),
+        'diet_type_list': request.form.getlist('diet_type_list'),
+        'recipe_name': request.form['recipe_name'],
+        'prep_time': request.form['prep_time'],
+        'serves': request.form['serves'],
+        'add_ingredients': request.form.getlist('add_ingredients'),
+        'add_instructions': request.form.getlist('add_instructions')
+        })
+    else:       
+        file_image = request.form['recipe_image']
+        print(file_image)
+        the_recipe_id.replace_one({"_id": ObjectId(recipe_id)},
+            {
+            'user_recipe': request.form['user_recipe'],
+            'recipe_image': file_image,
+            'cuisines_list': request.form['cuisines_list'],
+            'allergen_list': request.form.getlist('allergen_list'),
+            'meal_type_list': request.form.getlist('meal_type_list'),
+            'diet_type_list': request.form.getlist('diet_type_list'),
+            'recipe_name': request.form['recipe_name'],
+            'prep_time': request.form['prep_time'],
+            'serves': request.form['serves'],
+            'add_ingredients': request.form.getlist('add_ingredients'),
+            'add_instructions': request.form.getlist('add_instructions')
+        })
     return redirect(url_for('my_recipes'))
 
 # MY RECIPES
@@ -257,6 +283,8 @@ def edit_recipe(recipe_id):
         selected_diets=selected_diets,
         not_selected_diets=not_selected_diets,
         option_cuisines=option_cuisines)
+
+
 
 # DELETE RECIPES
 @app.route('/delete_recipe/<recipe_id>')
