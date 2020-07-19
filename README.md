@@ -20,19 +20,19 @@ My CookBook is a Milestone Project created for the "Data Centric Development" mo
    - [**Existing Features**](#existing-features)
    - [**Features Left to Implement**](#features-left-to-implemement)
  
-3. [**Technologies Used**](#technologies-used)
+4. [**Technologies Used**](#technologies-used)
  
-4. [**Databases Used**](#databases-used)
+5. [**Databases Used**](#databases-used)
    - [**API - Spoonacular**](#api-spoonacular)
    - [**MongoDB**](#mongoDB)
  
-5. [**Testing**](#testing)
+6. [**Testing**](#testing)
   - [**Validators**](#validators)
-  - [**Automated Testing**](#automated-testing)
+  - [**Manual Testing**](#manual-testing)
  
-6. [**Deployment**](#deployment)
+7. [**Deployment**](#deployment)
  
-7. [**Credits**](#credits)
+8. [**Credits**](#credits)
   - [**Content**](#content)
   - [**Media**](#media)
   - [**Acknowledgements**](#acknowledgements)
@@ -256,8 +256,6 @@ This is used for when Flask ever encounters an error the application knows to di
 I would work in small sprints where every step in my development I would ensure my app is still working as expected and where the app encounters any errors, I would debug the source until rectification was a success. Where needed I would document the error and the remediation taken in case of future occurrences.
  
 Doing this meant after a while the error codes became more familiar to me. And from this debugging each error becomes less time consuming.
- 
-I have also created a testing matrix ([raw Excel file here](testing/manual/curious_world-testing-milestone.xlsx)).
  
 ##### back to [top](#table-of-contents)
  
