@@ -23,35 +23,32 @@ api_key = os.environ['api_key']
 
 # single decoretor '/'set the default function to  call '/index'
 @app.route('/')
-@app.route('/index', methods=['GET','POST'])
+@app.route('/index', methods=['GET', 'POST'])
 def index():
-    # r = requests.get(
-    #     'https://api.spoonacular.com/recipes/random?number=10&apiKey='+api_key+'')
-    # json_obj = r.json()
-    # recipes = json_obj['recipes']
+    r = requests.get(
+        'https://api.spoonacular.com/recipes/random?number=10&apiKey='+api_key+'')
+    json_obj = r.json()
+    recipes = json_obj['recipes']
 
     if 'username' in session:
         current_user = mongo.db.user.find_one({'username': session[
             'username'].title()})
-        return render_template('index.html', 
-        # recipes=recipes, 
+        return render_template('index.html',
+        recipes=recipes,
         current_user=current_user)
     else:
-        return render_template('index.html', 
-        # recipes=recipes
-        )
+        return render_template('index.html', recipes=recipes)
 
 # achieved code using https://www.youtube.com/watch?v=vVx1737auSE&t=621s
-# LOGIN 
-@app.route('/login', methods=['GET','POST'])
+# LOGIN
+@app.route('/login', methods=['GET', 'POST'])
 def login():
-    
     if request.method == 'POST':
         allUser = mongo.db.users
-        login_user = allUser.find_one({'username' : request.form['username']})
-        
+        login_user = allUser.find_one({'username': request.form['username']})
         if login_user is not None:
-            if bcrypt.hashpw(request.form['password'].encode('utf-8'), login_user['password']) == login_user['password']:
+            if bcrypt.hashpw(request.form['password'].encode('utf-8'),
+            login_user['password']) == login_user['password']:
                 session['username'] = request.form['username']
                 return redirect(url_for('index'))
         message_error = 'Invalid username or password'
@@ -61,12 +58,12 @@ def login():
         return render_template('login.html')
 
 
-# LOGOUT 
-@app.route('/logout',methods=['GET', 'POST'])
+# LOGOUT
+@app.route('/logout', methods=['GET', 'POST'])
 def logout():
     if request.method == 'GET':
         session.pop('username', None)
-    return redirect(url_for('index'))   
+    return redirect(url_for('index'))
 
 
 # REGISTER
@@ -75,12 +72,11 @@ def register():
     if request.method == 'POST':
         users = mongo.db.users
         existing_user = users.find_one({'username': request.form['username']})
-        
         if existing_user is None:
             hashpass = bcrypt.hashpw(request.form['password'].encode('utf-8'), bcrypt.gensalt())
-            users.insert({'username': request.form['username'], 
-                            'password' : hashpass,
-                            'avatar': request.form['avatar']  })
+            users.insert({'username': request.form['username'],
+                    'password': hashpass,
+                    'avatar': request.form['avatar']})
             session['username'] = request.form['username']
             return redirect(url_for('login'))
 
@@ -91,26 +87,24 @@ def register():
 # GET ALL RECIPES from API
 @app.route('/all_recipes', methods=['GET'])
 def all_recipes():
-    #POPULATE SELECT BOX from mongodb
+    # POPULATE SELECT BOX from mongodb
     option_allergens = get_allergens()
     option_cuisines = get_cuisines()
     option_diets = get_diets()
     option_meals = get_meals()
     user_added_recipes = get_user_recipes()
-    
     r = requests.get(
         'https://api.spoonacular.com/recipes/random?number=6&apiKey='+api_key+'')
     obj = r.json()
     random_recipes = obj['recipes']
-    return render_template('all-recipes.html', 
-        random_recipes=random_recipes, 
+    return render_template('all-recipes.html',
+        random_recipes=random_recipes,
         option_allergens=option_allergens,
         option_cuisines=option_cuisines,
         option_diets=option_diets,
         option_meals=option_meals,
         user_added_recipes=user_added_recipes,
-        api_key=api_key
-        )
+        api_key=api_key)
 
 
 # GET RECIPES DETAILS from API
@@ -135,28 +129,23 @@ def recipe_details(recipe_id):
 @app.route('/user_recipe_details/<recipe_id>', methods=['GET'])
 def user_recipe_details(recipe_id):
     getId = recipe_id
-    user_recipe = mongo.db.add_recipes.find_one({'_id':ObjectId(getId)})
-
+    user_recipe = mongo.db.add_recipes.find_one({'_id': ObjectId(getId)})
     return render_template('user-recipe-details.html', user_recipe=user_recipe)
- 
 
 # ADD RECIPES TO MONGODB
 @app.route('/add_recipes', methods=['GET', 'POST'])
 def add_recipes():
     if 'username' in session:
         current_user = mongo.db.user.find_one({'username': session['username']})
-        
         # lists
         option_cuisines = get_cuisines()
         option_allergens = get_allergens()
         option_diets = get_diets()
         option_meals = get_meals()
-        
         # add recipes form
         if request.method == 'POST':
             upload_recipe_image = request.files['recipe_image']
             mongo.save_file(upload_recipe_image.filename, upload_recipe_image)
-        
             add_recipes = mongo.db.add_recipes
             add_recipes.insert_one({'user_recipe': request.form['user_recipe'],
                 'recipe_image': upload_recipe_image.filename,
@@ -168,19 +157,17 @@ def add_recipes():
                 'prep_time': request.form['prep_time'],
                 'serves': request.form['serves'],
                 'add_ingredients': request.form.getlist('add_ingredients'),
-                'add_instructions': request.form.getlist('add_instructions')
-                })
+                'add_instructions': request.form.getlist('add_instructions')})
 
             return redirect(url_for('my_recipes'))
-        return render_template('add-recipes.html', 
-            option_diets=option_diets, 
+        return render_template('add-recipes.html',
+            option_diets=option_diets,
             option_meals=option_meals,
-            option_cuisines=option_cuisines, 
+            option_cuisines=option_cuisines,
             option_allergens=option_allergens)
     else:
-        return redirect(url_for('register'))  
+        return redirect(url_for('register'))
 
-   # session['username'] = request.form['username']
 
 # UPDATE RECIPES
 @app.route('/update_recipe/<recipe_id>', methods=['POST'])
@@ -191,7 +178,6 @@ def update_recipe(recipe_id):
 
         upload_recipe_image = request.files['recipe_image']
         mongo.save_file(upload_recipe_image.filename, upload_recipe_image)
-        
         the_recipe_id.replace_one({"_id": ObjectId(recipe_id)},
         {
         'user_recipe': request.form['user_recipe'],
@@ -206,7 +192,7 @@ def update_recipe(recipe_id):
         'add_ingredients': request.form.getlist('add_ingredients'),
         'add_instructions': request.form.getlist('add_instructions')
         })
-    else:       
+    else:
         file_image = request.form['recipe_image']
         print(file_image)
         the_recipe_id.replace_one({"_id": ObjectId(recipe_id)},
@@ -229,26 +215,24 @@ def update_recipe(recipe_id):
 @app.route('/my_recipes', methods=['GET'])
 def my_recipes():
     if 'username' in session:
-        #GET CURRENT USER from session
+        # GET CURRENT USER from session
         current_user = session['username'].title()
 
-        #GET CURRENT USER in add_recipes db
-        user_added_recipes = mongo.db.add_recipes.find( { "user_recipe": current_user })
+        # GET CURRENT USER in add_recipes db
+        user_added_recipes = mongo.db.add_recipes.find({"user_recipe": current_user})
 
-        #GET USER DATABASE from user db
-        user = mongo.db.users.find_one({"username" : session['username']})
+        # GET USER DATABASE from user db
+        user = mongo.db.users.find_one({"username": session['username']})
 
-        #COUNTER user recipes
-        counting = mongo.db.add_recipes.count_documents({ 'user_recipe': current_user })
-  
-        return render_template('my-recipes.html', 
-            current_user=current_user, 
+        # COUNTER user recipes
+        counting = mongo.db.add_recipes.count_documents({'user_recipe': current_user})
+        return render_template('my-recipes.html',
+            current_user=current_user,
             user=user,
             counting=counting,
-            user_added_recipes=user_added_recipes
-            )
+            user_added_recipes=user_added_recipes)
     else:
-        return redirect(url_for('index')) 
+        return redirect(url_for('index'))
 
 
 # EDIT RECIPE
@@ -257,33 +241,30 @@ def edit_recipe(recipe_id):
     the_recipe_id = mongo.db.add_recipes.find_one({"_id": ObjectId(recipe_id)})
 
     all_recipe_details = get_user_recipes()
-    
     # lists
     option_cuisines = get_cuisines()
     option_allergens = get_allergens()
     option_meals = get_meals()
     option_diets = get_diets()
 
-    #GET SELECTED's OPTIONS
+    # GET SELECTED's OPTIONS
     selected_allergens = the_recipe_id.get('allergen_list')
-    selected_meals= the_recipe_id.get('meal_type_list')
+    selected_meals = the_recipe_id.get('meal_type_list')
     selected_diets = the_recipe_id.get('diet_type_list')
 
-    #GET NOT SELECTED OPTIONS     
+    # GET NOT SELECTED OPTIONS
     not_selected_allergens = helper_loop(option_allergens, selected_allergens, 'allergen_type')
     not_selected_meals = helper_loop(option_meals, selected_meals, 'meal_type')
-    not_selected_diets = helper_loop(option_diets, selected_diets, 'diet_type')     
-            
+    not_selected_diets = helper_loop(option_diets, selected_diets, 'diet_type')
     return render_template('edit-recipe.html',
-        recipe_id=the_recipe_id,  
+        recipe_id=the_recipe_id,
         selected_allergens=selected_allergens,
         not_selected_allergens=not_selected_allergens,
-        selected_meals=selected_meals, 
+        selected_meals=selected_meals,
         not_selected_meals=not_selected_meals,
         selected_diets=selected_diets,
         not_selected_diets=not_selected_diets,
         option_cuisines=option_cuisines)
-
 
 
 # DELETE RECIPES
@@ -292,7 +273,7 @@ def delete_recipe(recipe_id):
     mongo.db.add_recipes.remove({'_id': ObjectId(recipe_id)})
     return redirect(url_for('my_recipes'))
 
-#GET IMAGE FILE
+# GET IMAGE FILE
 @app.route('/file/<filename>')
 def file(filename):
     return mongo.send_file(filename)
@@ -319,7 +300,7 @@ def get_meals():
     option_meals = mongo.db.meals.find().sort("meal_type", 1)
     return option_meals
 
-#GENERIC FUNC LOOP
+# GENERIC FUNC LOOP
 def helper_loop(options, selected, type):
     arr = []
     for x in options:

@@ -196,7 +196,7 @@ My MongoDB database consists of the following collections:
 - meals
 - users
 
-I have also created a database schema ([pdf file here](MongoDB-Schema.pdf)).
+I have also created a database schema:
 ![Diagram of database schema](static/img/MongoDB-Schema.png) 
 
 ##### back to [top](#table-of-contents)
@@ -219,14 +219,20 @@ I also have validated all files using online validation sites cited bellow and c
 
 - [W3C CSS Validator](https://jigsaw.w3.org/css-validator/) - `Congratulations! No Error Found.`
 
+#### PYTHON
+
+- [W3C CSS Validator](http://pep8online.com/checkresult) - `minor errors`
+
 #### JavaScript
+
+  - [JShint](https://jshint.com/)
    - File: [main.js](static/js/main.js)
         - Metrics:
             - There are 12 functions in this file.
             - Function with the largest signature take 2 arguments, while the median is 0.
             - Largest function has 15 statements in it, while the median is 2.
             - The most complex function has a cyclomatic complexity value of 1 while the median is 1.
-- [JShint](https://jshint.com/)
+
 
 ### Manual Testing
 I have conducted a detailed [manual testing](static/testing/manual/testing.md) to show that I have extensively tested this web application.
@@ -279,7 +285,7 @@ Upon successful deployment Heroku will give you the URL that is hosted your app!
 
 - Please allow a few minutes to pass before opening your newly deployed link! Clicking this link too quickly may result in a failure to build the site, causing an Error 404 page instead.
 
-Congratulations! Your project should be deployed successfully on GitHub Pages! :tada:
+Congratulations! Your project should be deployed successfully on Heroku's app! :tada:
 
 ##### back to [top](#table-of-contents)
 

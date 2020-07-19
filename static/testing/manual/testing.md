@@ -39,21 +39,36 @@ All the routs are working accordingly:
 ###### When logged in, the user sees "Make your own Cookbook" section:
 5. Try to click on "Add your Recipes" to verify if it's redirecting to "Add Recipe" page.
 6. Try to click on "Edit & Delete Recipes" to verify if it's redirecting to "Edit Recipe" page.
-7. Try to click on "Share your Recipes" to verify if it's redirecting to "My Recipes" page.
+
 
 ###### When not logged in, the user sees "How thir website works" section:
-8. Try to click on "Register" to verify if it's redirecting to "Register" page.
-9. Try to click on "Create your recipes" to verify if it's redirecting to "Add Recipe" page.
-10. Try to click on "Share with Friends" to verify if it's redirecting to "My Recipes" page.
+7. Try to click on "Register" to verify if it's redirecting to "Register" page.
+8. Try to click on "Create your recipes" to verify if it's redirecting to "My Recipes" page.
 
-#### Log In: WIP
-1. Click on "Login"on menu.
+#### Log In:
+1. Click on "Login".
 2. Try to insert a username. 
 3. Try to insert a password. 
-4. Try to insert a username and click on "Login".
+4. Try to insert a username and click on "Log In" to verify if the input password is required.
+5. Try to insert a password and click on "Log In" to verify if the input username is required.
+6. Try to insert a wrong username and click on "Login" to verify if an alert message "Invalid username or password" pops up.
+7. Try to insert a wrong password and click on "Login" to verify if an alert message "Invalid username or password" pops up.
+8. Try to insert a correct username and password and click on "Login" to verify if logs in.
+9. Try to click on link "Click Here To Register Account" to verify it redirects the user to "Register" page.
+10. Try to click on X to verify if redirects to index.
 
 
-#### Register: WIP
+#### Register:
+1. Click on "Register".
+2. Try to insert a username. 
+3. Try to insert a password. 
+4. Try to insert a username and click on "Log In" to verify if the input password and avatar are required.
+5. Try to insert a password and click on "Log In" to verify if the input username and avatar are required.
+6. Try to insert a wrong username and click on "Login" to verify if an alert message "Invalid username or password" pops up.
+7. Try to insert a wrong password and click on "Login" to verify if an alert message "Invalid username or password" pops up.
+8. Try to insert a correct username, password, avatar and click on "Register" to verify redirects to "Log In" page.
+9. Try to click on link "Click Here to Login." to verify it redirects the user to "Log In" page.
+10. Try to click on X to verify if redirects to index.
 
 
 #### All Recipes(route /'all_recipes')
@@ -102,7 +117,7 @@ All the routs are working accordingly:
 17. Try to click on input "add instruction" to verify if it is accepting text.
 18. Try to click on button "Add more" to verify if it is displaying a new input to add more instructions.
 19. Try to click on button "delete" to verify if it is deleting the input to add instruction.
-20. Try to click on button "Add recipe" to verify if the recipe is added successfuly. 
+20. Try to click on button "Add recipe" to verify if it redirects to "My recipes" page.
 
 
 #### Edit Recipe (route /'edit_recipe'):
@@ -128,9 +143,9 @@ All the routs are working accordingly:
 
 
 #### User Recipe Details (route /'user_recipe_details'):
-1. Try to click on button "Edit recipe" to verify if it redirects to "Edit Recipe" page.
-2. Try to click on "Bin icon" to verify if it is deleting the recipe and redirects to "My recipes" page.
-
+1. Try to click on share button "Facebook" to verify if it redirects to Facebook's page.
+2. Try to click on share button "Tweet" to verify if it redirects to Twitter's page.
+3. Try to click on share button "Email" to verify if it redirects to user email's page.
 
 #### Error Page
-1. Try to click on link "here" to verify if it redirects back to the homepage/index.
+1. Try to click on link "here" to verify if it redirects back to index.
