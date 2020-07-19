@@ -544,6 +544,10 @@ section.my-recipes .card-foot a {
 	height: 120px;
 }
 
+/* ----------------------------------------- overwrite bootstrap-select */
+.bootstrap-select:not([class*=col-]):not([class*=form-control]):not(.input-group-btn) {
+	width: 100%;
+}
 /* ----------------------------------------- overwrite bootstrap */
 
 .navbar-nav a {
@@ -711,6 +715,7 @@ i:before {
 		height: auto;
 	}
 	/*add-recipes*/
+	
 	.recipe-form div.row {
 		flex-flow: column;
 	}
@@ -728,6 +733,9 @@ i:before {
 		margin-left: 0px;
 	}
 	/*my-recipes*/
+	.profile-card-1 {
+		height: 230px;
+	}
 }
 
 @media (max-width: 1023px) {

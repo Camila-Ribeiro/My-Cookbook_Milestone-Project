@@ -8,28 +8,23 @@
     
       <!-- RECIPE INFO SECTION-->
       <section class="recipe-info">
-        <div class="row">
-          <div class="col">
             <div class="row">
-              <div class="col-3">
+              <div class="col-xs-12 col-md-3">
                 <p><i class="icofont-like"></i> {{ details.aggregateLikes }} likes</p>
               </div>
-              <div class="col-3">
+              <div class="col-xs-12 col-md-3">
                 <p><i class="icofont-clock-time"></i> Ready in {{ details.readyInMinutes }} min</p>
               </div>
-              <div class="col-3">
+              <div class="col-xs-12 col-md-3">
                 <p><i class="icofont-people"></i> {{ details.servings }} Servings</p>
               </div>
           
               {% if details.dishTypes %}
-                <div class="col-3">
-                  {% for dish in details.dishTypes%}
-                  <p><i class="icofont-lunch"></i> {{ dish if dish is not none }} </p>
-                  {% endfor %}
+                <div class="col-xs-12 col-md-3">
+                  <p><i class="icofont-lunch"></i> {{ details.dishTypes[0]}} </p>
                 </div>
               {% endif %}
-            </div>
-          </div>
+
         </div>
       </section>
     </div>
@@ -107,7 +102,7 @@
         <div class="mt-4">
           {% for wines in details.winePairing.pairedWines %}
             {% if wines is not none %} 
-              <p><i class="icofont-glass"></i> {{ wines }}</p>
+              <p><i class="icofont-glass"></i> {{ wines |title }}</p>
             {% endif %} 
           {% endfor %}
         </div>
@@ -123,10 +118,10 @@
           {% if products is not none %} 
           <div class="border mt-5 px-3 py-3">
             <div class="row">
-              <div class="col-3">
-                <img class="img-responsive" src="{{ products.imageUrl }}" alt="Wine Image">
+              <div class="col-xs-12 col-md-3">
+                <img class="img-fluid d-block mx-auto" src="{{ products.imageUrl }}" alt="Wine Image">
               </div>
-              <div class="col-9 mt-3">
+              <div class="col-xs-12 col-md-9 mt-3">
                 <h5 class="mb-3">{{ products.title }}</h5>
                 <p class="mb-1">Description:</p>
                 <p class="small"> {{ products.description }} <a href="{{ products.link }}">See product here</a></p>

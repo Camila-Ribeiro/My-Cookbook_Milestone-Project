@@ -96,8 +96,8 @@ A standard layout is fully responsive on mobile devices and larger screens.
  
 My wireframes for this project can be found in the UX folder.
  
-- [Desktop Wireframe](https://camila-ribeiro.github.io/)
-- [Mobile Wireframe](https://camila-ribeiro.github.io/)
+- [Desktop Wireframe](static/UX/My-cookbook-desktop-wireframe.pdf)
+- [Mobile Wireframe](static/UX/My-cookbook-mobile-wireframe.pdf)
  
 ##### back to [top](#table-of-contents)
  

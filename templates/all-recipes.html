@@ -61,25 +61,25 @@
 <!-- Cuisines cards -->
 <section class="recipes-cards">
   <div class="container">
-    <div id="results">
-      <h1 id="title_results" class="mt-4 mb-4 center-text">All Recipes</h1>
-
-      <div class="container-fluid"> 
-        <div class="row">    
-          <div class="card-deck">
-            <div class="results"></div>
-              {%if random_recipes%}
+    <div class="row">   
+      <div id="results">
+        <h1 id="title_results" class="mt-4 mb-4 center-text">All Recipes</h1>
+        <div class="card-deck">
+          <div class="results"></div>
+            {%if random_recipes%}
               <div class="container">
                 <h1 class="mt-4 mb-4 center-text">Inspiration Recipes</h1>
               </div>
-              {%endif%}
-              {% for random in random_recipes %}
+            {%endif%}
+
+            {% for random in random_recipes %}
               <div class="col-md-4 mb-5">
                 <div class="card">
+
                   {% if random.image is defined and random.image | length > 0 %}
                       <img src="{{ random.image }}" class="on-inview " alt="{{ random.title }}" />
                     {% else %}
-                      <img src="../static/img/No_image_available.png" class="img-responsive w-100" alt="Image Not Available" />
+                      <img src="../static/img/No_image_available.png" class="img-fluid w-100" alt="Image Not Available" />
                   {% endif %}
                   
                   <div class="card-body">
@@ -87,41 +87,45 @@
                   </div>
                 </div>
               </div>
-              {% endfor %}
-          </div>
+            {% endfor %}
         </div>
-
-        <!-- User recipe cards -->
-        {% if 'username' in session %}
-          <h1 class="mt-4 mb-4 center-text">Recipes from members</h1>
-          <div class="container">
-            <div class="row">
-              {% for r in user_added_recipes %}
-                  <div class="col-xs-12 col-sm-6 col-md-4">
-                    <div class="card-deck card-custom mb-5">
-                      <div class="card text-center">
-                        {% if r.recipe_image is defined and r.recipe_image | length > 0 %}
-                          <img src="{{ url_for('file', filename=r.recipe_image) }}" class="img-responsive w-100 users-image" alt="{{ r.recipe_image }}" />
-                          {% else %}
-                            <img src="../static/img/No_image_available.png" class="img-responsive w-100 users-image" alt="Image Not Available" />
-                        {% endif %}
-                        
-                        <div class="card-body">
-                          <a href="{{ url_for('user_recipe_details', recipe_id=r._id) }}">{{ r.recipe_name |upper }}</a>
-                          <p class="small mt-2"><i class="icofont-ui-user"></i> {{ r.user_recipe }}</p>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-              {% endfor %}
+      </div>
+    </div>
+  </div>
+  <div class="container">
+    <div class="row">  
+      <!-- User recipe cards -->
+      {% if 'username' in session %}
+      <div class="container">
+        <h1 class="mt-4 mb-4 center-text">Recipes from members</h1>
+      </div>
+          
+        {% for r in user_added_recipes %}
+          <div class="col-xs-12 col-sm-6 col-md-4">
+            <div class="card-deck card-custom mb-5">
+              
+              <div class="card text-center">
+                {% if r.recipe_image is defined and r.recipe_image | length > 0 %}
+                  <img src="{{ url_for('file', filename=r.recipe_image) }}" class="img-fluid w-100 users-image" alt="{{ r.recipe_image }}" />
+                  {% else %}
+                    <img src="../static/img/No_image_available.png" class="img-fluid w-100 users-image" alt="Image Not Available" />
+                {% endif %}
+                
+                <div class="card-body">
+                  <a href="{{ url_for('user_recipe_details', recipe_id=r._id) }}">{{ r.recipe_name |upper }}</a>
+                  <p class="small mt-2"><i class="icofont-ui-user"></i> {{ r.user_recipe }}</p>
+                </div>
+              </div>
             </div>
           </div>
-        </div>
-    </div>
+        {% endfor %}
       {% else %}
         <div></div>
       {% endif %}
+    </div>
   </div>
+
+
 </section>
 
 {% include 'includes/_footer.html' %}
