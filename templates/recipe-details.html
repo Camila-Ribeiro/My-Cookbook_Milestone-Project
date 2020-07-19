@@ -72,33 +72,12 @@
     <hr>
       <div class="container">
         <div class="row">
-          
-          {% for instructions in details.analyzedInstructions %}
-          {% set dup_id = [] %}
-          {% for step in instructions.steps  %}
-           
-
-            
-              
-              
-              
-            
-      
-              
-            {% for equipment in step.equipment  %}
-              {% do dup_id.append(equipment.id) if loop.first  %}
-
-              {% if dup_id not in dup %}
-
-              
-              <div class="col-sm-6 col-md-2">
-                <p class="text-center">{{ equipment.name }}</p>
-                <img class="mx-auto d-block" src="https://spoonacular.com/cdn/equipment_100x100/{{ equipment.image }}" alt="Equiments Image">
-              </div>
-              {% endif %}
-            {% endfor %}
-          {% endfor %}
-        {% endfor %}
+          {% for equipment in no_dup_equipment %}
+            <div class="col-sm-6 col-md-2">
+              <p class="text-center">{{ equipment.name }}</p>
+              <img class="mx-auto d-block" src="https://spoonacular.com/cdn/equipment_100x100/{{ equipment.image }}" alt="{{ equipment.image }}">
+            </div>
+          {% endfor%}
         </div>
     </div>
   </section>

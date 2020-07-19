@@ -111,19 +111,10 @@ def all_recipes():
 @app.route('/recipe_details/<recipe_id>', methods=['GET'])
 def recipe_details(recipe_id):
     r = requests.get('https://api.spoonacular.com/recipes/'+recipe_id+'/information?apiKey='+api_key+'')
-
     obj = r.json()
     details = obj
-
-    dup = []
-    for x in details.get('analyzedInstructions'):
-        for y in x.get('steps'):
-            for z in y.get('equipment'):
-                if z['id'] not in dup:
-                    dup.append(z['id'])
-                    print(dup)
-    return render_template('recipe-details.html', details=details, dup=dup)
-
+    no_dup_equipment = filter_obj_dup(details)
+    return render_template('recipe-details.html', details=details, no_dup_equipment=no_dup_equipment)
 
 # GET USER RECIPES DETAILS from MONGODB
 @app.route('/user_recipe_details/<recipe_id>', methods=['GET'])
@@ -307,6 +298,26 @@ def helper_loop(options, selected, type):
         if x[type] not in selected:
             arr.append(x[type])
     return arr
+
+# FILTER OBJETCS DUPLICATE from spoonacular API
+def filter_obj_dup(obj):
+    arr_id = []
+    equipments_arr = []
+    no_dup_equipment = []
+    
+    for step in obj.get('analyzedInstructions'):
+        for equipment in step.get('steps'):
+            for equip_id in equipment.get('equipment'):
+                equipments_arr.append(equip_id)
+                if equip_id['id'] not in arr_id:
+                    arr_id.append(equip_id['id'])
+    
+    for id_list in arr_id:
+        for equip in equipments_arr:
+            if id_list == equip['id']:
+                no_dup_equipment.append(equip)
+                break
+    return no_dup_equipment
 
 # ERROR PAGE
 @app.errorhandler(404)
