@@ -196,7 +196,8 @@ My MongoDB database consists of the following collections:
 - meals
 - users
 
-![Diagram of website database schema](static/img/MongoDB  Schema - Sheet1.pdf) 
+I have also created a testing matrix ([pdf file here](MongoDB-Schema.pdf)).
+![Diagram of website database schema](MongoDB-Schema.pdf) 
 
 ##### back to [top](#table-of-contents)
 
