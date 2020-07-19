@@ -703,8 +703,12 @@ i:before {
 		width: 100% !important;
 	}
 	/*recipe-details*/
+	.recipe-info {
+		height: auto;
+	}
 	.diets {
 		margin-top: 30px;
+		height: auto;
 	}
 	/*add-recipes*/
 	.recipe-form div.row {

@@ -45,17 +45,20 @@ def index():
 # LOGIN 
 @app.route('/login', methods=['GET','POST'])
 def login():
+    
     if request.method == 'POST':
         allUser = mongo.db.users
         login_user = allUser.find_one({'username' : request.form['username']})
         
-        if login_user:
+        if login_user is not None:
             if bcrypt.hashpw(request.form['password'].encode('utf-8'), login_user['password']) == login_user['password']:
                 session['username'] = request.form['username']
                 return redirect(url_for('index'))
-        return 'Invalid username'
-
-    return render_template('login.html')
+        message_error = 'Invalid username or password'
+        return render_template('login.html', message_error=message_error)
+    else:
+        message_error = ''
+        return render_template('login.html')
 
 
 # LOGOUT 
@@ -168,15 +171,14 @@ def add_recipes():
                 'add_instructions': request.form.getlist('add_instructions')
                 })
 
-            # add_recipes.insert_one(request.form.to_dict())
-            return redirect(url_for('add_recipes'))
+            return redirect(url_for('my_recipes'))
         return render_template('add-recipes.html', 
             option_diets=option_diets, 
             option_meals=option_meals,
             option_cuisines=option_cuisines, 
             option_allergens=option_allergens)
     else:
-        return redirect(url_for('index'))  
+        return redirect(url_for('register'))  
 
    # session['username'] = request.form['username']
 

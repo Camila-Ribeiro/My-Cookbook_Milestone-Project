@@ -37,7 +37,7 @@
                     <select class="d-block selectpicker" id="meal_type" name="meal_type_list" aria-label="Select Meal Type(s)" multiple data-selected-text-format="count" data-max-options="4" title="Please Select" required>
                         <option class="bs-title-option d-none" value=""></option>
                         {% for select in option_meals %}
-                            <option value="{{ select.meal_type }}">{{ select.meal_type }}</option>
+                            <option value="{{ select.meal_type |capitalize  }}">{{ select.meal_type |capitalize }}</option>
                         {% endfor %}
                     </select>
                 </div>
