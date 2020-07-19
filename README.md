@@ -296,7 +296,7 @@ Congratulations! Your project should be deployed successfully on Heroku's app! :
  
 - [Spoonacular API](https://spoonacular.com/) - Database images
 - [Unsplash](https://unsplash.com/) - Photo by Brook Lark
-- [Freepik](https://freepik.com/) - Database images
+- [Freepik](https://freepik.com/) - logo and avatars
  
 ### Acknowledgements
  
