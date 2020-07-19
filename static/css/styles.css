@@ -3,17 +3,12 @@ h1 {
 	font-size: 2em;
 }
 
-h1,
-h2,
-h3,
-h4,
-h5 {
+h1,h2,h3,h4,h5 {
 	font-family: "Lobster Two", cursive;
 	letter-spacing: 1px;
 }
 
-a,
-h6 {
+a, h6 {
 	font-family: "Montserrat", sans-serif;
 }
 
@@ -32,8 +27,7 @@ body {
 	border: 2px solid #61a5a0;
 }
 
-/* Gradient transparent - color - transparent  - https://css-tricks.com/examples/hrs/*/
-
+/* Gradient transparent-color [https://css-tricks.com/examples/hrs/] */
 hr {
 	border: 0;
 	height: 1px;
@@ -47,8 +41,7 @@ img.on-inview {
 	padding: 10px;
 }
 
-.slick-prev:before,
-.slick-next:before {
+.slick-prev:before, .slick-next:before {
 	color: #383b3f;
 }
 
@@ -56,9 +49,7 @@ img.on-inview {
 	color: #383b3f;
 }
 
-/* --------------------------------------------------------------- spinner 
-https://codepen.io/tbrownvisuals/pen/ZpXEZw*/
-
+/* -------------------------------- spinner [https://codepen.io/tbrownvisuals/pen/ZpXEZw] */
 .loading {
 	position: fixed;
 	z-index: 999;
@@ -81,8 +72,7 @@ https://codepen.io/tbrownvisuals/pen/ZpXEZw*/
 	left: 0;
 	width: 100%;
 	height: 100%;
-	  background: radial-gradient(rgba(20, 20, 20,.8), rgba(0, 0, 0, .8));
-  
+	background: radial-gradient(rgba(20, 20, 20,.8), rgba(0, 0, 0, .8));
 	background: -webkit-radial-gradient(rgba(20, 20, 20,.8), rgba(0, 0, 0,.8));
   }
   
@@ -114,7 +104,6 @@ https://codepen.io/tbrownvisuals/pen/ZpXEZw*/
   }
   
   /* Animation */
-  
   @-webkit-keyframes spinner {
 	0% {
 	  -webkit-transform: rotate(0deg);
@@ -182,7 +171,6 @@ https://codepen.io/tbrownvisuals/pen/ZpXEZw*/
 
 
 /* --------------------------------------------------------------- header */
-
 .user-logged {
 	background-color: rgba(97, 165, 160, 0.7);
 }
@@ -215,7 +203,6 @@ https://codepen.io/tbrownvisuals/pen/ZpXEZw*/
 }
 
 /* --------------------------------------------------------------- footer */
-
 .footer {
 	background-color: #56928d;
 	color: #fff;
@@ -225,7 +212,6 @@ https://codepen.io/tbrownvisuals/pen/ZpXEZw*/
 }
 
 /* --------------------------------------------------------------- index */
-
 .own-cookbook {
 	background-color: rgba(97, 165, 160, 0.7);
 }
@@ -235,7 +221,6 @@ https://codepen.io/tbrownvisuals/pen/ZpXEZw*/
 }
 
 /* ----------------------------------------------------------- all-recipes */
-
 .center-text {
 	text-align: center;
 }
@@ -270,11 +255,6 @@ section.recipes-cards .card-body p.small{
 
 .results {
 	display: none;
-	/* display: inherit;
-  -ms-flex-flow: inherit;
-  flex-flow: inherit;
-  margin-right: inherit;
-  margin-left: inherit; */
 }
 
 .card-custom .card-body {
@@ -291,7 +271,6 @@ section.recipes-cards .card-body p.small{
 }
 
 /* ------------------------------------------------------- Recipe-Details */
-
 .img-recipe {
 	height: 300px;
 	width: 100%;
@@ -350,24 +329,17 @@ section.recipes-cards .card-body p.small{
 	display: inline-block;
 }
 
-.ingredient,
-.equipment,
-.instruction,
-.wine-pairing {
+.ingredient,.equipment,.instruction,.wine-pairing {
 	margin-top: 60px;
 }
 
-.ingredient hr,
-.equipment hr,
-.instruction hr,
-.wine-pairing hr {
+.ingredient hr,.equipment hr,.instruction hr,.wine-pairing hr {
 	border: 0;
 	height: 1px;
 	background-image: linear-gradient( to right, rgba(0, 0, 0, 0), #212529, rgba(0, 0, 0, 0));
 }
 
 /* ------------------------------------------------------- User-Recipe-Details */
-
 section.user-recipes .main-img {
 	height: 340px;
 	object-fit: cover;
@@ -392,7 +364,6 @@ section.user-recipes .main-img {
 }
 
 /* ------------------------------------------------------- my-Recipes */
-
 section.my-recipes .card-deck img {
 	object-fit: cover;
 	height: 202px;
@@ -516,7 +487,6 @@ section.my-recipes .card-foot a {
 }
 
 /* ------------------------------------------------------- sigh-In */
-
 .form-container {
 	max-width: 350px;
 	margin: 0 auto;
@@ -676,11 +646,8 @@ i:before {
 		font-size: 1em;
 	}
 }
-
 /* ------------------------- media queries */
-
 /*mobile devices*/
-
 @media (max-width: 734px) {
 	.btn_add_recipes {
 		width: 100%;

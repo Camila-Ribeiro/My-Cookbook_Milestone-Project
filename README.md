@@ -87,7 +87,7 @@ A standard layout is fully responsive on mobile devices and larger screens.
  
 #### Typography
  
-- 3 [Google Fonts](https://fonts.google.com/) were used across the site:
+3 [Google Fonts](https://fonts.google.com/) were used across the site:
  - [Open Sans](https://fonts.google.com/specimen/OpenSans) : body text
  - [Lobster Two](https://fonts.google.com/specimen/LobsterTwo) : h1, h2, h3, h4, h5
  - [Montserrat](https://fonts.google.com/specimen/Montserrat) : h6
@@ -107,18 +107,28 @@ My wireframes for this project can be found in the UX folder.
  
 ### Existing Features
 - Index - this page the "Get Inspired" section displays a carousel with recipes from Spoonacular API and the user can get inspired flicking forward and backwards through cards. There are two additional sections, "Make your own Cookbook" (user logged in - where the user has a different path to add, edit and share their recipes) and "How this website works" (user not logged in - where guides the user which steps to take to use the website properly).
+
 - All recipes - this page displays filters such as Cuisines, allergens, diet label and meal type where the user can filter the recipe they want to see according to the filter selected. There are also " Inspiration recipes" cards to see different options then the chosen ones using filters. If a user is logged in it will display "Recipes by User" where the user can see their own recipes already added.
+
 - My recipes - this page displays the user profile card with the avatar chosen when registered, also the number of recipes the user has added. Beside it there are displayed recipe's cards that the user created, which has the options to view the recipe clicking on recipe's name, edit or delete.
-- Add recipes - this page allows the user to add new recipes and all fields are required. The user can choose 1 option of cuisines, and multiple options (up to 4) of allergen, meals type and diet label. Add recipe name, recipe image, preparation time and number of servings. The ingredients and instructions fields have the feature to add more inputs. After all information inserted just click the "ADD recipe button"
-- Edit recipes -
+
+- Add recipes - this page allows the user to add new recipes and all fields are required. The user can choose 1 option of cuisines, and multiple options (up to 4) of allergen, meals type and diet label. Add recipe name, recipe image, preparation time and number of servings. The ingredients and instructions fields have the feature to add more inputs. After all information inserted just click the "ADD recipe" button.
+
+- Edit recipes - this page allows the user to edit their own recipes and all fields are required. The fields are filled already with information from the recipe addded, The user can then edit the desired fields. The user can choose 1 option of cuisines, and multiple options (up to 4) of allergen, meals type and diet label. Add recipe name, recipe image, preparation time and number of servings. The ingredients and instructions fields have the feature to add more inputs. After all information inserted just click the "ADD recipe" button.
+
 - Recipe details - this page displays detailed information about recipes from the Spoonacular API. There is recipe image, preparation time, servings, diets type, meal type. The list of ingredients and equipments are displayed in images. There are instructions steps and also pairing wine section with wine options and a link where to buy it.
+
 - User recipe details - this page displays detailed information about recipes added by the user using MongoDB to store it. There is recipe image, preparation time, servings, diets type, meal type, list of ingredients and instructions steps. It's also available the option to edit and delete the recipe.
+
 - Log In - this page has two inputs, username and password. Underneath the submit button there is a link which redirects to the Register page in case the user is not already registered. The cancel icon redirects back to index.
+
 - Register - this page has two inputs, username and enter password. The user can choose between two avatars and underneath the submit button there is a link which redirects to Log In page in case the user is already registered. The cancel icon redirects back to index.
+
 - Error page - this page handles an error page in case the route wasn't found. There is a link to redirect the user back to index.
  
 ### Features Left to Implement
-- Add recipes - alert message - redirecting to .. ????
+- Edit recipes - if user had already added image and does't want to edit, I would like the to keep the image instead the user have upload again.
+
 ##### back to [top](#table-of-contents)
  
 ---
@@ -249,19 +259,6 @@ Doing this meant after a while the error codes became more familiar to me. And f
  
 I have also created a testing matrix ([raw Excel file here](testing/manual/curious_world-testing-milestone.xlsx)).
  
-**Testing Matrix**
- 
-![Testing Matrix](testing/manual/testing-curious-world.png?raw=true "Testing Curious World")
- 
-**Chrome's DevTools Audit Report**
- 
-| Performance | Accessibility | Best Practices | SEO | PWA |
-| :---: | :---: | :---: | :---: | :---: |
-| 98% | 100% | 100% | 91% | - |
- 
-![Chrome DevTools Audit Report](testing/manual/audit-google-lighthouse.jpg?raw=true "Chrome Audit Report")
- 
- 
 ##### back to [top](#table-of-contents)
  
 ---
@@ -301,6 +298,7 @@ Congratulations! Your project should be deployed successfully on Heroku's app! :
  
 - [Spoonacular API](https://spoonacular.com/) - Database images
 - [Unsplash](https://unsplash.com/) - Photo by Brook Lark
+- [Freepik](https://freepik.com/) - Database images
  
 ### Acknowledgements
  
