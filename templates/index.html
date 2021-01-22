@@ -11,7 +11,7 @@
       <div class="center" data-slick='{"slidesToShow": 3, "slidesToScroll": 3}'>
         {% for recipe in recipes %}
         <div>
-          <img src="{{ recipe.image }}" class="on-inview" alt="{{ recipe.image }}" />
+          <img src="{{ recipe.image }}" class="on-inview" width="556" height="370" alt="{{ recipe.image }}" />
           <a href="{{ url_for('recipe_details', recipe_id=recipe.id) }}" class="title-padding">{{ recipe.title }}</a>
         </div>
         {% endfor %}

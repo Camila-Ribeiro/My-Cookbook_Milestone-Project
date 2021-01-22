@@ -10,7 +10,8 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"/>
 
     <!-- Icofont -->
-    <link rel="stylesheet" href="{{ url_for('static',filename='css/icofont/icofont.min.css') }}" />
+    <link rel="preload" href="{{ url_for('static',filename='css/icofont/icofont.min.css') }}" as="style" onload="this.onload=null;this.rel='stylesheet'">
+    <noscript><link rel="stylesheet" href="{{ url_for('static',filename='css/icofont/icofont.min.css') }}"></noscript>
 
     <!-- Slick CSS -->
     <link rel="stylesheet" href="{{ url_for('static', filename='css/slick.css') }}" type="text/css" />
@@ -20,7 +21,7 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-select@1.13.14/dist/css/bootstrap-select.min.css">
 
     <!-- My own CSS -->
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}" type="text/css" />
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.min.css') }}" type="text/css" />
   </head>
   <body>
     
