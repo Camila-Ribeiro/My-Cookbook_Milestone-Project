@@ -10,9 +10,14 @@
     <link rel="preload" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"  as="style" onload="this.onload=null;this.rel='stylesheet'"/>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"></noscript>
 
-    <!-- Icofont -->
-    <link rel="preload" href="{{ url_for('static',filename='css/icofont/icofont.min.css') }}" as="style" onload="this.onload=null;this.rel='stylesheet'">
-    <noscript><link rel="stylesheet" href="{{ url_for('static',filename='css/icofont/icofont.min.css') }}"></noscript>
+
+    {% if request.path == '/' %} 
+    
+    {% else %}
+      <!-- Icofont -->
+      <link rel="preload" href="{{ url_for('static',filename='css/icofont/icofont.min.css') }}" as="style" onload="this.onload=null;this.rel='stylesheet'">
+      <noscript><link rel="stylesheet" href="{{ url_for('static',filename='css/icofont/icofont.min.css') }}"></noscript>
+    {% endif %}
 
     <!-- Slick CSS -->
     <link rel="preload" href="{{ url_for('static',filename='css/slick.css') }}" as="style" onload="this.onload=null;this.rel='stylesheet'">
