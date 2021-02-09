@@ -6,7 +6,8 @@
     <link rel="icon" href="../static/img/favicon.png"/>
     <title>My Cookbook</title>
     <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="{{ url_for('static',filename='css/bootstrap.min.css') }}"/>
+    <link rel="preload" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"  as="style" onload="this.onload=null;this.rel='stylesheet'"/>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"></noscript>
 
     <!-- Icofont -->
     <link rel="preload" href="{{ url_for('static',filename='css/icofont/icofont.min.css') }}" as="style" onload="this.onload=null;this.rel='stylesheet'">
