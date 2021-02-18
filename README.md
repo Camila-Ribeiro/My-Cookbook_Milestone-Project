@@ -221,7 +221,7 @@ I have also created a database schema:
  
 ## Testing
  
-The project guidelines stated that a Test Driven Development (TDD) approach should be taken to developing the web application but I only manual testing was conducted during this project to fix bugs I used print() method. Below I outlined most of what I did below for documentation purposes.
+Manual testing was conducted during this project to fix bugs I used print() method. Below I outlined most of what I did below for documentation purposes.
 I also have validated all files using online validation sites cited below and checked across different browsers and devices.
  
  
