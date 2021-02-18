@@ -21,18 +21,21 @@ My CookBook is a Milestone Project created for the "Data Centric Development" mo
    - [**Features Left to Implement**](#features-left-to-implemement)
  
 4. [**Technologies Used**](#technologies-used)
- 
-5. [**Databases Used**](#databases-used)
+
+5. [**API Used**](#api-used)
+   - [**API - Spoonacular**](#api-spoonacular)
+
+6. [**Databases Used**](#databases-used)
    - [**API - Spoonacular**](#api-spoonacular)
    - [**MongoDB**](#mongoDB)
  
-6. [**Testing**](#testing)
+7. [**Testing**](#testing)
   - [**Validators**](#validators)
   - [**Manual Testing**](#manual-testing)
  
-7. [**Deployment**](#deployment)
+8. [**Deployment**](#deployment)
  
-8. [**Credits**](#credits)
+9. [**Credits**](#credits)
   - [**Content**](#content)
   - [**Media**](#media)
   - [**Acknowledgements**](#acknowledgements)
@@ -182,9 +185,9 @@ My wireframes for this project can be found in the UX folder.
 ##### back to [top](#table-of-contents)
  
 ---
-## Databases Used
+## API Used
  
-### API - Spoonacular
+### Spoonacular API
 [Spoonacular](https://spoonacular.com/) Food API is a free recipe search API that provides recipes data from calling a API endpoint and receiving the data back as [JSON](https://www.json.org/json-en.html) format. This API has daily limit calls based on 150 quota points per day.
  
 Using Python requests I populated the recipes displayed on:
@@ -193,7 +196,11 @@ Using Python requests I populated the recipes displayed on:
 - all filters across the website
 - [all-recipes.html](https://my-cookbook-milestone-project.herokuapp.com/all_recipes), populating cards accordingly with filter selected
 - [recipes-details](https://my-cookbook-milestone-project.herokuapp.com/recipe_details)
+
+##### back to [top](#table-of-contents)
  
+---
+## Databases Used 
 ### MongoDB
  
 MongoDB is a highly scalable database server that stores data in a non-relational format and it's designed to store humongous amounts of data.
