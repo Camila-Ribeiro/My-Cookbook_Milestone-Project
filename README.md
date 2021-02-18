@@ -26,7 +26,6 @@ My CookBook is a Milestone Project created for the "Data Centric Development" mo
    - [**API - Spoonacular**](#api-spoonacular)
 
 6. [**Databases Used**](#databases-used)
-   - [**API - Spoonacular**](#api-spoonacular)
    - [**MongoDB**](#mongoDB)
  
 7. [**Testing**](#testing)
